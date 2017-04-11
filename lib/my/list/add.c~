@@ -60,19 +60,17 @@ void	add_start_list(t_my_list_cont **list, void *str)
 
 void	link_end_list(t_my_list_cont **list, t_my_list_data *data)
 {
-  if (*list == NULL)
+  if (*list == NULL && data != NULL)
   {
     (*list) = malloc(sizeof(**list));
     (*list)->length = 0;
     (*list)->begin = data;
     (*list)->end = data;
   }
-  else if (data != NULL)
+  else
   {
     (*list)->end->next = data;
     data->prev = (*list)->end;
     (*list)->end = data;
   }
-  else
-    my_fprintf(2, "The link can't be established because data is NULL :/\n");
 }
