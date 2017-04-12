@@ -6,32 +6,36 @@
 #include "get_next_line.h"
 #include "list.h"
 
-int	my_strcmp(char *str, char *av);
-int	*my_prepa(int *nb);
-char	**str_to_tab(char *str, char fin);
-int	comptechar_tab(char *str, char fin);
-int	compteligne_tab(char *str, char fin);
-int	my_strlen(char *str);
-int	my_malloc(char	**str, char c, int size);
-void	my_printf(char *fmt, ...);
-void	my_putchar(char c, int fd);
-int	functions(char *fmt, va_list ap, int i, int fd);
-int	my_putnbr(int nb, int fd);
-int	my_hexa(int nb, int fd);
-int	my_convert(char *str, int nb, int i);
-void	my_putstr(char *str, int fd);
-void	my_putstr_err(char *str);
-void	my_fprintf(int fd, char *fmt, ...);
-int	my_strlen(char *str);
-void	my_revstr(char *str, int fd);
-void	aff_list(t_my_list_cont *list);
-void	free_list(t_my_list_cont *list);
-void	rm_end_list(t_my_list_cont **list);
-void	rm_start_list(t_my_list_cont **list);
-void	add_end_list(t_my_list_cont **list, void *str);
-void	add_start_list(t_my_list_cont **list, void *str);
-void	link_end_list(t_my_list_cont **list, t_my_list_data *data);
-int	main(int ac, char **av, char **env);
-void	my_echo(char *str, char **env);
+typedef	struct s_my_var
+{
+  char	**env;
+  char	*full_command;
+  char	*command;
+  int	return_value;
+  t_my_list_cont	*list_command;
+}	t_my_var;
+
+typedef struct	s_my_args
+{
+  int	i;
+  int	j;
+  int	k;
+  int	n;
+  char	*path;
+}	t_my_args;
+
+int	my_start(t_my_var *);
+
+void	my_command(t_my_var *);
+
+/*
+** LIB
+*/
+
+int	my_malloc(char	**, char, int);
+int	my_strncmp(char *, char *, int);
+int	my_strcmp(char *, char *);
+char	*my_pure(char *);
+void	my_exit(t_my_var *);
 
 #endif /*MY_H_*/

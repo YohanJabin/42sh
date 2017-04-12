@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Mon Mar 13 21:30:40 2017 Hugo MARTIN
-** Last update	Sat Apr 08 18:40:47 2017 Hugo MARTIN
+** Last update	Wed Apr 12 20:02:39 2017 Hugo MARTIN
 */
 
 #include "list.h"
@@ -20,10 +20,10 @@ void	aff_list(t_my_list_cont *list)
   tmp = list->begin;
   while (tmp != NULL)
   {
-    my_printf("%s\n", tmp->data);
+    my_printf("%s->", tmp->data);
     tmp = tmp->next;
   }
-  my_printf("(null)");
+  my_printf("(null)\n");
 }
 
 void	free_list(t_my_list_cont *list)

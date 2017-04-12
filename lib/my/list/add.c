@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Mon Mar 13 22:17:02 2017 Hugo MARTIN
-** Last update	Sat Apr 08 18:13:36 2017 Hugo MARTIN
+** Last update	Wed Apr 12 20:03:54 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -73,6 +73,4 @@ void	link_end_list(t_my_list_cont **list, t_my_list_data *data)
     data->prev = (*list)->end;
     (*list)->end = data;
   }
-  else
-    my_fprintf(2, "The link can't be established because data is NULL :/\n");
 }

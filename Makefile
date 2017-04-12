@@ -27,13 +27,16 @@ SRCS	= ./lib/my/casual/epur.c \
 	  ./lib/my/my_fprintf/my_putstr.c \
 	  ./lib/my/my_fprintf/my_revstr.c \
 	  ./lib/my/my_printf/my_printf.c \
+	  ./src/command/command.c \
 	  ./src/echo/echo.c \
-	  ./src/main.c 
+	  ./src/exit.c \
+	  ./src/main.c \
+	  ./src/start.c 
 
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
-CFLAGS += -W -Wall -Wextra
+CFLAGS += -W -Wall -Wextra -g3
 LDLIBS = 
 
 all: $(NAME)
@@ -46,12 +49,12 @@ $(NAME): $(OBJS)
 
 clean:
 	@#@echo "clean OK"
-	@echo -e "\033[1;46m clean OK \033[0m"
+	@echo -e "\e[1;46m clean OK \e[0m"
 	@$(RM) $(OBJS)
 
 fclean:
 	@#@echo "fclean OK"
-	@echo -e "\033[1;46m fclean OK \033[0m"
+	@echo -e "\e[1;46m fclean OK \e[0m"
 	@$(RM) $(OBJS)
 	@$(RM) $(NAME)
 
@@ -59,6 +62,6 @@ re: fclean all
 
 %.o: %.c
 	@gcc -c -o $@ $(CFLAGS) $<
-	@echo -e "[\033[0;32m OK \033[0m] built '$@'"
+	@echo -e "[\e[0;32m OK \e[0m] built '$@'"
 
 .PHONY: all clean fclean re
