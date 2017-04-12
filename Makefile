@@ -8,8 +8,13 @@ CURDIR = ./
 
 TODO = -@fgrep --color --exclude=.git --exclude=*.o --exclude=Makefile --exclude=tags --exclude=cscope* -H -e TODO -e FIXME -r $(CURDIR) || true
 
-SRCS	= ./lib/my/casual/my_malloc.c \
+SRCS	= ./lib/my/casual/epur.c \
+	  ./lib/my/casual/get_next_line.c \
+	  ./lib/my/casual/line_formatting.c \
+	  ./lib/my/casual/my_getnbr.c \
+	  ./lib/my/casual/my_malloc.c \
 	  ./lib/my/casual/my_strcmp.c \
+	  ./lib/my/casual/my_strncmp.c \
 	  ./lib/my/casual/str_to_tab.c \
 	  ./lib/my/list/add.c \
 	  ./lib/my/list/other.c \
