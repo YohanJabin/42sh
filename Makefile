@@ -8,7 +8,10 @@ CURDIR = ./
 
 TODO = -@fgrep --color --exclude=.git --exclude=*.o --exclude=Makefile --exclude=tags --exclude=cscope* -H -e TODO -e FIXME -r $(CURDIR) || true
 
-SRCS	= ./lib/my/list/add.c \
+SRCS	= ./lib/my/casual/my_malloc.c \
+	  ./lib/my/casual/my_strcmp.c \
+	  ./lib/my/casual/str_to_tab.c \
+	  ./lib/my/list/add.c \
 	  ./lib/my/list/other.c \
 	  ./lib/my/list/rm.c \
 	  ./lib/my/my_fprintf/functions.c \
@@ -19,7 +22,8 @@ SRCS	= ./lib/my/list/add.c \
 	  ./lib/my/my_fprintf/my_putstr.c \
 	  ./lib/my/my_fprintf/my_revstr.c \
 	  ./lib/my/my_printf/my_printf.c \
-	  ./main.c 
+	  ./src/echo/echo.c \
+	  ./src/main.c 
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -37,12 +41,12 @@ $(NAME): $(OBJS)
 
 clean:
 	@#@echo "clean OK"
-	@echo -e "\e[1;46m clean OK \e[0m"
+	@echo -e "\033[1;46m clean OK \033[0m"
 	@$(RM) $(OBJS)
 
 fclean:
 	@#@echo "fclean OK"
-	@echo -e "\e[1;46m fclean OK \e[0m"
+	@echo -e "\033[1;46m fclean OK \033[0m"
 	@$(RM) $(OBJS)
 	@$(RM) $(NAME)
 
@@ -50,6 +54,6 @@ re: fclean all
 
 %.o: %.c
 	@gcc -c -o $@ $(CFLAGS) $<
-	@echo -e "[\e[0;32m OK \e[0m] built '$@'"
+	@echo -e "[\033[0;32m OK \033[0m] built '$@'"
 
 .PHONY: all clean fclean re

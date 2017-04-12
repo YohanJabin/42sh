@@ -1,10 +1,6 @@
 #ifndef MY_H
 # define MY_H
 
-#include "my_printf.h"
-#include "my_fprintf.h"
-#include "list.h"
-
 int	my_strcmp(char *str, char *av);
 int	*my_prepa(int *nb);
 char	**str_to_tab(char *str, char fin);
