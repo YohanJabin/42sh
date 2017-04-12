@@ -1,3 +1,13 @@
+/*
+** my.h for PSU_2016_42sh
+**
+** Made by	Adrien ZEMMA
+** Login	adrien.zemma@epitech.eu
+**
+** Started on	Wed Apr 12 17:30:28 2017 Adrien ZEMMA
+** Last update	Wed Apr 12 20:19:48 2017 Hugo MARTIN
+*/
+
 #ifndef MY_H
 # define MY_H
 
