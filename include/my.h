@@ -3,6 +3,7 @@
 
 #include "my_printf.h"
 #include "my_fprintf.h"
+#include "get_next_line.h"
 #include "list.h"
 
 int	my_strcmp(char *str, char *av);
