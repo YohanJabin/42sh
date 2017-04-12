@@ -1,3 +1,13 @@
+/*
+** my.h for PSU_2016_42sh
+**
+** Made by	Adrien ZEMMA
+** Login	adrien.zemma@epitech.eu
+**
+** Started on	Wed Apr 12 17:30:28 2017 Adrien ZEMMA
+** Last update	Wed Apr 12 17:32:06 2017 Adrien ZEMMA
+*/
+
 #ifndef MY_H
 # define MY_H
 
@@ -33,5 +43,6 @@ void	add_start_list(t_my_list_cont **list, void *str);
 void	link_end_list(t_my_list_cont **list, t_my_list_data *data);
 int	main(int ac, char **av, char **env);
 void	my_echo(char *str, char **env);
+int	my_strncmp(char *str1, char *str2, int n);
 
 #endif /*MY_H_*/
