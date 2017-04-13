@@ -10,13 +10,12 @@
 
 #include "my.h"
 
-int	*my_prepa(int *nb)
+void	my_prepa(int **nb)
 {
-  nb = malloc(sizeof(int) * 4);
-  nb[0] = 0;
-  nb[1] = 0;
-  nb[2] = 0;
-  return (nb);
+  *nb = malloc(sizeof(int) * 4);
+  *nb[0] = 0;
+  *nb[1] = 0;
+  *nb[2] = 0;
 }
 
 int	comptechar_tab(char *str, char fin)
@@ -69,7 +68,7 @@ char	**str_to_tab(char *str, char fin)
   char **tab;
   int	*nb;
 
-  nb = my_prepa(nb);
+  my_prepa(&nb);
   if (str == NULL)
   return (NULL);
   tab = malloc(sizeof(char *) * (compteligne_tab(str, fin) + 6));

@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Wed Apr 12 17:30:28 2017 Adrien ZEMMA
-** Last update	Wed Apr 12 20:19:48 2017 Hugo MARTIN
+** Last update	Thu Apr 13 11:07:48 2017 Hugo MARTIN
 */
 
 #ifndef MY_H
@@ -46,6 +46,7 @@ int	my_malloc(char	**, char, int);
 int	my_strncmp(char *, char *, int);
 int	my_strcmp(char *, char *);
 char	*my_pure(char *);
+char	**str_to_tab(char *, char);
 void	my_exit(t_my_var *);
 
 #endif /*MY_H_*/
