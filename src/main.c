@@ -5,14 +5,13 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Wed Apr 12 12:54:03 2017 Adrien ZEMMA
-** Last update	Thu Apr 13 11:09:10 2017 Hugo MARTIN
+** Last update	Thu Apr 13 11:09:58 2017 Hugo MARTIN
 */
 
 #include "my.h"
 
 int	main(int ac, char **av, char **env)
 {
-  int nb;
   t_my_var	*p;
 
   p = malloc(sizeof(*p));
