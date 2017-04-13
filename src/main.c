@@ -12,8 +12,13 @@
 
 int	main(int ac, char **av, char **env)
 {
+  int nb;
+  char buff[8046];
   t_my_var	*p;
 
+  nb = read(0, buff, 8046);
+  buff[nb] = '\0';
+  my_printf("%s\n", buff);
   p = malloc(sizeof(*p));
   ac = ac;
   av = av;
