@@ -5,26 +5,23 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Wed Apr 12 12:54:03 2017 Adrien ZEMMA
-** Last update	Thu Apr 13 20:46:52 2017 Adrien ZEMMA
+** Last update	Fri Apr 21 14:25:56 2017 Adrien ZEMMA
 */
 
 #include "my.h"
 
 int	main(int ac, char **av, char **env)
 {
-  int nb;
-  char buff[4096];
   t_my_var	*p;
+  t_my_data	*data;
 
   p = malloc(sizeof(*p));
-  nb = read(0, buff, 4095);
-  buff[nb] = '\0';
-  my_printf("%s", buff);
+  data = malloc(sizeof(t_my_data));
   ac = ac;
   av = av;
   p->return_value = 0;
   p->env = env;
-  my_start(p);
+  my_start(p, data);
   //my_echo("echo $PATH", env);
   return (0);
 }

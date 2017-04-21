@@ -5,19 +5,21 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Wed Apr 12 17:51:07 2017 Hugo MARTIN
-** Last update	Fri Apr 21 11:51:32 2017 Hugo MARTIN
+** Last update	Fri Apr 21 14:32:59 2017 Adrien ZEMMA
 */
 
 #include "my.h"
+#include "my_prompt.h"
 
-int	my_start(t_my_var *p)
+int	my_start(t_my_var *p, t_my_data *data)
 {
   t_my_list_data	*command;
 
-  //exec de .42shrc?
+  my_read_rc(data);
+  exit(0);
   while (42)
   {
-    //prompt perso
+    my_prompt(data);
     //command/list:
     my_command(p);
     command = p->list_command->begin;

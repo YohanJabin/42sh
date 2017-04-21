@@ -5,12 +5,13 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Wed Apr 12 17:30:28 2017 Adrien ZEMMA
-** Last update	Thu Apr 13 11:07:48 2017 Hugo MARTIN
+** Last update	Fri Apr 21 14:14:20 2017 Adrien ZEMMA
 */
 
 #ifndef MY_H
 # define MY_H
 
+#include "my_prompt.h"
 #include "my_printf.h"
 #include "my_fprintf.h"
 #include "get_next_line.h"
@@ -34,7 +35,7 @@ typedef struct	s_my_args
   char	*path;
 }	t_my_args;
 
-int	my_start(t_my_var *);
+int	my_start(t_my_var *, t_my_data *);
 
 void	my_command(t_my_var *);
 

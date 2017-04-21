@@ -5,17 +5,20 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Tue Mar 14 13:05:42 2017 Adrien ZEMMA
-** Last update	Wed Apr 12 19:50:43 2017 Hugo MARTIN
+** Last update	Fri Apr 21 14:32:32 2017 Adrien ZEMMA
 */
 
 #include "my.h"
 
-void	my_prepa(int **nb)
+int	*my_prepa()
 {
-  *nb = malloc(sizeof(int) * 4);
-  *nb[0] = 0;
-  *nb[1] = 0;
-  *nb[2] = 0;
+  int *nb;
+
+  nb = malloc(sizeof(int) * 4);
+  nb[0] = 0;
+  nb[1] = 0;
+  nb[2] = 0;
+  return (nb);
 }
 
 int	comptechar_tab(char *str, char fin)
@@ -68,7 +71,7 @@ char	**str_to_tab(char *str, char fin)
   char **tab;
   int	*nb;
 
-  my_prepa(&nb);
+  nb = my_prepa();
   if (str == NULL)
   return (NULL);
   tab = malloc(sizeof(char *) * (compteligne_tab(str, fin) + 6));
