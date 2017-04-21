@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Sun Apr 09 23:23:08 2017 Hugo MARTIN
-** Last update	Fri Apr 21 15:01:23 2017 Hugo MARTIN
+** Last update	Fri Apr 21 15:03:16 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -93,7 +93,7 @@ char	*my_process(char *str)
 
 char	*get_next_line(int fd)
 {
-  t_my_va	a;
+  t_gnl	a;
   static	char	*tmp;
 
   my_malloc(&a.buffer, '\0', (READ_SIZE + 1));
