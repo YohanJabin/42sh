@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.net>
 **
 ** Started on  Tue Oct 18 09:05:12 2016 Hugo MARTIN
-** Last update	Wed Apr 12 19:59:57 2017 Hugo MARTIN
+** Last update	Fri Apr 21 11:23:04 2017 Hugo MARTIN
 */
 
 #ifndef LIST_H_
@@ -17,7 +17,7 @@
 
 typedef	struct s_my_list_data
 {
-  char	*data;
+  void	*data;
   struct	s_my_list_data *next;
   struct	s_my_list_data *prev;
 }	t_my_list_data;
