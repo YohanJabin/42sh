@@ -1,11 +1,11 @@
 /*
-** get_next_line.c for CPE_2016_Lemin
+** get_next_line.c for PSU_2016_minishell2
 **
 ** Made by	Hugo MARTIN
 ** Login	hugo.martin@epitech.eu
 **
-** Started on	Tue Apr 04 10:53:59 2017 Hugo MARTIN
-** Last update	Fri Apr 07 11:25:55 2017 Hugo MARTIN
+** Started on	Sun Apr 09 23:23:08 2017 Hugo MARTIN
+** Last update	Fri Apr 21 15:01:23 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -18,12 +18,10 @@ char	*new_stock(char *tmp, int o, int u, int a)
     return (NULL);
   if (my_len(tmp, 2) == 0)
     return (tmp);
-  while (tmp[u] != '\n')
-    {
-      st[a] = tmp[u];
-      a = a + 1;
-      u = u + 1;
-    }
+  u -= 1;
+  a -= 1;
+  while (tmp[++u] != '\n')
+      st[++a] = tmp[u];
   if (o == 2)
     return (st);
   a = -1;
@@ -35,7 +33,7 @@ char	*new_stock(char *tmp, int o, int u, int a)
   return (st);
 }
 
-char	*my_ralloc(char *d, char *s, int o, int a)
+char	*my_realloc(char *d, char *s, int o, int a)
 {
   char	*st;
   int	i;
@@ -95,27 +93,26 @@ char	*my_process(char *str)
 
 char	*get_next_line(int fd)
 {
+  t_my_va	a;
   static	char	*tmp;
-  t_main	a;
 
-  a.buffer = malloc(sizeof(char) * (READ_SIZE + 1));
+  my_malloc(&a.buffer, '\0', (READ_SIZE + 1));
   if (fd == -1 || a.buffer == NULL || (tmp = my_process(tmp)) == NULL)
     return (NULL);
   while (my_len(tmp, 2) == 0)
     {
       a.s = read(fd, a.buffer, READ_SIZE);
       if (a.s == -1)
-	return (NULL);
-      a.buffer[a.s] = '\0';
-      tmp = my_ralloc(tmp, a.buffer, 0, 0);
+	     return (NULL);
+      tmp = my_realloc(tmp, a.buffer, 0, 0);
       if (a.s == 0 && my_len(tmp, 1) == 0)
-	return (NULL);
+	     return (NULL);
       else if (a.s == 0 && my_len(tmp, 2) == 0)
-	{
-	  a.st = my_ralloc(tmp, tmp, 2, 0);
-	  tmp[0] = '\0';
-	  return (a.st);
-	}
+	     {
+	        a.st = my_realloc(tmp, tmp, 2, 0);
+	        tmp[0] = '\0';
+	        return (a.st);
+	     }
     }
   a.src = new_stock(tmp, 2, 0, 0);
   tmp = new_stock(tmp, 0, 0, 0);
