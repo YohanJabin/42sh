@@ -1,14 +1,7 @@
-# ordre de l'affichage
-#prompt = folder, name, date,
-#fichier ignorer pour le 42sh_history
-#git=yes | git=no
-#alias ... = '...' | le meme que zsh
-
-prompt= folder, name, date, P"coucou"
+prompt= folder, name, date
 ignore=, ls,
 git = yes
 compteur = yes
-
 
 
 alias la='ls -a'

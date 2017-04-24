@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Thu Apr 20 17:14:43 2017 Adrien ZEMMA
-** Last update	Fri Apr 21 14:34:45 2017 Adrien ZEMMA
+** Last update	Sun Apr 23 11:26:59 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -25,6 +25,5 @@ int my_read_rc(t_my_data *data)
   data->fd_rc = fd;
   my_setprompt(data);
   close(fd);
-  exit(0);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.net>
 **
 ** Started on  Mon Oct 10 08:52:32 2016 Hugo MARTIN
-** Last update	Tue Apr 04 15:38:55 2017 Hugo MARTIN
+** Last update	Fri Apr 21 15:10:01 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -15,6 +15,8 @@ int	my_strlen(char *str)
   int	i;
 
   i = 0;
+  if (str == NULL)
+    return (0);
   while (str[i])
     {
       i++;

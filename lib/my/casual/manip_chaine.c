@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Thu Apr 20 18:26:45 2017 Adrien ZEMMA
-** Last update	Fri Apr 21 13:53:35 2017 Adrien ZEMMA
+** Last update	Sun Apr 23 13:33:28 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -27,7 +27,9 @@ char *retir_char(char *str, int nb)
   char *stock;
 
   i = -1;
-  my_malloc(&stock, '\0', my_strlen(str));
+  if (nb > my_strlen(str))
+    return (NULL);
+  my_malloc(&stock, '\0', my_strlen(str) + 3);
   while (str[++nb] != '\0')
     stock[++i] = str[nb];
   return (stock);

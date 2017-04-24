@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Wed Apr 12 17:51:07 2017 Hugo MARTIN
-** Last update	Fri Apr 21 14:32:59 2017 Adrien ZEMMA
+** Last update	Mon Apr 24 15:43:46 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -16,7 +16,6 @@ int	my_start(t_my_var *p, t_my_data *data)
   t_my_list_data	*command;
 
   my_read_rc(data);
-  exit(0);
   while (42)
   {
     my_prompt(data);

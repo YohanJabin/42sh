@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Thu Apr 13 20:59:22 2017 Adrien ZEMMA
-** Last update	Mon Apr 24 15:45:01 2017 Adrien ZEMMA
+** Last update	Sun Apr 23 12:55:00 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -26,14 +26,15 @@ void	my_prompt(t_my_data *data)
       my_printf(ANSI_COLOR_RED"%s "ANSI_COLOR_RESET, getenv("USER"));
     if (my_strncmp(my_clean(data->prompt_prompt[nb]),
     "date", my_strlen("date")) == 0)
-      my_printf("%s ", "date");
+      printf("%s ", "date");
     if (my_strncmp(my_clean(data->prompt_prompt[nb]),
       "folder", my_strlen("folder")) == 0)
     {
       getcwd(buff, 2048);
-      my_printf(ANSI_COLOR_BLUE"%s "ANSI_COLOR_RESET, last_buff(buff));
+      printf(ANSI_COLOR_BLUE"%s "ANSI_COLOR_RESET, last_buff(buff));
     }
   }
   if (access(".git", F_OK) == 0 && data->prompt_git == 1)
-    my_printf(ANSI_COLOR_YELLOW"[git]" ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_YELLOW"[git]" ANSI_COLOR_RESET);
+  fflush(stdout);
 }
