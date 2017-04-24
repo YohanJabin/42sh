@@ -1,7 +1,7 @@
-prompt= folder, name, date
+prompt=
 ignore=, ls,
-git = yes
-compteur = yes
+git= no
+compteur= yes
 
 
 alias la='ls -a'
