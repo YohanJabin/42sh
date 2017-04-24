@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Wed Apr 12 17:51:07 2017 Hugo MARTIN
-** Last update	Mon Apr 24 15:43:46 2017 Adrien ZEMMA
+** Last update	Mon Apr 24 17:28:48 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -15,11 +15,10 @@ int	my_start(t_my_var *p, t_my_data *data)
 {
   t_my_list_data	*command;
 
-  my_read_rc(data);
+  //my_read_rc(data);
   while (42)
   {
-    my_prompt(data);
-    //command/list:
+    //my_prompt(data);
     my_command(p);
     command = p->list_command->begin;
     while (command)

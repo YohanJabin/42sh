@@ -43,7 +43,7 @@ SRCS	= ./lib/my/casual/epur.c \
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
-CFLAGS += -W -Wall -Wextra -Werror -g -g3
+CFLAGS += -W -Wall -Wextra -g -g3
 LDLIBS =
 
 all: $(NAME)
