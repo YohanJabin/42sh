@@ -5,11 +5,11 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Wed Apr 12 17:30:28 2017 Adrien ZEMMA
-** Last update	Fri Apr 21 14:14:20 2017 Adrien ZEMMA
+** Last update	Tue Apr 25 15:23:32 2017 Adrien ZEMMA
 */
 
-#ifndef MY_H
-# define MY_H
+#ifndef MY_H_
+# define MY_H_
 
 #include "my_prompt.h"
 #include "my_printf.h"
@@ -28,16 +28,16 @@ typedef	struct s_my_var
 
 typedef struct	s_my_args
 {
-  int	i;
-  int	j;
-  int	k;
-  int	n;
-  char	*path;
-}	t_my_args;
+  int		i;
+  int		j;
+  int		k;
+  int		n;
+  char		*path;
+}		t_my_args;
 
 int	my_start(t_my_var *, t_my_data *);
 
-void	my_command(t_my_var *);
+void	my_command(t_my_var *, t_my_data *);
 
 /*
 ** LIB
@@ -50,4 +50,4 @@ char	*my_pure(char *);
 char	**str_to_tab(char *, char);
 void	my_exit(t_my_var *);
 
-#endif /*MY_H_*/
+#endif /* !MY_H_ */

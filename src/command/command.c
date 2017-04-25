@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Wed Apr 12 19:43:08 2017 Hugo MARTIN
-** Last update	Mon Apr 24 17:30:03 2017 Hugo MARTIN
+** Last update	Tue Apr 25 15:23:46 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -59,13 +59,14 @@ void	my_list_command(t_my_var *v)
     add_end_list(&v->list_command, "exit");
 }
 
-void	my_command(t_my_var *v)
+void	my_command(t_my_var *v, t_my_data *data)
 {
+  my_prompt(data);
   if (v->return_value != 0 && isatty(0) == 0)
     my_exit(v);
   if ((v->full_command = get_next_line(0)) == NULL)
     my_exit(v);
   else if (v->full_command[0] == '\0')
-      my_command(v);
+      my_command(v, data);
   my_list_command(v);
 }
