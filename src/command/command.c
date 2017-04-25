@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Wed Apr 12 19:43:08 2017 Hugo MARTIN
-** Last update	Wed Apr 12 19:59:04 2017 Hugo MARTIN
+** Last update	Mon Apr 24 17:30:03 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -66,9 +66,6 @@ void	my_command(t_my_var *v)
   if ((v->full_command = get_next_line(0)) == NULL)
     my_exit(v);
   else if (v->full_command[0] == '\0')
-    {
       my_command(v);
-      my_exit(v);
-    }
   my_list_command(v);
 }

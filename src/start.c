@@ -1,11 +1,11 @@
 /*
-** start.c for PSU_2016_42sh
-**
-** Made by	Hugo MARTIN
-** Login	hugo.martin@epitech.eu
-**
-** Started on	Wed Apr 12 17:51:07 2017 Hugo MARTIN
-** Last update	Tue Apr 25 15:16:26 2017 Adrien ZEMMA
+** start.c for  in /home/adrien/Epitech/Semestre2/Systeme_Unix/PSU_2016_42sh
+** 
+** Made by adrien
+** Login   <adrien.zemma@epitech.eu>
+** 
+** Started on  Tue Apr 25 15:20:22 2017 adrien
+** Last update Tue Apr 25 15:20:22 2017 adrien
 */
 
 #include "my.h"
@@ -15,11 +15,10 @@ int	my_start(t_my_var *p, t_my_data *data)
 {
   t_my_list_data	*command;
 
-  my_read_rc(data);
+  //my_read_rc(data);
   while (42)
   {
-    my_prompt(data);
-    //command/list:
+    //my_prompt(data);
     my_command(p);
     command = p->list_command->begin;
     while (command)
