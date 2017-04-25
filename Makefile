@@ -26,6 +26,7 @@ SRCS	= ./lib/my/casual/epur.c \
 	  ./lib/my/my_fprintf/my_fprintf.c \
 	  ./lib/my/my_fprintf/my_hexa.c \
 	  ./lib/my/my_fprintf/my_put_nbr.c \
+	  ./lib/my/my_fprintf/my_put_tab.c \
 	  ./lib/my/my_fprintf/my_putchar.c \
 	  ./lib/my/my_fprintf/my_putstr.c \
 	  ./lib/my/my_fprintf/my_revstr.c \

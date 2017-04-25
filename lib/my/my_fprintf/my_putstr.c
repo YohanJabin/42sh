@@ -5,14 +5,17 @@
 ** Login   <hugo.martin@epitech.net>
 **
 ** Started on  Thu Oct  6 08:34:09 2016 Hugo MARTIN
-** Last update	Tue Apr 04 15:38:56 2017 Hugo MARTIN
+** Last update	Tue Apr 25 15:47:54 2017 Adrien ZEMMA
 */
 
 #include "my.h"
 
 void	my_putstr(char *str, int fd)
 {
-  write(fd, str, my_strlen(str));
+  if (str == NULL)
+    write(fd, "(null)", my_strlen("(null)"));
+  else
+    write(fd, str, my_strlen(str));
 }
 
 void	my_putstr_err(char *str)

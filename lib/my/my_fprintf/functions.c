@@ -5,7 +5,7 @@
 ** Login   <hugo@epitech.net>
 **
 ** Started on  Fri Nov 18 12:28:18 2016 Hugo
-** Last update	Tue Apr 04 15:38:25 2017 Hugo MARTIN
+** Last update	Tue Apr 25 15:44:53 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -20,6 +20,8 @@ int	functions(char *fmt, va_list ap, int i, int fd)
     my_putchar(va_arg(ap, int), fd);
   else if (fmt[i + 1] == 'x')
     my_hexa(va_arg(ap, int), fd);
+  else if (fmt[i + 1] == 't')
+    my_put_tab(va_arg(ap, char **), fd);
   else
     my_putchar(fmt[i + 1], fd);
   i++;
