@@ -17,14 +17,14 @@
 #include "get_next_line.h"
 #include "list.h"
 
-typedef	struct s_my_var
+typedef	struct		s_my_var
 {
-  char	**env;
-  char	*full_command;
-  char	*command;
-  int	return_value;
+  char			**env;
+  char			*full_command;
+  char			*command;
+  int			return_value;
   t_my_list_cont	*list_command;
-}	t_my_var;
+}			t_my_var;
 
 typedef struct	s_my_args
 {
