@@ -1,6 +1,6 @@
-prompt=
-ignore=, ls,
-git= no
+prompt= folder, name,
+ignore=  ls,
+git= yes
 compteur= yes
 
 

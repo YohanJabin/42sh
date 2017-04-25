@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Wed Apr 12 17:51:07 2017 Hugo MARTIN
-** Last update	Mon Apr 24 15:43:46 2017 Adrien ZEMMA
+** Last update	Tue Apr 25 15:16:26 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -25,6 +25,7 @@ int	my_start(t_my_var *p, t_my_data *data)
     while (command)
     {
       my_printf("%s\n", command->data);
+      my_histori(command->data, data);
       //SET REDIR
       //BUILTINS
       //path
