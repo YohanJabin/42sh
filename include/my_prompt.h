@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Fri Apr 21 13:41:05 2017 Adrien ZEMMA
-** Last update	Fri Apr 21 14:10:30 2017 Adrien ZEMMA
+** Last update	Tue Apr 25 15:49:53 2017 Adrien ZEMMA
 */
 
 #ifndef MY_PROMPT_H
@@ -26,7 +26,7 @@ typedef struct	s_my_data
 {
   int fd_rc;
   int prompt_git;
-  int prompt_compteur;
+  unsigned int prompt_compteur;
   char **prompt_prompt;
   char **prompt_ignore;
   char **histori_tab;

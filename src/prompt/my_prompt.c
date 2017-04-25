@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Thu Apr 13 20:59:22 2017 Adrien ZEMMA
-** Last update	Mon Apr 24 17:03:28 2017 Adrien ZEMMA
+** Last update	Tue Apr 25 15:50:26 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -16,7 +16,7 @@ void	my_prompt(t_my_data *data)
   char *buff;
 
   nb = -1;
-  if (data->prompt_compteur != -1)
+  if ((int)data->prompt_compteur != -1)
     my_printf("[%d] ", ++data->prompt_compteur);
   while (data->prompt_prompt[++nb] != NULL)
   {
