@@ -15,6 +15,7 @@ SRCS	= ./lib/my/casual/epur.c \
 	  ./lib/my/casual/my_clean.c \
 	  ./lib/my/casual/my_getnbr.c \
 	  ./lib/my/casual/my_malloc.c \
+	  ./lib/my/casual/my_strcat.c \
 	  ./lib/my/casual/my_strcmp.c \
 	  ./lib/my/casual/my_strncmp.c \
 	  ./lib/my/casual/str_to_tab.c \
@@ -31,20 +32,20 @@ SRCS	= ./lib/my/casual/epur.c \
 	  ./lib/my/my_printf/my_printf.c \
 	  ./src/command/command.c \
 	  ./src/echo/echo.c \
-	  ./src/exit.c \
 	  ./src/main.c \
 	  ./src/prompt/histori.c \
 	  ./src/prompt/my_get_commande.c \
 	  ./src/prompt/my_prompt.c \
 	  ./src/prompt/my_setprompt.c \
 	  ./src/prompt/setup_prompt.c \
-	  ./src/start.c
+	  ./src/setup/exit.c \
+	  ./src/setup/start.c 
 
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
-CFLAGS += -W -Wall -Wextra -g -g3
-LDLIBS =
+CFLAGS += -W -Wall -Wextra
+LDLIBS = 
 
 all: $(NAME)
 
