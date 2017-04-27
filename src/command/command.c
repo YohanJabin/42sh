@@ -61,7 +61,8 @@ void	my_list_command(t_my_var *v)
 
 void	my_command(t_my_var *v, t_my_data *data)
 {
-  my_prompt(data);
+  if (isatty(0))
+    my_prompt(data);
   if (v->return_value != 0 && isatty(0) == 0)
     my_exit(v);
   if ((v->full_command = get_next_line(0)) == NULL)
