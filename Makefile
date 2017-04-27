@@ -1,3 +1,13 @@
+##
+## Makefile for 42sh in /home/yohan/repo/PSU/PSU_2016_42sh
+## 
+## Made by Yohan.Jabin
+## Login   <yohan.jabin@epitech.eu@epitech.net>
+## 
+## Started on  Fri Apr 28 00:40:29 2017 Yohan.Jabin
+## Last update Fri Apr 28 00:40:30 2017 Yohan.Jabin
+##
+
 NAME	= 42sh
 
 CC	= gcc
@@ -33,12 +43,33 @@ SRCS	= ./lib/my/casual/epur.c \
 	  ./lib/my/my_printf/my_printf.c \
 	  ./src/command/command.c \
 	  ./src/echo/echo.c \
+	  ./src/exec/arr_env.c \
+	  ./src/exec/cd.c \
+	  ./src/exec/cmd.c \
+	  ./src/exec/env.c \
+	  ./src/exec/func.c \
+	  ./src/exec/func2.c \
+	  ./src/exec/func3.c \
+	  ./src/exec/my_exec.c \
+	  ./src/exec/my_setenv.c \
+	  ./src/exec/my_str_to_wordtab.c \
+	  ./src/exec/my_unsetenv.c \
+	  ./src/exec/path.c \
 	  ./src/main.c \
 	  ./src/prompt/histori.c \
 	  ./src/prompt/my_get_commande.c \
 	  ./src/prompt/my_prompt.c \
 	  ./src/prompt/my_setprompt.c \
 	  ./src/prompt/setup_prompt.c \
+	  ./src/redir/arr_pipe.c \
+	  ./src/redir/check_pipe_error.c \
+	  ./src/redir/double_redir_left.c \
+	  ./src/redir/new_redirect_tab.c \
+	  ./src/redir/process_arr.c \
+	  ./src/redir/process_imp.c \
+	  ./src/redir/process_pid.c \
+	  ./src/redir/redirections_left.c \
+	  ./src/redir/redirections_right.c \
 	  ./src/setup/exit.c \
 	  ./src/setup/start.c 
 
@@ -58,12 +89,12 @@ $(NAME): $(OBJS)
 
 clean:
 	@#@echo "clean OK"
-	@echo -e "\033[1;46m clean OK \033[0m"
+	@echo "\033[1;46m clean OK \033[0m"
 	@$(RM) $(OBJS)
 
 fclean:
 	@#@echo "fclean OK"
-	@echo -e "\033[1;46m fclean OK \033[0m"
+	@echo "\033[1;46m fclean OK \033[0m"
 	@$(RM) $(OBJS)
 	@$(RM) $(NAME)
 
@@ -71,6 +102,6 @@ re: fclean all
 
 %.o: %.c
 	@gcc -c -o $@ $(CFLAGS) $<
-	@echo -e "[\033[0;32m OK \033[0m] built '$@'"
+	@echo "[\033[0;32m OK \033[0m] built '$@'"
 
 .PHONY: all clean fclean re

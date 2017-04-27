@@ -11,6 +11,7 @@
 #ifndef MY_H_
 # define MY_H_
 
+//#include "redir.h"
 #include "my_prompt.h"
 #include "my_printf.h"
 #include "my_fprintf.h"

@@ -22,6 +22,20 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+typedef struct  s_redir
+{
+  int           hm_pid;
+  int           *arr_pid;
+  int           hm_pipe;
+  int           fd_pipe[2];
+  int           input;
+  int           output;
+  int           flag_redir_right;
+  char          *word_right;
+  int           flag_redir_left;
+  char          *word_left;
+}               t_redir;
+
 typedef struct	s_my_data
 {
   int fd_rc;
@@ -31,7 +45,14 @@ typedef struct	s_my_data
   char **prompt_ignore;
   char **histori_tab;
   int histori_nb;
-}	t_my_data;
+
+  int		ret;
+  int		exit;
+  char		**env;
+  struct s_redir	redir;
+}		t_my_data;
+
+#include "redir.h"
 
 int	my_histori(char *str, t_my_data *data);
 char	*my_clean(char *str);
