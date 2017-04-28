@@ -1,11 +1,11 @@
 ##
-## Makefile for 42sh in /home/yohan/repo/PSU/PSU_2016_42sh
+## Makefile for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
 ## 
-## Made by Yohan.Jabin
-## Login   <yohan.jabin@epitech.eu@epitech.net>
+## Made by Hugo
+## Login   <hugo.martin@epitech.eu>
 ## 
-## Started on  Fri Apr 28 00:40:29 2017 Yohan.Jabin
-## Last update Fri Apr 28 00:40:30 2017 Yohan.Jabin
+## Started on  Fri Apr 28 15:04:57 2017 Hugo
+## Last update Fri Apr 28 15:05:02 2017 Hugo
 ##
 
 NAME	= 42sh
@@ -18,7 +18,9 @@ CURDIR = ./
 
 TODO = -@fgrep --color --exclude=.git --exclude=*.o --exclude=Makefile --exclude=tags --exclude=cscope* -H -e TODO -e FIXME -r $(CURDIR) || true
 
-SRCS	= ./lib/my/casual/epur.c \
+SRCS	= ./lib/my/casual/count_char.c \
+	  ./lib/my/casual/epur.c \
+	  ./lib/my/casual/get_arg.c \
 	  ./lib/my/casual/get_next_line.c \
 	  ./lib/my/casual/line_formatting.c \
 	  ./lib/my/casual/manip_chaine.c \
@@ -70,13 +72,14 @@ SRCS	= ./lib/my/casual/epur.c \
 	  ./src/redir/process_pid.c \
 	  ./src/redir/redirections_left.c \
 	  ./src/redir/redirections_right.c \
+	  ./src/separator/separator.c \
 	  ./src/setup/exit.c \
 	  ./src/setup/start.c 
 
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
-CFLAGS += -W -Wall -Wextra
+CFLAGS += -W -Wall -Wextra -g3
 LDLIBS = 
 
 all: $(NAME)
@@ -89,12 +92,12 @@ $(NAME): $(OBJS)
 
 clean:
 	@#@echo "clean OK"
-	@echo "\033[1;46m clean OK \033[0m"
+	@echo -e "\e[1;46m clean OK \e[0m"
 	@$(RM) $(OBJS)
 
 fclean:
 	@#@echo "fclean OK"
-	@echo "\033[1;46m fclean OK \033[0m"
+	@echo -e "\e[1;46m fclean OK \e[0m"
 	@$(RM) $(OBJS)
 	@$(RM) $(NAME)
 
@@ -102,6 +105,6 @@ re: fclean all
 
 %.o: %.c
 	@gcc -c -o $@ $(CFLAGS) $<
-	@echo "[\033[0;32m OK \033[0m] built '$@'"
+	@echo -e "[\e[0;32m OK \e[0m] built '$@'"
 
 .PHONY: all clean fclean re

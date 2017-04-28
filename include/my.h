@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Wed Apr 12 17:30:28 2017 Adrien ZEMMA
-** Last update	Tue Apr 25 15:23:32 2017 Adrien ZEMMA
+** Last update	Fri Apr 28 15:00:59 2017 Hugo MARTIN
 */
 
 #ifndef MY_H_
@@ -25,16 +25,8 @@ typedef	struct		s_my_var
   char			*command;
   int			return_value;
   t_my_list_cont	*list_command;
+  t_my_list_cont	*separator;
 }			t_my_var;
-
-typedef struct	s_my_args
-{
-  int		i;
-  int		j;
-  int		k;
-  int		n;
-  char		*path;
-}		t_my_args;
 
 int	my_start(t_my_var *, t_my_data *);
 
@@ -50,5 +42,13 @@ int	my_strcmp(char *, char *);
 char	*my_pure(char *);
 char	**str_to_tab(char *, char);
 void	my_exit(t_my_var *);
+char	*get_arg(char *, int, char *);
+
+/*
+** SEPARATOR
+*/
+
+void	my_separator(t_my_var *);
+int	my_check_char(char *, char);
 
 #endif /* !MY_H_ */

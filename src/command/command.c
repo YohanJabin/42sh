@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Wed Apr 12 19:43:08 2017 Hugo MARTIN
-** Last update	Tue Apr 25 15:23:46 2017 Adrien ZEMMA
+** Last update	Fri Apr 28 15:15:49 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -36,27 +36,14 @@ int	my_count_vigp(char *command)
 void	my_list_command(t_my_var *v)
 {
   char	*str;
-  t_my_args	b;
+  int	i;
 
-  b.i = -1;
-  b.j = -1;
-  b.n = 0;
+  i = -1;
   v->list_command = NULL;
-  while (++b.i != my_count_vigp(v->full_command) && (b.k = 0) == 0)
-  {
-    my_malloc(&str, '\0', my_strlen(v->full_command) + 1);
-    while (v->full_command[++b.j] != ';' && v->full_command[b.j] != '\0')
-    {
-      str[b.k] = v->full_command[b.j];
-      b.k++;
-    }
-    if (my_strcmp(my_pure(str), "exit") != 1)
-      add_end_list(&v->list_command, my_pure(str));
-    else
-      b.n = 1;
-  }
-  if (b.n == 1)
-    add_end_list(&v->list_command, "exit");
+  while ((str = get_arg(v->full_command, ++i, ";"))[0] != '\0')
+    add_end_list(&v->list_command, my_pure(str));
+  if (v->list_command == NULL)
+    add_end_list(&v->list_command, my_pure(v->full_command));
 }
 
 void	my_command(t_my_var *v, t_my_data *data)
