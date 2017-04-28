@@ -1,17 +1,17 @@
 /*
-** my.h for PSU_2016_42sh
-**
-** Made by	Adrien ZEMMA
-** Login	adrien.zemma@epitech.eu
-**
-** Started on	Wed Apr 12 17:30:28 2017 Adrien ZEMMA
-** Last update	Fri Apr 28 15:00:59 2017 Hugo MARTIN
+** my.h for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
+** 
+** Made by Hugo
+** Login   <hugo.martin@epitech.eu>
+** 
+** Started on  Fri Apr 28 16:10:30 2017 Hugo
+** Last update Fri Apr 28 16:10:32 2017 Hugo
 */
 
 #ifndef MY_H_
 # define MY_H_
 
-//#include "redir.h"
+#include "redir.h"
 #include "my_prompt.h"
 #include "my_printf.h"
 #include "my_fprintf.h"

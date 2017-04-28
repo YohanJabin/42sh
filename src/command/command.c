@@ -1,11 +1,11 @@
 /*
-** command.c for PSU_2016_42sh
-**
-** Made by	Hugo MARTIN
-** Login	hugo.martin@epitech.eu
-**
-** Started on	Wed Apr 12 19:43:08 2017 Hugo MARTIN
-** Last update	Fri Apr 28 15:15:49 2017 Hugo MARTIN
+** command.c for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
+** 
+** Made by Hugo
+** Login   <hugo.martin@epitech.eu>
+** 
+** Started on  Fri Apr 28 16:10:58 2017 Hugo
+** Last update Fri Apr 28 16:10:59 2017 Hugo
 */
 
 #include "my.h"

@@ -1,11 +1,11 @@
 /*
 ** env.c for minishell in /home/yohan/repo/PSU/PSU_2016_minishell2
-** 
+**
 ** Made by Yohan.Jabin
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
-** 
+**
 ** Started on  Mon Mar 20 15:07:28 2017 Yohan.Jabin
-** Last update Fri Apr 28 00:03:05 2017 Yohan.Jabin
+** Last update	Fri Apr 28 09:28:55 2017 Adrien ZEMMA
 */
 
 #include "my.h"

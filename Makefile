@@ -1,13 +1,3 @@
-##
-## Makefile for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
-## 
-## Made by Hugo
-## Login   <hugo.martin@epitech.eu>
-## 
-## Started on  Fri Apr 28 15:04:57 2017 Hugo
-## Last update Fri Apr 28 15:05:02 2017 Hugo
-##
-
 NAME	= 42sh
 
 CC	= gcc
@@ -59,7 +49,6 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/exec/path.c \
 	  ./src/main.c \
 	  ./src/prompt/histori.c \
-	  ./src/prompt/my_get_commande.c \
 	  ./src/prompt/my_prompt.c \
 	  ./src/prompt/my_setprompt.c \
 	  ./src/prompt/setup_prompt.c \
@@ -79,7 +68,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
-CFLAGS += -W -Wall -Wextra -g3
+CFLAGS += -W -Wall -Wextra
 LDLIBS = 
 
 all: $(NAME)
