@@ -5,20 +5,26 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Thu Apr 20 18:26:45 2017 Adrien ZEMMA
-** Last update	Sun Apr 23 13:33:28 2017 Adrien ZEMMA
+** Last update	Fri Apr 28 11:12:36 2017 Adrien ZEMMA
 */
 
 #include "my.h"
 
 char *last_buff(char *buff)
 {
+  int a;
   int i;
-  char **tab;
+  char *ret;
 
-  i = -1;
-  tab = str_to_tab(buff, '/');
-  while (tab[++i] != NULL);
-  return (tab[i - 1]);
+  a = -1;
+  i = my_strlen(buff);
+  my_malloc(&ret, '\0', i);
+  while (buff[--i] != '/');
+  if (buff[i + 1] == '\0')
+    return ("/");
+  while (buff[++i] != '\0')
+    ret[++a] = buff[i];
+  return (ret);
 }
 
 char *retir_char(char *str, int nb)

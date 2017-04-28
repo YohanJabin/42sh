@@ -1,11 +1,11 @@
 ##
 ## Makefile for 42sh in /home/yohan/repo/PSU/PSU_2016_42sh
-## 
+##
 ## Made by Yohan.Jabin
 ## Login   <yohan.jabin@epitech.eu@epitech.net>
-## 
+##
 ## Started on  Fri Apr 28 00:40:29 2017 Yohan.Jabin
-## Last update Fri Apr 28 00:40:30 2017 Yohan.Jabin
+## Last update Fri Apr 28 11:10:30 2017 adrien
 ##
 
 NAME	= 42sh
@@ -71,13 +71,13 @@ SRCS	= ./lib/my/casual/epur.c \
 	  ./src/redir/redirections_left.c \
 	  ./src/redir/redirections_right.c \
 	  ./src/setup/exit.c \
-	  ./src/setup/start.c 
+	  ./src/setup/start.c
 
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
 CFLAGS += -W -Wall -Wextra
-LDLIBS = 
+LDLIBS =
 
 all: $(NAME)
 
@@ -89,12 +89,12 @@ $(NAME): $(OBJS)
 
 clean:
 	@#@echo "clean OK"
-	@echo "\033[1;46m clean OK \033[0m"
+	@echo -e "\033[1;46m clean OK \033[0m"
 	@$(RM) $(OBJS)
 
 fclean:
 	@#@echo "fclean OK"
-	@echo "\033[1;46m fclean OK \033[0m"
+	@echo -e "\033[1;46m fclean OK \033[0m"
 	@$(RM) $(OBJS)
 	@$(RM) $(NAME)
 
@@ -102,6 +102,6 @@ re: fclean all
 
 %.o: %.c
 	@gcc -c -o $@ $(CFLAGS) $<
-	@echo "[\033[0;32m OK \033[0m] built '$@'"
+	@echo -e "[\033[0;32m OK \033[0m] built '$@'"
 
 .PHONY: all clean fclean re

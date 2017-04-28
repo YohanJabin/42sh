@@ -1,11 +1,11 @@
 /*
 ** my_exec.c for minishell in /home/yohan/repo/PSU/PSU_2016_minishell2/src
-** 
+**
 ** Made by Yohan.Jabin
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
-** 
+**
 ** Started on  Mon Apr  3 15:01:10 2017 Yohan.Jabin
-** Last update Fri Apr 28 00:22:07 2017 Yohan.Jabin
+** Last update	Fri Apr 28 09:28:32 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -64,4 +64,3 @@ void    my_exec(char *path, char **imp, t_my_data *data)
 	}
     }
 }
-

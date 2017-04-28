@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Thu Apr 13 20:59:22 2017 Adrien ZEMMA
-** Last update	Tue Apr 25 15:50:26 2017 Adrien ZEMMA
+** Last update	Fri Apr 28 10:16:56 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -13,7 +13,7 @@
 void	my_prompt(t_my_data *data)
 {
   int nb;
-  char *buff;
+  char buff[2049];
 
   nb = -1;
   if ((int)data->prompt_compteur != -1)
@@ -22,7 +22,6 @@ void	my_prompt(t_my_data *data)
   {
     if (data->prompt_prompt[nb] == NULL)
       break;
-    my_malloc(&buff, '\0', 2048);
     if (my_strncmp(my_clean(data->prompt_prompt[nb]),
       "name", my_strlen("name")) == 1)
       my_printf(ANSI_COLOR_RED"%s "ANSI_COLOR_RESET, getenv("USER"));

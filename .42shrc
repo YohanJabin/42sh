@@ -1,4 +1,4 @@
-prompt= folder, name,
+prompt=  folder, name
 ignore=  ls,
 git= yes
 compteur= yes
