@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Fri Apr 21 13:41:05 2017 Adrien ZEMMA
-** Last update	Tue Apr 25 15:49:53 2017 Adrien ZEMMA
+** Last update	Fri Apr 28 15:23:58 2017 Adrien ZEMMA
 */
 
 #ifndef MY_PROMPT_H
@@ -36,7 +36,7 @@ typedef struct  s_redir
   char          *word_left;
 }               t_redir;
 
-typedef struct	s_my_data
+typedef struct	s_my_prompt
 {
   int fd_rc;
   int prompt_git;
@@ -50,9 +50,7 @@ typedef struct	s_my_data
   int		exit;
   char		**env;
   struct s_redir	redir;
-}		t_my_data;
-
-#include "redir.h"
+}		t_my_promt;
 
 int	my_histori(char *str, t_my_data *data);
 char	*my_clean(char *str);

@@ -5,13 +5,13 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Wed Apr 12 17:30:28 2017 Adrien ZEMMA
-** Last update	Tue Apr 25 15:23:32 2017 Adrien ZEMMA
+** Last update	Fri Apr 28 15:23:48 2017 Adrien ZEMMA
 */
 
 #ifndef MY_H_
 # define MY_H_
 
-//#include "redir.h"
+#include "redir.h"
 #include "my_prompt.h"
 #include "my_printf.h"
 #include "my_fprintf.h"
