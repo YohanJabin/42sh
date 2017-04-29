@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:58 2017 Hugo
-** Last update Fri Apr 28 16:10:59 2017 Hugo
+** Last update Sat Apr 29 17:36:33 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -46,7 +46,7 @@ void	my_list_command(t_my_var *v)
     add_end_list(&v->list_command, my_pure(v->full_command));
 }
 
-void	my_command(t_my_var *v, t_my_data *data)
+void	my_command(t_my_var *v, t_my_prompt *data)
 {
   if (isatty(0))
     my_prompt(data);

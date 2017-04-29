@@ -12,31 +12,31 @@
 
 char	*get_string_to_add(char *name, char *var)
 {
-  char	*ret;
+  char	*return_value;
   int	len;
 
   if (var != NULL)
     {
       len = my_strlen(name) + my_strlen(var) + 1;
-      ret = malloc(sizeof(char) * (len + 1));
-      my_memset(ret, 0, len + 1);
+      return_value = malloc(sizeof(char) * (len + 1));
+      my_memset(return_value, 0, len + 1);
       len = my_strlen(name);
-      my_strncpy(ret, name, len);
-      ret[len] = '=';
-      my_strncpy(&ret[len + 1], var, my_strlen(var));
+      my_strncpy(return_value, name, len);
+      return_value[len] = '=';
+      my_strncpy(&return_value[len + 1], var, my_strlen(var));
     }
   else
     {
       len = my_strlen(name) + 1;
-      ret = malloc(sizeof(char) * (len + 1));
-      my_memset(ret, 0, len + 1);
-      my_strncpy(ret, name, len - 1);
-      ret[len - 1] = '=';
+      return_value = malloc(sizeof(char) * (len + 1));
+      my_memset(return_value, 0, len + 1);
+      my_strncpy(return_value, name, len - 1);
+      return_value[len - 1] = '=';
     }
-  return (ret);
+  return (return_value);
 }
 
-void	add_env(t_my_data *data, char *name, char *var)
+void	add_env(t_my_var *data, char *name, char *var)
 {
   char	**cpy_env;
   char	*tmp;
@@ -58,7 +58,7 @@ void	add_env(t_my_data *data, char *name, char *var)
   free_double_tab(cpy_env);
 }
 
-void	change_env(t_my_data *data, char *name,
+void	change_env(t_my_var *data, char *name,
 		   char *var, int index)
 {
   char	*tmp;
@@ -73,7 +73,7 @@ void	change_env(t_my_data *data, char *name,
   free(tmp);
 }
 
-void	my_setenv(t_my_data *data, char **imp)
+void	my_setenv(t_my_var *data, char **imp)
 {
   int	index;
 

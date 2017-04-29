@@ -10,7 +10,7 @@
 
 #include "my.h"
 
-void	update_env(t_my_data *data)
+void	update_env(t_my_var *data)
 {
   char	pwd[100];
   int	index;
@@ -23,18 +23,18 @@ void	update_env(t_my_data *data)
     change_env(data, "PWD", pwd, index);
 }
 
-void	my_error_unsetenv(t_my_data *data, char **imp)
+void	my_error_unsetenv(t_my_var *data, char **imp)
 {
   if (imp[1] == NULL)
     {
       my_fprintf(2, "unsetenv: Too few arguments.\n");
-      data->ret = 1;
+      data->return_value = 1;
     }
   else
     my_unsetenv(data, imp);
 }
 
-int	my_error_setenv2(t_my_data *data, char **imp)
+int	my_error_setenv2(t_my_var *data, char **imp)
 {
   if (imp[1][0] < 'A'
       || (imp[1][0] > 'Z' && imp[1][0] < 'a')
@@ -42,33 +42,33 @@ int	my_error_setenv2(t_my_data *data, char **imp)
     {
       my_fprintf(2, "setenv: Variable name must ");
       my_fprintf(2, "begin with a letter.\n");
-      data->ret = 1;
+      data->return_value = 1;
       return (84);
     }
   if (is_it_num_alpha(imp[1]) == 0)
     {
       my_fprintf(2, "setenv: Variable name must ");
       my_fprintf(2, "contain alphanumeric characters.\n");
-      data->ret = 1;
+      data->return_value = 1;
       return (84);
     }
   return (0);
 }
 
-void	my_error_setenv(t_my_data *data, char **imp)
+void	my_error_setenv(t_my_var *data, char **imp)
 {
   if (imp[1] == NULL)
     aff_double_tab(data->env);
   else if (imp[1] != NULL && imp[2] != NULL && imp[3] != NULL)
     {
       my_fprintf(2, "setenv: Too many arguments.\n");
-      data->ret = 1;
+      data->return_value = 1;
     }
   else if (my_error_setenv2(data, imp) == 0)
     my_setenv(data, imp);
 }
 
-int	test_cmd_env(t_my_data *data, char **imp)
+int	test_cmd_env(t_my_var *data, char **imp)
 {
   if (my_strncmp(imp[0], "env", 4) == 1)
     {

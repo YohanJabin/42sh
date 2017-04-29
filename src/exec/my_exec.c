@@ -10,7 +10,7 @@
 
 #include "my.h"
 
-void	check_child_status2(int status, int sig, t_my_data *data)
+void	check_child_status2(int status, int sig, t_my_var *data)
 {
   if (sig == SIGFPE)
     {
@@ -18,11 +18,11 @@ void	check_child_status2(int status, int sig, t_my_data *data)
 	my_fprintf(2, "Floating exception\n");
       else
 	my_fprintf(2, "Floating exception (core dumped)\n");
-      data->ret = 136;
+      data->return_value = 136;
     }
 }
 
-void    check_child_status(int status, t_my_data *data)
+void    check_child_status(int status, t_my_var *data)
 {
   int   sig;
 
@@ -37,14 +37,14 @@ void    check_child_status(int status, t_my_data *data)
 		my_fprintf(2, "Segmentation fault\n");
 	      else
 		my_fprintf(2, "Segmentation fault (core dumped)\n");
-	      data->ret = 139;
+	      data->return_value = 139;
 	    }
 	  check_child_status2(status, sig, data);
 	}
     }
 }
 
-void    my_exec(char *path, char **imp, t_my_data *data)
+void    my_exec(char *path, char **imp, t_my_var *data)
 {
   pid_t pid;
 
@@ -53,8 +53,8 @@ void    my_exec(char *path, char **imp, t_my_data *data)
       if (pid == 0)
 	{
 	  if (execve(path, imp, data->env) == -1 && errno)
-	    data->ret = 1;
-	  exit(data->ret);
+	    data->return_value = 1;
+	  exit(data->return_value);
 	}
       else
 	{

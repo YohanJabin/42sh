@@ -10,7 +10,7 @@
 
 #include "my.h"
 
-int     test_cmd_path(t_my_data *data, char **imp)
+int     test_cmd_path(t_my_var *data, char **imp)
 {
   char	**arr_path;
   char	*binary;
@@ -31,7 +31,7 @@ int     test_cmd_path(t_my_data *data, char **imp)
   return (84);
 }
 
-int	test_cmd_builtin(t_my_data *data, char **imp)
+int	test_cmd_builtin(t_my_var *data, char **imp)
 {
   if (my_strncmp(&imp[0][0], "cd", 3))
     my_cd(data, imp);
@@ -39,7 +39,7 @@ int	test_cmd_builtin(t_my_data *data, char **imp)
     {
       data->exit = 0;
       if (imp[1] != NULL)
-	data->ret = my_getnbr(imp[1]);
+	data->return_value = my_getnbr(imp[1]);
       return (1);
     }
   else if (is_there_a_slash(imp[0]) == 1 && access(imp[0], F_OK) == 0)
@@ -47,7 +47,7 @@ int	test_cmd_builtin(t_my_data *data, char **imp)
   else if (test_cmd_env(data, imp) == 0 && test_cmd_path(data, imp) == 84)
     {
       my_fprintf(2, "%s: Command not found.\n", &imp[0][0]);
-      data->ret = 1;
+      data->return_value = 1;
     }
   return (1);
 }

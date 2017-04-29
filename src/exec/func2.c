@@ -30,22 +30,22 @@ void	my_memset(char *str, char c, int len)
 
 char	*my_pathadd(char *dir, char *file)
 {
-  char	*ret;
+  char	*return_value;
   int	i;
   int	j;
 
   i = my_strlen(dir) + my_strlen(file) + 2;
-  ret = malloc(sizeof(char) * i);
-  my_memset(ret, 0, i);
+  return_value = malloc(sizeof(char) * i);
+  my_memset(return_value, 0, i);
   i = -1;
   while (dir[++i] != 0)
-    ret[i] = dir[i];
-  if (ret[i - 1] != '/')
-    ret[i++] = '/';
+    return_value[i] = dir[i];
+  if (return_value[i - 1] != '/')
+    return_value[i++] = '/';
   j = -1;
   while (file[++j] != 0)
-    ret[i + j] = file[j];
-  return (ret);
+    return_value[i + j] = file[j];
+  return (return_value);
 }
 
 void	free_double_tab(char **arr)
@@ -73,7 +73,7 @@ void	aff_double_tab(char **arr)
   int	i;
 
   if (arr == NULL)
-    return;
+    return ;
   i = -1;
   while (arr[++i] != NULL)
     my_printf("%s\n", arr[i]);

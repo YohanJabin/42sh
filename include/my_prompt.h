@@ -22,20 +22,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-typedef struct  s_redir
-{
-  int           hm_pid;
-  int           *arr_pid;
-  int           hm_pipe;
-  int           fd_pipe[2];
-  int           input;
-  int           output;
-  int           flag_redir_right;
-  char          *word_right;
-  int           flag_redir_left;
-  char          *word_left;
-}               t_redir;
-
 typedef struct	s_my_prompt
 {
   int fd_rc;
@@ -50,13 +36,13 @@ typedef struct	s_my_prompt
   int		exit;
   char		**env;
   struct s_redir	redir;
-}		t_my_promt;
+}		t_my_prompt;
 
-int	my_histori(char *, t_my_promt *);
+int	my_histori(char *, t_my_prompt *);
 char	*my_clean(char *);
-char *last_buff(char *);
-char *retir_char(char *, int);
-int my_read_rc(t_my_promlt *);
+char	*last_buff(char *);
+char	*retir_char(char *, int);
+int	my_read_rc(t_my_prompt *);
 void	my_setprompt(t_my_prompt *);
 void	my_prompt(t_my_prompt *);
 

@@ -10,17 +10,17 @@
 
 #include "my.h"
 
-void	init_imput_loop(t_my_data *data)
+void	init_imput_loop(t_my_var *data)
 {
   init_arr_pid(data);
-  data->ret = 0;
+  data->return_value = 0;
   if (data->redir.flag_redir_left == 1)
     open_redirections_left(data, data->redir.word_left);
   else if (data->redir.flag_redir_left == 2)
     double_redir_left(data, data->redir.word_left);
 }
 
-void	reset_imput_loop(t_my_data *data, char **imp)
+void	reset_imput_loop(t_my_var *data, char **imp)
 {
   dup2(data->redir.input, 0);
   if (data->redir.flag_redir_right != 0)
@@ -32,7 +32,7 @@ void	reset_imput_loop(t_my_data *data, char **imp)
   wait_all_pid(data);
 }
 
-void	process_imput_loop(t_my_data *data, char **imp)
+void	process_imput_loop(t_my_var *data, char **imp)
 {
   pipe(data->redir.fd_pipe);
   data->redir.output = data->redir.fd_pipe[1];
@@ -51,7 +51,7 @@ void	process_imput_loop(t_my_data *data, char **imp)
   data->redir.input = data->redir.fd_pipe[0];
 }
 
-int	process_imput(t_my_data *data, char ***imp)
+int	process_imput(t_my_var *data, char ***imp)
 {
   int	fd_save[2];
   int	i;

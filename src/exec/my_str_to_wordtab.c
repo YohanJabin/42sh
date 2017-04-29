@@ -13,9 +13,9 @@
 int	hm_word(char *str)
 {
   int	i;
-  int	ret;
+  int	return_value;
 
-  ret = 0;
+  return_value = 0;
   i = 0;
   while (str[i] != 0)
     {
@@ -28,10 +28,10 @@ int	hm_word(char *str)
 	{
 	  while (str[i] != 0 && (str[i] != ' ' && str[i] != '\t'))
 	    i++;
-	  ret++;
+	  return_value++;
 	}
     }
-  return (ret);
+  return (return_value);
 }
 
 int	size_word(char *str)

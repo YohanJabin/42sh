@@ -10,7 +10,7 @@
 
 #include "my.h"
 
-void	parse_delete_env(t_my_data *data, char **cpy_env, int index)
+void	parse_delete_env(t_my_var *data, char **cpy_env, int index)
 {
   int	i;
   int	j;
@@ -32,7 +32,7 @@ void	parse_delete_env(t_my_data *data, char **cpy_env, int index)
     }
 }
 
-void	delete_env(t_my_data *data, char *to_delete)
+void	delete_env(t_my_var *data, char *to_delete)
 {
   int	index;
   char	**cpy_env;
@@ -48,7 +48,7 @@ void	delete_env(t_my_data *data, char *to_delete)
   parse_delete_env(data, cpy_env, index);
 }
 
-void	my_unsetenv(t_my_data *data, char **imp)
+void	my_unsetenv(t_my_var *data, char **imp)
 {
   int	i;
 

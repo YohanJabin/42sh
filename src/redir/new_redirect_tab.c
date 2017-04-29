@@ -12,23 +12,23 @@
 
 int	new_redirect_tab_len(char **arr, char c)
 {
-  int	ret;
+  int	return_value;
   int	i;
 
-  ret = 0;
+  return_value = 0;
   i = -1;
   while (arr[++i] != NULL)
     {
       if (arr[i][0] == c)
 	i += 2;
       if (arr[i] == NULL)
-	return (ret);
-      ret++;
+	return (return_value);
+      return_value++;
     }
-  return (ret);
+  return (return_value);
 }
 
-void	parse_new_redirect_tab(char **ret, char **arr, char c)
+void	parse_new_redirect_tab(char **return_value, char **arr, char c)
 {
   int	i;
   int	j;
@@ -43,22 +43,22 @@ void	parse_new_redirect_tab(char **ret, char **arr, char c)
       if (arr[i] == NULL)
 	return;
       len = my_strlen(arr[i]);
-      ret[j] = malloc(sizeof(char) * (len + 1));
-      my_memset(ret[j], 0, len + 1);
-      my_strncpy(ret[j], arr[i], len);
+      return_value[j] = malloc(sizeof(char) * (len + 1));
+      my_memset(return_value[j], 0, len + 1);
+      my_strncpy(return_value[j], arr[i], len);
       j++;
     }
 }
 
 char	**new_redirect_tab(char **arr, char c)
 {
-  char	**ret;
+  char	**return_value;
   int	len;
 
   len = new_redirect_tab_len(arr, c);
-  if ((ret = malloc(sizeof(char *) * (len + 1))) == NULL)
+  if ((return_value = malloc(sizeof(char *) * (len + 1))) == NULL)
     return (NULL);
-  ret[len] = NULL;
-  parse_new_redirect_tab(ret, arr, c);
-  return (ret);
+  return_value[len] = NULL;
+  parse_new_redirect_tab(return_value, arr, c);
+  return (return_value);
 }

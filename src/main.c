@@ -13,17 +13,16 @@
 int	main(int ac, char **av, char **env)
 {
   t_my_var	*p;
-  t_my_prompt	*promt;
+  t_my_prompt	*prompt;
 
   p = malloc(sizeof(*p));
-  data = malloc(sizeof(t_my_data));
+  prompt = malloc(sizeof(t_my_prompt));
   ac = ac;
   av = av;
   p->return_value = 0;
-  p->env = env;
-  data->env = cpy_arr_env(env);
-  change_pwd(prompt);
+  p->env = cpy_arr_env(env);
+  change_pwd(p);
   my_start(p, prompt);
   //my_echo("echo $PATH", env);
-  return (0);
+  return (p->return_value);
 }

@@ -10,7 +10,7 @@
 
 #include "my.h"
 
-void	change_pwd(t_my_data *data)
+void	change_pwd(t_my_var *data)
 {
   int   index;
   int   index2;
@@ -27,7 +27,7 @@ void	change_pwd(t_my_data *data)
     }
 }
 
-int	test_cd_home(t_my_data *data, char **imp)
+int	test_cd_home(t_my_var *data, char **imp)
 {
   int   index;
 
@@ -36,19 +36,19 @@ int	test_cd_home(t_my_data *data, char **imp)
       if ((index = get_index_env(data->env, "HOME")) == -1)
 	{
 	  my_fprintf(2, "cd: No home directory.\n");
-	  data->ret = 1;
+	  data->return_value = 1;
 	}
       else if (chdir(&data->env[index][5]) == -1)
 	{
 	  my_fprintf(2, "%s: %s.\n", &data->env[index][5], strerror(errno));
-	  data->ret = 1;
+	  data->return_value = 1;
 	}
       return (1);
     }
   return (0);
 }
 
-int	test_cd_old(t_my_data *data, char **imp)
+int	test_cd_old(t_my_var *data, char **imp)
 {
   int	index;
 
@@ -57,19 +57,19 @@ int	test_cd_old(t_my_data *data, char **imp)
       if ((index = get_index_env(data->env, "OLDPWD")) == -1)
 	{
 	  my_fprintf(2, ": No such file or directory.\n");
-	  data->ret = 1;
+	  data->return_value = 1;
 	}
       else if (chdir(&data->env[index][7]) == -1)
 	{
 	  my_fprintf(2, "%s: %s.\n", &data->env[index][7], strerror(errno));
-	  data->ret = 1;
+	  data->return_value = 1;
 	}
       return (1);
     }
   return (0);
 }
 
-int	test_cd(t_my_data *data, char **imp)
+int	test_cd(t_my_var *data, char **imp)
 {
   if (test_cd_home(data, imp) == 1)
     return (1);
@@ -78,18 +78,18 @@ int	test_cd(t_my_data *data, char **imp)
   else if (chdir(&imp[1][0]) == -1)
     {
       my_fprintf(2, "%s: %s.\n", &imp[1][0], strerror(errno));
-      data->ret = 1;
+      data->return_value = 1;
       return (0);
     }
   return (1);
 }
 
-int	my_cd(t_my_data *data, char **imp)
+int	my_cd(t_my_var *data, char **imp)
 {
   if (imp[1] != NULL && imp[2] != NULL)
     {
       my_fprintf(2, "cd: Too many arguments.\n");
-      data->ret = 1;
+      data->return_value = 1;
       return (84);
     }
   else if (test_cd(data, imp) == 1)

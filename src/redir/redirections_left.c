@@ -10,7 +10,7 @@
 
 #include "my.h"
 
-void	cp_redirections_left(t_my_data *data)
+void	cp_redirections_left(t_my_var *data)
 {
   char	*str;
   int	fd[2];
@@ -26,7 +26,7 @@ void	cp_redirections_left(t_my_data *data)
   data->redir.input = fd[0];
 }
 
-int     open_redirections_left(t_my_data *data, char *str)
+int     open_redirections_left(t_my_var *data, char *str)
 {
   if (access(str, F_OK) == -1 && errno)
     my_fprintf(2, "%s: %s.\n", str, strerror(errno));
@@ -37,7 +37,7 @@ int     open_redirections_left(t_my_data *data, char *str)
   return (0);
 }
 
-int	parse_redirections_left(t_my_data *data, char ***imp, int i)
+int	parse_redirections_left(t_my_var *data, char ***imp, int i)
 {
   if (i == 0 && (imp[0][1] == NULL || imp[0][2] == NULL))
     {
@@ -45,13 +45,13 @@ int	parse_redirections_left(t_my_data *data, char ***imp, int i)
 	my_fprintf(2, "Missing name for redirect.\n");
       else if (imp[0][2] == NULL)
 	my_fprintf(2, "Invalid null command.\n");
-      data->ret = 1;
+      data->return_value = 1;
       return (84);
     }
   else if (imp[0][i + 1] == NULL)
     {
       my_fprintf(2, "Missing name for redirect.\n");
-      data->ret = 1;
+      data->return_value = 1;
       return (84);
     }
   data->redir.word_left = my_strdup(imp[0][i + 1]);
@@ -59,7 +59,7 @@ int	parse_redirections_left(t_my_data *data, char ***imp, int i)
   return (0);
 }
 
-void	check_for_redirections_left2(t_my_data *data, char ***imp,
+void	check_for_redirections_left2(t_my_var *data, char ***imp,
 				     int i, int j)
 {
   if (imp[0][i][j + 1] == '<')
@@ -72,7 +72,7 @@ void	check_for_redirections_left2(t_my_data *data, char ***imp,
     data->redir.flag_redir_left = 1;
 }
 
-int	check_for_redirections_left(t_my_data *data, char ***imp)
+int	check_for_redirections_left(t_my_var *data, char ***imp)
 {
   int	i;
   int	j;

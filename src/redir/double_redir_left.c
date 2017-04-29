@@ -10,7 +10,7 @@
 
 #include "my.h"
 
-void	double_redir_left(t_my_data *data, char *word)
+void	double_redir_left(t_my_var *data, char *word)
 {
   char	*str;
   int	fd[2];

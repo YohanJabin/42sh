@@ -10,7 +10,7 @@
 
 #include "my.h"
 
-int	open_redirections_right(t_my_data *data, char *str)
+int	open_redirections_right(t_my_var *data, char *str)
 {
   if (data->redir.flag_redir_right == 1)
     {
@@ -27,7 +27,7 @@ int	open_redirections_right(t_my_data *data, char *str)
   return (0);
 }
 
-int	parse_redirections_right(t_my_data *data, char ***imp, int i)
+int	parse_redirections_right(t_my_var *data, char ***imp, int i)
 {
   if ((i == 0 && imp[data->redir.hm_pipe - 1][i] == NULL)
       || imp[data->redir.hm_pipe - 1][i + 1] == NULL)
@@ -47,7 +47,7 @@ int	parse_redirections_right(t_my_data *data, char ***imp, int i)
   return (0);
 }
 
-int	check_for_redirections_right(t_my_data *data, char ***imp)
+int	check_for_redirections_right(t_my_var *data, char ***imp)
 {
   int	i;
   int	j;

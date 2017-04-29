@@ -55,13 +55,13 @@ void	free_triple_tab(char ***arr)
 
 char	*my_strdup(char	*str)
 {
-  char	*ret;
+  char	*return_value;
   int	len;
 
   len = my_strlen(str);
-  if ((ret = malloc(sizeof(char) * (len + 1))) == NULL)
+  if ((return_value = malloc(sizeof(char) * (len + 1))) == NULL)
     return (NULL);
-  my_memset(ret, 0, len + 1);
-  my_strncpy(ret, str, len);
-  return (ret);
+  my_memset(return_value, 0, len + 1);
+  my_strncpy(return_value, str, len);
+  return (return_value);
 }

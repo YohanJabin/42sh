@@ -10,7 +10,7 @@
 
 #include "my.h"
 
-int	check_redirection_error(t_my_data *data, char ***imp)
+int	check_redirection_error(t_my_var *data, char ***imp)
 {
   int	i;
   int	j;

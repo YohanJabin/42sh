@@ -10,7 +10,7 @@
 
 #include "my.h"
 
-void	init_arr_pid(t_my_data *data)
+void	init_arr_pid(t_my_var *data)
 {
   data->redir.arr_pid = NULL;
   data->redir.hm_pid = 0;
@@ -23,7 +23,7 @@ int	*add_pid(int *arr_pid, int size, int to_add)
   return (arr_pid);
 }
 
-void	wait_all_pid(t_my_data *data)
+void	wait_all_pid(t_my_var *data)
 {
   int	status;
   int	i;
