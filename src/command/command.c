@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:58 2017 Hugo
-** Last update Sat Apr 29 17:36:33 2017 Yohan.Jabin
+** Last update Mon May  1 12:05:00 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -50,8 +50,8 @@ void	my_command(t_my_var *v, t_my_prompt *data)
 {
   if (isatty(0))
     my_prompt(data);
-  if (v->return_value != 0 && isatty(0) == 0)
-    my_exit(v);
+  //if (v->return_value != 0 && isatty(0) == 0)
+  //my_exit(v);
   if ((v->full_command = get_next_line(0)) == NULL)
     my_exit(v);
   else if (v->full_command[0] == '\0')
