@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Apr  4 18:16:20 2017 Yohan.Jabin
-** Last update Thu Apr 27 23:41:38 2017 Yohan.Jabin
+** Last update Mon May  1 16:11:15 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -13,7 +13,7 @@
 void	init_imput_loop(t_my_var *data)
 {
   init_arr_pid(data);
-  data->return_value = 0;
+  data->redir.input = 0;
   if (data->redir.flag_redir_left == 1)
     open_redirections_left(data, data->redir.word_left);
   else if (data->redir.flag_redir_left == 2)
@@ -22,12 +22,14 @@ void	init_imput_loop(t_my_var *data)
 
 void	reset_imput_loop(t_my_var *data, char **imp)
 {
-  dup2(data->redir.input, 0);
+  if (data->redir.input != 0)
+    {
+      dup2(data->redir.input, 0);
+      close(data->redir.input);
+    }
   if (data->redir.flag_redir_right != 0)
     open_redirections_right(data, data->redir.word_right);
   dup2(data->redir.output, 1);
-  if (data->redir.flag_redir_right != 0)
-    close(data->redir.output);
   test_cmd_builtin(data, imp);
   wait_all_pid(data);
 }

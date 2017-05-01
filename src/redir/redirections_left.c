@@ -5,26 +5,10 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Apr  4 19:49:10 2017 Yohan.Jabin
-** Last update Fri Apr 28 00:17:57 2017 Yohan.Jabin
+** Last update Mon May  1 15:59:15 2017 Yohan.Jabin
 */
 
 #include "my.h"
-
-void	cp_redirections_left(t_my_var *data)
-{
-  char	*str;
-  int	fd[2];
-
-  pipe(fd);
-  while ((str = get_next_line(data->redir.input)) != NULL)
-    {
-      my_fprintf(fd[1], "%s\n", str);
-      free(str);
-    }
-  close(data->redir.input);
-  close(fd[1]);
-  data->redir.input = fd[0];
-}
 
 int     open_redirections_left(t_my_var *data, char *str)
 {
@@ -33,7 +17,6 @@ int     open_redirections_left(t_my_var *data, char *str)
   if ((data->redir.input =
        open(str, O_RDWR)) == -1)
     return (84);
-  //cp_redirections_left(data);
   return (0);
 }
 
