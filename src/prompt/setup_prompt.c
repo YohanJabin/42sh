@@ -5,12 +5,12 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Thu Apr 20 17:14:43 2017 Adrien ZEMMA
-** Last update	Sun Apr 23 11:26:59 2017 Adrien ZEMMA
+** Last update	Fri Apr 28 15:33:15 2017 Adrien ZEMMA
 */
 
 #include "my.h"
 
-int my_read_rc(t_my_data *data)
+int my_read_rc(t_my_prompt *prompt)
 {
   int fd;
 
@@ -18,12 +18,12 @@ int my_read_rc(t_my_data *data)
     fd = open(".42shrc", O_RDONLY);
   else
     return (84);
-  data->prompt_compteur = -1;
-  data->prompt_git = 0;
-  data->histori_tab = malloc(sizeof(char *) * 3);
-  data->histori_nb = 0;
-  data->fd_rc = fd;
-  my_setprompt(data);
+  prompt->prompt_compteur = -1;
+  prompt->prompt_git = 0;
+  prompt->histori_tab = malloc(sizeof(char *) * 3);
+  prompt->histori_nb = 0;
+  prompt->fd_rc = fd;
+  my_setprompt(prompt);
   close(fd);
   return (0);
 }

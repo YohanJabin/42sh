@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.net>
 **
 ** Started on  Tue Oct 18 09:05:12 2016 Hugo MARTIN
-** Last update	Tue Apr 04 15:51:49 2017 Hugo MARTIN
+** Last update	Tue Apr 25 15:45:22 2017 Adrien ZEMMA
 */
 
 #ifndef MY_FPRINTF_H_
@@ -25,5 +25,6 @@ int			my_convert(char *, int, int);
 int     my_strlen(char *);
 void    my_revstr(char *, int);
 int     functions(char *, va_list, int, int);
+void	my_put_tab(char **, int);
 
 #endif /* MY_FPRINTF_H_ */

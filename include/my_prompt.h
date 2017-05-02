@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Fri Apr 21 13:41:05 2017 Adrien ZEMMA
-** Last update	Fri Apr 21 14:10:30 2017 Adrien ZEMMA
+** Last update	Fri Apr 28 16:05:40 2017 Adrien ZEMMA
 */
 
 #ifndef MY_PROMPT_H
@@ -22,23 +22,28 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-typedef struct	s_my_data
+typedef struct	s_my_prompt
 {
   int fd_rc;
   int prompt_git;
-  int prompt_compteur;
+  unsigned int prompt_compteur;
   char **prompt_prompt;
   char **prompt_ignore;
   char **histori_tab;
   int histori_nb;
-}	t_my_data;
 
-int	my_histori(char *str, t_my_data *data);
-char	*my_clean(char *str);
-char *last_buff(char *buff);
-char *retir_char(char *str, int nb);
-int my_read_rc(t_my_data *data);
-void	my_setprompt(t_my_data *data);
-void	my_prompt(t_my_data *data);
+  int		ret;
+  int		exit;
+  char		**env;
+  struct s_redir	redir;
+}		t_my_prompt;
+
+int	my_histori(char *, t_my_prompt *);
+char	*my_clean(char *);
+char	*last_buff(char *);
+char	*retir_char(char *, int);
+int	my_read_rc(t_my_prompt *);
+void	my_setprompt(t_my_prompt *);
+void	my_prompt(t_my_prompt *);
 
 #endif /* !MY_PROMPT_H_ */
