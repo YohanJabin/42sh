@@ -8,32 +8,7 @@ CURDIR = ./
 
 TODO = -@fgrep --color --exclude=.git --exclude=*.o --exclude=Makefile --exclude=tags --exclude=cscope* -H -e TODO -e FIXME -r $(CURDIR) || true
 
-SRCS	= ./lib/my/casual/count_char.c \
-	  ./lib/my/casual/epur.c \
-	  ./lib/my/casual/get_arg.c \
-	  ./lib/my/casual/get_next_line.c \
-	  ./lib/my/casual/line_formatting.c \
-	  ./lib/my/casual/manip_chaine.c \
-	  ./lib/my/casual/my_clean.c \
-	  ./lib/my/casual/my_getnbr.c \
-	  ./lib/my/casual/my_malloc.c \
-	  ./lib/my/casual/my_strcat.c \
-	  ./lib/my/casual/my_strcmp.c \
-	  ./lib/my/casual/my_strncmp.c \
-	  ./lib/my/casual/str_to_tab.c \
-	  ./lib/my/list/add.c \
-	  ./lib/my/list/other.c \
-	  ./lib/my/list/rm.c \
-	  ./lib/my/my_fprintf/functions.c \
-	  ./lib/my/my_fprintf/my_fprintf.c \
-	  ./lib/my/my_fprintf/my_hexa.c \
-	  ./lib/my/my_fprintf/my_put_nbr.c \
-	  ./lib/my/my_fprintf/my_put_tab.c \
-	  ./lib/my/my_fprintf/my_putchar.c \
-	  ./lib/my/my_fprintf/my_putstr.c \
-	  ./lib/my/my_fprintf/my_revstr.c \
-	  ./lib/my/my_printf/my_printf.c \
-	  ./src/command/command.c \
+SRCS	= ./src/command/command.c \
 	  ./src/echo/echo.c \
 	  ./src/exec/arr_env.c \
 	  ./src/exec/cd.c \
@@ -63,17 +38,46 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/redir/redirections_right.c \
 	  ./src/separator/separator.c \
 	  ./src/setup/exit.c \
-	  ./src/setup/start.c 
+	  ./src/setup/start.c
+
+LIB = ./lib/my/casual/count_char.c \
+	  ./lib/my/casual/epur.c \
+	  ./lib/my/casual/get_arg.c \
+	  ./lib/my/casual/get_next_line.c \
+	  ./lib/my/casual/line_formatting.c \
+	  ./lib/my/casual/manip_chaine.c \
+	  ./lib/my/casual/my_clean.c \
+	  ./lib/my/casual/my_getnbr.c \
+	  ./lib/my/casual/my_malloc.c \
+	  ./lib/my/casual/my_strcat.c \
+	  ./lib/my/casual/my_strcmp.c \
+	  ./lib/my/casual/my_strncmp.c \
+	  ./lib/my/casual/str_to_tab.c \
+	  ./lib/my/list/add.c \
+	  ./lib/my/list/other.c \
+	  ./lib/my/list/rm.c \
+	  ./lib/my/my_fprintf/functions.c \
+	  ./lib/my/my_fprintf/my_fprintf.c \
+	  ./lib/my/my_fprintf/my_hexa.c \
+	  ./lib/my/my_fprintf/my_put_nbr.c \
+	  ./lib/my/my_fprintf/my_put_tab.c \
+	  ./lib/my/my_fprintf/my_putchar.c \
+	  ./lib/my/my_fprintf/my_putstr.c \
+	  ./lib/my/my_fprintf/my_revstr.c \
+	  ./lib/my/my_printf/my_printf.c
 
 OBJS	= $(SRCS:.c=.o)
 
+LIBS = $(LIB:.c=.o)
+
 CFLAGS = -I./include/
 CFLAGS += -W -Wall -Wextra
-LDLIBS = 
+LDLIBS = -Llib/my -lmy
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	@ar rc lib/my/libmy.a $(LIBS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDLIBS)
 	@$(TODO)
 
@@ -83,6 +87,7 @@ clean:
 	@#@echo "clean OK"
 	@echo -e "\e[1;46m clean OK \e[0m"
 	@$(RM) $(OBJS)
+	@$(RM) ./libmy.a
 
 fclean:
 	@#@echo "fclean OK"
