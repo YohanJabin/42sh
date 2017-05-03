@@ -76,7 +76,7 @@ LDLIBS = -Llib/my -lmy
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBS)
 	@ar rc lib/my/libmy.a $(LIBS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDLIBS)
 	@$(TODO)
@@ -87,13 +87,16 @@ clean:
 	@#@echo "clean OK"
 	@echo -e "\e[1;46m clean OK \e[0m"
 	@$(RM) $(OBJS)
+	@$(RM) $(LIBS)
 	@$(RM) ./libmy.a
 
 fclean:
 	@#@echo "fclean OK"
 	@echo -e "\e[1;46m fclean OK \e[0m"
 	@$(RM) $(OBJS)
+	@$(RM) $(LIBS)
 	@$(RM) $(NAME)
+	@$(RM) ./libmy.a
 
 re: fclean all
 
