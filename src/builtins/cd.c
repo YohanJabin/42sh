@@ -92,12 +92,9 @@ int	test_cmd_cd(t_my_var *data, char **imp)
 	{
 	  my_fprintf(2, "cd: Too many arguments.\n");
 	  data->return_value = 1;
-	  return (84);
 	}
       else if (test_cd(data, imp) == 1)
 	change_pwd(data);
-      else
-	return (84);
       return (0);
     }
   return (1);

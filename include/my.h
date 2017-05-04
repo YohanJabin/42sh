@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Thu May  4 20:45:15 2017 Yohan.Jabin
+** Last update Thu May  4 21:32:41 2017 Yohan.Jabin
 */
 
 #ifndef MY_H_
@@ -236,5 +236,8 @@ void    parse_foreach(t_my_var *, char **);
 /* process_foreach.c */
 void    start_foreach(t_my_var *);
 char	**get_foreach_cmd(t_my_var *);
+
+/* which.c */
+int     test_cmd_which(t_my_var *, char **);
 
 #endif /* !MY_H_ */

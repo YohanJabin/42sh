@@ -44,6 +44,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/builtins/my_unsetenv.c \
 	  ./src/builtins/my_unsetvar.c \
 	  ./src/builtins/var.c \
+	  ./src/builtins/which.c \
 	  ./src/command/command.c \
 	  ./src/echo/echo.c \
 	  ./src/exec/arr_pipe.c \

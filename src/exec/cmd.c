@@ -38,10 +38,6 @@ int     test_cmd_path(t_my_var *data, char **imp)
 
 int	test_cmd_builtin(t_my_var *data, char **imp)
 {
-  if (my_strncmp(imp[0], "endif", 6) == 0
-      && my_strncmp(imp[0], "end", 6) == 0
-      && data->script.if_status == -1)
-    return (1);
   if (check_var(data, imp) == 0)
     return (1);
   if (test_cmd_scripting(data, imp) == 0)
@@ -53,6 +49,8 @@ int	test_cmd_builtin(t_my_var *data, char **imp)
   if (test_cmd_env(data, imp) == 0)
     return (1);
   if (test_cmd_var(data, imp) == 0)
+    return (1);
+  if (test_cmd_which(data, imp) == 0)
     return (1);
   if (test_cmd_path(data, imp) == 0)
     return (1);
