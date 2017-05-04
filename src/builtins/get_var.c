@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 13:38:45 2017 Yohan.Jabin
-** Last update Thu May  4 14:25:01 2017 Yohan.Jabin
+** Last update Thu May  4 21:06:16 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -17,7 +17,7 @@ char	*get_var_str(char **arr, int index)
   int	len;
 
   if ((first_equal = get_first_equal(arr[index]) + 1) == 0
-      || arr[index][first_equal + 1] == 0)
+      || arr[index][first_equal] == 0)
     {
       if ((ret = malloc(sizeof(char) * 1)) == NULL)
 	return (NULL);

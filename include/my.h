@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Thu May  4 18:30:57 2017 Yohan.Jabin
+** Last update Thu May  4 20:45:15 2017 Yohan.Jabin
 */
 
 #ifndef MY_H_
@@ -36,12 +36,13 @@ typedef	struct		s_my_var
 }			t_my_var;
 
 int	my_start(t_my_var *, t_my_prompt *);
-void	my_command(t_my_var *, t_my_prompt *);
+int	my_command(t_my_var *, t_my_prompt *);
 
 /*
 ** LIB
 */
 
+char	*my_strcat(char *, char *);
 int	my_malloc(char	**, char, int);
 int	my_strncmp(char *, char *, int);
 int	my_strcmp(char *, char *);
@@ -226,9 +227,14 @@ void    init_scripting(t_my_var *);
 int     test_cmd_scripting(t_my_var *, char **);
 
 /* if.c */
-void	my_if(t_my_var *, char **);
+void	parse_if(t_my_var *, char **);
+void    start_if(t_my_var *);
 
 /* foreach.c */
 void    parse_foreach(t_my_var *, char **);
+
+/* process_foreach.c */
+void    start_foreach(t_my_var *);
+char	**get_foreach_cmd(t_my_var *);
 
 #endif /* !MY_H_ */

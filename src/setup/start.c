@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:11:10 2017 Hugo
-** Last update Thu May  4 18:31:16 2017 Yohan.Jabin
+** Last update Thu May  4 21:00:08 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -20,17 +20,18 @@ int	my_start(t_my_var *p, t_my_prompt *prompt)
   while (42)
   {
     p->exit = -1;
-    my_command(p, prompt);
+    if ((my_command(p, prompt)) == -1)
+      my_exit(p);
     command = p->list_command->begin;
     p->return_value = 0;
     while (command)
-    {
-      //my_printf("%s\n", command->data);
-      my_histori(command->data, prompt);
-      if (parse_pipe(p, command->data) == 84)
-	return (84);
-      command = command->next;
-    }
+      {
+	//my_printf("%s\n", command->data);
+	my_histori(command->data, prompt);
+	if (parse_pipe(p, command->data) == 84)
+	  return (84);
+	command = command->next;
+      }
     if (p->exit != -1)
       exit(p->return_value);
   }

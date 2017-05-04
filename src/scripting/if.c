@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 15:13:36 2017 Yohan.Jabin
-** Last update Thu May  4 18:57:08 2017 Yohan.Jabin
+** Last update Thu May  4 19:54:08 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -61,7 +61,7 @@ int	test_if(t_my_var *data, char **imp)
   return (0);
 }
 
-void	my_if(t_my_var *data, char **imp)
+void	parse_if(t_my_var *data, char **imp)
 {
   if (test_if(data, imp) == 1)
     {

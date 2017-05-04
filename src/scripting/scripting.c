@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 10:45:30 2017 Yohan.Jabin
-** Last update Thu May  4 18:51:54 2017 Yohan.Jabin
+** Last update Thu May  4 20:14:52 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -14,7 +14,7 @@ int	test_cmd_scripting(t_my_var *data, char **imp)
 {
   if (my_strncmp(imp[0], "if", 3) == 1)
     {
-      my_if(data, imp);
+      parse_if(data, imp);
       if (data->script.if_status == -1)
 	{
 	  start_if(data);

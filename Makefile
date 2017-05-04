@@ -66,6 +66,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/redir/redirections_right.c \
 	  ./src/scripting/foreach.c \
 	  ./src/scripting/if.c \
+	  ./src/scripting/process_foreach.c \
 	  ./src/scripting/scripting.c \
 	  ./src/separator/separator.c \
 	  ./src/setup/exit.c \
@@ -78,7 +79,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
-CFLAGS += -W -Wall -Wextra
+CFLAGS += -W -Wall -Wextra -g3
 LDLIBS = 
 
 all: $(NAME)

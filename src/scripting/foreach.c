@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 16:51:26 2017 Yohan.Jabin
-** Last update Thu May  4 18:20:42 2017 Yohan.Jabin
+** Last update Thu May  4 20:24:54 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -56,5 +56,14 @@ void	parse_foreach(t_my_var *data, char **imp)
     {
       my_fprintf(2, "foreach: Expression Syntax.\n");
       data->return_value = 1;
+    }
+  else
+    {
+      data->flag_prompt = 0;
+      start_foreach(data);
+      data->flag_prompt = 1;
+      data->script.foreach_status = 1;
+      free(data->script.foreach_var);
+      free_double_tab(data->script.foreach_words);
     }
 }
