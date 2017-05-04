@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:11:10 2017 Hugo
-** Last update Sat Apr 29 17:57:22 2017 Yohan.Jabin
+** Last update Thu May  4 18:31:16 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -15,6 +15,7 @@ int	my_start(t_my_var *p, t_my_prompt *prompt)
 {
   t_my_list_data	*command;
 
+  p->prompt = prompt;
   my_read_rc(prompt);
   while (42)
   {
@@ -27,7 +28,7 @@ int	my_start(t_my_var *p, t_my_prompt *prompt)
       //my_printf("%s\n", command->data);
       my_histori(command->data, prompt);
       if (parse_pipe(p, command->data) == 84)
-	     return (84);
+	return (84);
       command = command->next;
     }
     if (p->exit != -1)

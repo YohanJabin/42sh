@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Thu May  4 14:09:15 2017 Yohan.Jabin
+** Last update Thu May  4 18:30:57 2017 Yohan.Jabin
 */
 
 #ifndef MY_H_
@@ -17,9 +17,11 @@
 #include "my_fprintf.h"
 #include "get_next_line.h"
 #include "list.h"
+#include "script.h"
 
 typedef	struct		s_my_var
 {
+  int			flag_prompt;
   char			**env;
   char			**var;
   char			*full_command;
@@ -27,6 +29,8 @@ typedef	struct		s_my_var
   int			return_value;
   int			exit;
   t_redir		redir;
+  t_script		script;
+  t_my_prompt		*prompt;
   t_my_list_cont	*list_command;
   t_my_list_cont	*separator;
 }			t_my_var;
@@ -216,5 +220,15 @@ int     get_path_index(char **);
 
 /* exit.c */
 int     test_cmd_exit(t_my_var *, char **);
+
+/* scripting.c */
+void    init_scripting(t_my_var *);
+int     test_cmd_scripting(t_my_var *, char **);
+
+/* if.c */
+void	my_if(t_my_var *, char **);
+
+/* foreach.c */
+void    parse_foreach(t_my_var *, char **);
 
 #endif /* !MY_H_ */

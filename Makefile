@@ -34,11 +34,16 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./lib/my/my_fprintf/my_revstr.c \
 	  ./lib/my/my_printf/my_printf.c \
 	  ./src/builtins/arr_env.c \
+	  ./src/builtins/arr_var.c \
 	  ./src/builtins/cd.c \
 	  ./src/builtins/env.c \
 	  ./src/builtins/exit.c \
+	  ./src/builtins/get_var.c \
 	  ./src/builtins/my_setenv.c \
+	  ./src/builtins/my_setvar.c \
 	  ./src/builtins/my_unsetenv.c \
+	  ./src/builtins/my_unsetvar.c \
+	  ./src/builtins/var.c \
 	  ./src/command/command.c \
 	  ./src/echo/echo.c \
 	  ./src/exec/arr_pipe.c \
@@ -59,12 +64,9 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/redir/new_redirect_tab.c \
 	  ./src/redir/redirections_left.c \
 	  ./src/redir/redirections_right.c \
-	  ./src/scripting/arr_var.c \
-	  ./src/scripting/get_var.c \
-	  ./src/scripting/my_setvar.c \
-	  ./src/scripting/my_unsetvar.c \
+	  ./src/scripting/foreach.c \
+	  ./src/scripting/if.c \
 	  ./src/scripting/scripting.c \
-	  ./src/scripting/var.c \
 	  ./src/separator/separator.c \
 	  ./src/setup/exit.c \
 	  ./src/setup/init_var.c \
@@ -76,7 +78,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
-CFLAGS += -W -Wall -Wextra -g3
+CFLAGS += -W -Wall -Wextra
 LDLIBS = 
 
 all: $(NAME)
