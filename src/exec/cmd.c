@@ -38,11 +38,15 @@ int     test_cmd_path(t_my_var *data, char **imp)
 
 int	test_cmd_builtin(t_my_var *data, char **imp)
 {
+  if (check_var(data, imp) == 0)
+    return (1);
   if (test_cmd_cd(data, imp) == 0)
     return (1);
   if (test_cmd_exit(data, imp) == 0)
     return (1);
   if (test_cmd_env(data, imp) == 0)
+    return (1);
+  if (test_cmd_var(data, imp) == 0)
     return (1);
   if (test_cmd_path(data, imp) == 0)
     return (1);

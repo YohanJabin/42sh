@@ -59,8 +59,15 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/redir/new_redirect_tab.c \
 	  ./src/redir/redirections_left.c \
 	  ./src/redir/redirections_right.c \
+	  ./src/scripting/arr_var.c \
+	  ./src/scripting/get_var.c \
+	  ./src/scripting/my_setvar.c \
+	  ./src/scripting/my_unsetvar.c \
+	  ./src/scripting/scripting.c \
+	  ./src/scripting/var.c \
 	  ./src/separator/separator.c \
 	  ./src/setup/exit.c \
+	  ./src/setup/init_var.c \
 	  ./src/setup/start.c \
 	  ./src/to_sort/func.c \
 	  ./src/to_sort/func2.c \
@@ -69,7 +76,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
-CFLAGS += -W -Wall -Wextra
+CFLAGS += -W -Wall -Wextra -g3
 LDLIBS = 
 
 all: $(NAME)

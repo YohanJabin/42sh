@@ -21,6 +21,7 @@ int	main(int ac, char **av, char **env)
   av = av;
   p->return_value = 0;
   p->env = cpy_arr_env(env);
+  p->var = init_var();
   change_pwd(p);
   my_start(p, prompt);
   //my_echo("echo $PATH", env);

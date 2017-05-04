@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Thu May  4 10:36:56 2017 Yohan.Jabin
+** Last update Thu May  4 14:09:15 2017 Yohan.Jabin
 */
 
 #ifndef MY_H_
@@ -21,6 +21,7 @@
 typedef	struct		s_my_var
 {
   char			**env;
+  char			**var;
   char			*full_command;
   char			*command;
   int			return_value;
@@ -145,6 +146,37 @@ void    my_error_setenv(t_my_var *, char **);
 void    my_error_unsetenv(t_my_var *, char **);
 void    update_env(t_my_var *);
 int     my_error_setenv2(t_my_var *, char **);
+
+/* init_var.c */
+char	**init_var();
+
+/* var.c */
+int     test_cmd_var(t_my_var *, char **);
+void    my_error_setvar(t_my_var *, char **);
+int     my_error_setvar2(t_my_var *, char **);
+void    my_error_unsetvar(t_my_var *, char **);
+int	get_first_equal(char *);
+
+/* my_setvar.c */
+void    my_setvar(t_my_var *, char **);
+void    change_var(t_my_var *, char *, int);
+void    add_var(t_my_var *, char *);
+
+/* my_unsetvar.c */
+void    my_unsetvar(t_my_var *, char **);
+void    delete_var(t_my_var *, char *);
+void    parse_delete_var(t_my_var *, char **, int);
+
+/* arr_var.c */
+char    **cpy_arr_var(char **);
+void    parse_var(char **, char **);
+int     hm_many_var(char **);
+int     get_index_var(char **, char *);
+
+/* get_var.c */
+int     check_var(t_my_var *, char **);
+char    *get_var(t_my_var *, char *);
+char    *get_var_str(char **, int);
 
 /* cmd.c */
 int     test_cmd_builtin(t_my_var *, char **);
