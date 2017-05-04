@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Sat Apr 29 18:00:46 2017 Yohan.Jabin
+** Last update Thu May  4 10:36:56 2017 Yohan.Jabin
 */
 
 #ifndef MY_H_
@@ -121,7 +121,7 @@ void    parse_delete_env(t_my_var *, char **, int);
 
 /* cd.c */
 int     my_cd(t_my_var *, char **);
-int     test_cd(t_my_var *, char **);
+int     test_cmd_cd(t_my_var *, char **);
 int     test_cd_old(t_my_var *, char **);
 int     test_cd_home(t_my_var *, char **);
 void    change_pwd(t_my_var *);
@@ -181,5 +181,8 @@ void    parse_path(char **, char *);
 int     my_strlen_path(char *);
 int     hm_path(char *);
 int     get_path_index(char **);
+
+/* exit.c */
+int     test_cmd_exit(t_my_var *, char **);
 
 #endif /* !MY_H_ */

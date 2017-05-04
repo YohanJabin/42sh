@@ -73,17 +73,17 @@ int	test_cmd_env(t_my_var *data, char **imp)
   if (my_strncmp(imp[0], "env", 4) == 1)
     {
       aff_double_tab(data->env);
-      return (1);
+      return (0);
     }
   else if (my_strncmp(imp[0], "setenv", 7) == 1)
     {
       my_error_setenv(data, imp);
-      return (1);
+      return (0);
     }
   else if (my_strncmp(imp[0], "unsetenv", 9) == 1)
     {
       my_error_unsetenv(data, imp);
-      return (1);
+      return (0);
     }
-  return (0);
+  return (1);
 }

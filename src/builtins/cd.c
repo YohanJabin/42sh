@@ -84,17 +84,21 @@ int	test_cd(t_my_var *data, char **imp)
   return (1);
 }
 
-int	my_cd(t_my_var *data, char **imp)
+int	test_cmd_cd(t_my_var *data, char **imp)
 {
-  if (imp[1] != NULL && imp[2] != NULL)
+  if (my_strncmp(&imp[0][0], "cd", 3))
     {
-      my_fprintf(2, "cd: Too many arguments.\n");
-      data->return_value = 1;
-      return (84);
+      if (imp[1] != NULL && imp[2] != NULL)
+	{
+	  my_fprintf(2, "cd: Too many arguments.\n");
+	  data->return_value = 1;
+	  return (84);
+	}
+      else if (test_cd(data, imp) == 1)
+	change_pwd(data);
+      else
+	return (84);
+      return (0);
     }
-  else if (test_cd(data, imp) == 1)
-    change_pwd(data);
-  else
-    return (84);
   return (1);
 }
