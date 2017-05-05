@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 15:13:36 2017 Yohan.Jabin
-** Last update Thu May  4 19:54:08 2017 Yohan.Jabin
+** Last update Fri May  5 13:40:27 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -31,8 +31,8 @@ void	start_if(t_my_var *data)
 
 int	check_if_parenthesis(char **imp, int len)
 {
-  if (imp[1][0] != '(' || imp[len - 2][0] != ')')
-    return (1);
+  //if (imp[1][0] != '(' || imp[len - 2][0] != ')')
+  //return (1);
   if (my_strncmp(imp[len - 1], "then", 5) == 0)
     return (1);
   return (0);
@@ -43,16 +43,16 @@ int	test_if(t_my_var *data, char **imp)
   int	len;
 
   len = hm_many_env(imp);
-  if (len >= 7 && check_if_parenthesis(imp, len) == 0)
+  if (len >= 5 && check_if_parenthesis(imp, len) == 0)
     {
-      if (my_strncmp(imp[3], "==", 3) == 1)
+      if (my_strncmp(imp[2], "==", 3) == 1)
 	{
-	  if (my_strcmp(imp[2], imp[4]) != 1)
+	  if (my_strcmp(imp[1], imp[3]) != 1)
 	    data->script.if_status = -1;
 	}
-      else if (my_strncmp(imp[3], "!=", 3) == 1)
+      else if (my_strncmp(imp[2], "!=", 3) == 1)
 	{
-	  if (my_strcmp(imp[2], imp[4]) == 1)
+	  if (my_strcmp(imp[1], imp[3]) == 1)
 	    data->script.if_status = -1;
 	}
     }
