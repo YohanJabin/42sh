@@ -53,7 +53,13 @@ void    my_exec(char *path, char **imp, t_my_var *data)
       if (pid == 0)
 	{
 	  if (execve(path, imp, data->env) == -1 && errno)
-	    data->return_value = 1;
+	    {
+	      my_fprintf(2, "%s: %s.", path, strerror(errno));
+	      if (errno == ENOEXEC)
+		my_fprintf(2, " Binary file not executable.");
+	      my_fprintf(2, "\n");
+	      data->return_value = 1;
+	    }
 	  exit(data->return_value);
 	}
       else
