@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:11:10 2017 Hugo
-** Last update Sat May  6 13:58:27 2017 Yohan.Jabin
+** Last update Sat May  6 15:36:29 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -19,6 +19,7 @@ int	my_start(t_my_var *p, t_my_prompt *prompt)
   my_read_rc(prompt);
   while (42)
   {
+    update_env(p);
     p->exit = -1;
     if ((my_command(p, prompt)) == -1)
       {
