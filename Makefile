@@ -33,19 +33,24 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./lib/my/my_fprintf/my_putstr.c \
 	  ./lib/my/my_fprintf/my_revstr.c \
 	  ./lib/my/my_printf/my_printf.c \
-	  ./src/builtins/arr_env.c \
-	  ./src/builtins/arr_var.c \
+	  ./src/builtins/alias/alias.c \
+	  ./src/builtins/alias/arr_alias.c \
+	  ./src/builtins/alias/my_setalias.c \
+	  ./src/builtins/alias/my_unsetalias.c \
 	  ./src/builtins/cd.c \
-	  ./src/builtins/env.c \
+	  ./src/builtins/env/arr_env.c \
+	  ./src/builtins/env/env.c \
+	  ./src/builtins/env/my_setenv.c \
+	  ./src/builtins/env/my_unsetenv.c \
 	  ./src/builtins/exit.c \
-	  ./src/builtins/get_var.c \
-	  ./src/builtins/my_setenv.c \
-	  ./src/builtins/my_setvar.c \
-	  ./src/builtins/my_unsetenv.c \
-	  ./src/builtins/my_unsetvar.c \
-	  ./src/builtins/var.c \
+	  ./src/builtins/var/arr_var.c \
+	  ./src/builtins/var/get_var.c \
+	  ./src/builtins/var/my_setvar.c \
+	  ./src/builtins/var/my_unsetvar.c \
+	  ./src/builtins/var/var.c \
 	  ./src/builtins/which.c \
 	  ./src/command/command.c \
+	  ./src/command/comments.c \
 	  ./src/echo/echo.c \
 	  ./src/exec/arr_pipe.c \
 	  ./src/exec/check_pipe_error.c \
@@ -76,7 +81,8 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/to_sort/func.c \
 	  ./src/to_sort/func2.c \
 	  ./src/to_sort/func3.c \
-	  ./src/command/comments.c
+	  ./src/utils/my_stradd.c \
+	  ./src/utils/my_strcut.c 
 
 OBJS	= $(SRCS:.c=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 11:57:28 2017 Yohan.Jabin
-** Last update Thu May  4 11:58:41 2017 Yohan.Jabin
+** Last update Sat May  6 20:04:54 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -18,4 +18,14 @@ char	**init_var()
     return (NULL);
   var[0] = NULL;
   return (var);
+}
+
+char	**init_alias()
+{
+  char	**alias;
+
+  if ((alias = malloc(sizeof(char *))) == NULL)
+    return (NULL);
+  alias[0] = NULL;
+  return (alias);
 }

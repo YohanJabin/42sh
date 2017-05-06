@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Sat May  6 14:33:39 2017 Yohan.Jabin
+** Last update Sat May  6 20:06:01 2017 Yohan.Jabin
 */
 
 #ifndef MY_H_
@@ -25,6 +25,7 @@ typedef	struct		s_my_var
   int			fd_to_read;
   char			**env;
   char			**var;
+  char			**alias;
   char			*full_command;
   char			*command;
   int			return_value;
@@ -156,6 +157,7 @@ int     my_error_setenv2(t_my_var *, char **);
 
 /* init_var.c */
 char	**init_var();
+char	**init_alias();
 
 /* var.c */
 int     test_cmd_var(t_my_var *, char **);
@@ -184,6 +186,28 @@ int     get_index_var(char **, char *);
 int     check_var(t_my_var *, char **);
 char    *get_var(t_my_var *, char *);
 char    *get_var_str(char **, int);
+
+/* alias.c */
+int     test_cmd_alias(t_my_var *, char **);
+void    my_error_setalias(t_my_var *, char **);
+void    my_error_unsetalias(t_my_var *, char **);
+
+/* my_setalias.c */
+void    my_setalias(t_my_var *, char **);
+char    *get_string_to_add_alias(char **);
+void    change_alias(t_my_var *, char *, char *, int);
+void    add_alias(t_my_var *, char *, char *);
+
+/* my_unsetalias.c */
+void    my_unsetalias(t_my_var *, char **);
+void    delete_alias(t_my_var *, char *);
+void    parse_delete_alias(t_my_var *, char **, int);
+
+/* arr_alias.c */
+char    **cpy_arr_alias(char **);
+void    parse_alias(char **, char **);
+int     hm_many_alias(char **);
+int     get_index_alias(char **, char *);
 
 /* cmd.c */
 int     test_cmd_builtin(t_my_var *, char **);

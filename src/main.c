@@ -15,11 +15,14 @@ int	main(int ac, char **av, char **env)
   t_my_var	*p;
   t_my_prompt	*prompt;
 
+  aff_double_tab(env);
+  exit(0);
   p = malloc(sizeof(*p));
   prompt = malloc(sizeof(t_my_prompt));
   p->return_value = 0;
   p->env = cpy_arr_env(env);
   p->var = init_var();
+  p->alias = init_alias();
   change_pwd(p);
   init_scripting(p, ac, av);
   my_start(p, prompt);

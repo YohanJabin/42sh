@@ -53,6 +53,8 @@ int	test_cmd_builtin(t_my_var *data, char **imp)
     return (1);
   if (test_cmd_var(data, imp) == 0)
     return (1);
+  if (test_cmd_alias(data, imp) == 0)
+    return (1);
   if (test_cmd_which(data, imp) == 0)
     return (1);
   if (test_cmd_path(data, imp) == 0)
