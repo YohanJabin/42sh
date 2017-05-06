@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:58 2017 Hugo
-** Last update Thu May  4 20:28:18 2017 Yohan.Jabin
+** Last update Sat May  6 14:32:45 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -48,18 +48,19 @@ void	my_list_command(t_my_var *v)
 
 int	my_command(t_my_var *v, t_my_prompt *data)
 {
-  if (isatty(0))
+  if (isatty(0) && v->flag_prompt == 1)
     {
-      if (v->flag_prompt == 1)
-	my_prompt(data);
-      else if (v->script.foreach_status == 1)
+      if (v->script.foreach_status == 1)
 	my_printf("foreach? ");
+      else
+	my_prompt(data);
     }
   //if (v->return_value != 0 && isatty(0) == 0)
   //my_exit(v);
-  if ((v->full_command = get_next_line(0)) == NULL)
+  if ((v->full_command = get_next_line(v->fd_to_read)) == NULL)
     return (-1);
-  else if (v->full_command[0] == '\0')
+  check_comment(v->full_command);
+  if (v->full_command[0] == '\0')
     if (my_command(v, data) == -1)
       return (-1);
   my_list_command(v);

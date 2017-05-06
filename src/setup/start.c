@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:11:10 2017 Hugo
-** Last update Thu May  4 21:00:08 2017 Yohan.Jabin
+** Last update Sat May  6 13:58:27 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -21,7 +21,11 @@ int	my_start(t_my_var *p, t_my_prompt *prompt)
   {
     p->exit = -1;
     if ((my_command(p, prompt)) == -1)
-      my_exit(p);
+      {
+	if (p->fd_to_read != 0)
+	  close(p->fd_to_read);
+	my_exit(p);
+      }
     command = p->list_command->begin;
     p->return_value = 0;
     while (command)

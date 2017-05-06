@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Thu May  4 21:32:41 2017 Yohan.Jabin
+** Last update Sat May  6 14:33:39 2017 Yohan.Jabin
 */
 
 #ifndef MY_H_
@@ -22,6 +22,7 @@
 typedef	struct		s_my_var
 {
   int			flag_prompt;
+  int			fd_to_read;
   char			**env;
   char			**var;
   char			*full_command;
@@ -37,6 +38,7 @@ typedef	struct		s_my_var
 
 int	my_start(t_my_var *, t_my_prompt *);
 int	my_command(t_my_var *, t_my_prompt *);
+void    check_comment(char *);
 
 /*
 ** LIB
@@ -223,7 +225,7 @@ int     get_path_index(char **);
 int     test_cmd_exit(t_my_var *, char **);
 
 /* scripting.c */
-void    init_scripting(t_my_var *);
+void    init_scripting(t_my_var *, int, char **);
 int     test_cmd_scripting(t_my_var *, char **);
 
 /* if.c */

@@ -75,7 +75,8 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/setup/start.c \
 	  ./src/to_sort/func.c \
 	  ./src/to_sort/func2.c \
-	  ./src/to_sort/func3.c 
+	  ./src/to_sort/func3.c \
+	  ./src/command/comments.c
 
 OBJS	= $(SRCS:.c=.o)
 
