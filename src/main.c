@@ -15,6 +15,8 @@ int	main(int ac, char **av, char **env)
   t_my_var	*p;
   t_my_prompt	*prompt;
 
+  aff_double_tab(env);
+  exit(0);
   p = malloc(sizeof(*p));
   prompt = malloc(sizeof(t_my_prompt));
   p->return_value = 0;
