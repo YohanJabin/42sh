@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 13:38:45 2017 Yohan.Jabin
-** Last update Mon May  8 15:32:50 2017 Yohan.Jabin
+** Last update Mon May  8 15:41:51 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -47,12 +47,6 @@ char	*get_var(t_my_var *data, char *to_search)
   if ((index = get_index_env(data->env, to_search)) != -1)
     {
       ret = get_var_str(data->env, index);
-      return (ret);
-    }
-  if (data->flag_prompt == 0)
-    {
-      ret = malloc(sizeof(char));
-      ret[0] = 0;
       return (ret);
     }
   my_fprintf(2, "%s: Undefined variable.\n", to_search);
