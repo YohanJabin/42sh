@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Apr  4 18:16:20 2017 Yohan.Jabin
-** Last update Mon May  1 16:11:15 2017 Yohan.Jabin
+** Last update Mon May  8 17:32:48 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -30,6 +30,8 @@ void	reset_imput_loop(t_my_var *data, char **imp)
   if (data->redir.flag_redir_right != 0)
     open_redirections_right(data, data->redir.word_right);
   dup2(data->redir.output, 1);
+  //if (data->redir.flag_redir_right != 0)
+    close(data->redir.output);
   test_cmd_builtin(data, imp);
   wait_all_pid(data);
 }
@@ -67,6 +69,8 @@ int	process_imput(t_my_var *data, char ***imp)
   data->redir.output = fd_save[1];
   reset_imput_loop(data, imp[i]);
   dup2(fd_save[0], 0);
+  close(fd_save[0]);
   dup2(fd_save[1], 1);
+  close(fd_save[1]);
   return (1);
 }

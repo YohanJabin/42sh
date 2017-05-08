@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 10:45:30 2017 Yohan.Jabin
-** Last update Mon May  8 15:27:02 2017 Yohan.Jabin
+** Last update Mon May  8 17:06:41 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -49,7 +49,11 @@ void	parse_scripting(t_my_var *data, int ac, char **av)
   int	fd;
 
   if ((fd = open(av[1], O_RDONLY)) == -1)
-    exit (84);
+    {
+      if (errno)
+	my_fprintf(2, "%s: %s.\n", av[1], strerror(errno));
+      exit (84);
+    }
   parse_scripting_arg(data, ac, av);
   data->fd_to_read = fd;
   data->flag_prompt = 0;
