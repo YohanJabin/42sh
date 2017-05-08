@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 15:13:36 2017 Yohan.Jabin
-** Last update Fri May  5 13:40:27 2017 Yohan.Jabin
+** Last update Mon May  8 13:50:01 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -15,14 +15,14 @@ void	start_if(t_my_var *data)
   char	*str;
   char	**arr;
 
-  if (isatty(0))
+  if (isatty(0) && data->flag_prompt == 1)
     my_printf("if? ");
   while ((str = get_next_line(0)) != NULL)
     {
       arr = my_str_to_wordtab(str);
       if (my_strncmp(arr[0], "endif", 6) == 1)
 	return ;
-      if (isatty(0))
+      if (isatty(0) && data->flag_prompt == 1)
 	my_printf("if? ");
     }
   my_fprintf(2, "then: then/endif not found.\n");
@@ -31,8 +31,6 @@ void	start_if(t_my_var *data)
 
 int	check_if_parenthesis(char **imp, int len)
 {
-  //if (imp[1][0] != '(' || imp[len - 2][0] != ')')
-  //return (1);
   if (my_strncmp(imp[len - 1], "then", 5) == 0)
     return (1);
   return (0);

@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Sat May  6 20:06:01 2017 Yohan.Jabin
+** Last update Mon May  8 15:29:06 2017 Yohan.Jabin
 */
 
 #ifndef MY_H_
@@ -40,6 +40,8 @@ typedef	struct		s_my_var
 int	my_start(t_my_var *, t_my_prompt *);
 int	my_command(t_my_var *, t_my_prompt *);
 void    check_comment(char *);
+char	*my_strcut(char *, int, int);
+char	*my_stradd(char *, char *, int);
 
 /*
 ** LIB
@@ -167,6 +169,7 @@ void    my_error_unsetvar(t_my_var *, char **);
 int	get_first_equal(char *);
 
 /* my_setvar.c */
+void	setvar(t_my_var *, char *);
 void    my_setvar(t_my_var *, char **);
 void    change_var(t_my_var *, char *, int);
 void    add_var(t_my_var *, char *);
@@ -265,5 +268,9 @@ char	**get_foreach_cmd(t_my_var *);
 
 /* which.c */
 int     test_cmd_which(t_my_var *, char **);
+
+/* line_formatting.c */
+int     format_imput(t_my_var *, char **);
+int	check_alias(t_my_var *, char *);
 
 #endif /* !MY_H_ */

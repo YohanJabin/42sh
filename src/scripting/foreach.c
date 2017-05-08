@@ -5,17 +5,10 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 16:51:26 2017 Yohan.Jabin
-** Last update Sat May  6 14:01:37 2017 Yohan.Jabin
+** Last update Mon May  8 13:43:58 2017 Yohan.Jabin
 */
 
 #include "my.h"
-
-int	test_foreach_parenthesis(char **imp, int len)
-{
-  if (imp[2][0] != '(' || imp[len - 1][0] != ')')
-    return (1);
-  return (0);
-}
 
 char	**create_foreach_words(char **imp)
 {
@@ -39,8 +32,6 @@ int	test_foreach(t_my_var *data, char **imp)
 
   if ((len = hm_many_env(imp)) >= 5)
     {
-      //if (test_foreach_parenthesis(imp, len) == 1)
-      //return (1);
       data->script.foreach_status = 1;
       data->script.foreach_var = my_strdup(imp[1]);
       data->script.foreach_words = create_foreach_words(imp);

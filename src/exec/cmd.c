@@ -41,8 +41,6 @@ int	test_cmd_builtin(t_my_var *data, char **imp)
   if (my_strncmp(imp[0], "endif", 6) == 1 ||
       my_strncmp(imp[0], "end", 4) == 1)
     return (1);
-  if (check_var(data, imp) == 0)
-    return (1);
   if (test_cmd_scripting(data, imp) == 0)
     return (1);
   if (test_cmd_cd(data, imp) == 0)

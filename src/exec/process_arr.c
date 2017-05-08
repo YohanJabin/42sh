@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Thu Apr  6 19:50:00 2017 Yohan.Jabin
-** Last update Mon May  1 15:29:22 2017 Yohan.Jabin
+** Last update Mon May  8 14:47:30 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -54,6 +54,8 @@ int     parse_pipe(t_my_var *data, char *imp)
   char  **arr_pipe;
   int   return_value;
 
+  if (format_imput(data, &imp) != 0)
+    return (1);
   if ((arr_pipe = create_arr_pipe(imp)) == NULL)
     my_fprintf(2, "Invalid null command.\n");
   else

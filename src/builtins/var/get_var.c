@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 13:38:45 2017 Yohan.Jabin
-** Last update Thu May  4 21:06:16 2017 Yohan.Jabin
+** Last update Mon May  8 15:32:50 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -49,31 +49,28 @@ char	*get_var(t_my_var *data, char *to_search)
       ret = get_var_str(data->env, index);
       return (ret);
     }
+  if (data->flag_prompt == 0)
+    {
+      ret = malloc(sizeof(char));
+      ret[0] = 0;
+      return (ret);
+    }
   my_fprintf(2, "%s: Undefined variable.\n", to_search);
   data->return_value = 1;
   return (NULL);
 }
 
-int	check_var(t_my_var *data, char **imp)
+int	check_alias(t_my_var *data, char *imp)
 {
   int	i;
-  int	j;
+  int	len;
 
   i = -1;
-  while (imp[++i] != NULL)
+  while (data->alias[++i] != NULL)
     {
-      j = -1;
-      while (imp[i][++j] != 0)
-	{
-	  if (imp[i][j] == '$')
-	    {
-	      if ((imp[i] = get_var(data, &imp[i][j + 1])) == NULL)
-		return (0);
-	      if (check_var(data, imp) == 0)
-		return (0);
-	      return (1);
-	    }
-	}
+      len = get_first_equal(data->alias[i]);
+      if (my_strncmp(imp, data->alias[i], len) == 1)
+	return (i);
     }
-  return (1);
+  return (-1);
 }

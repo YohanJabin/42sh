@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 10:45:30 2017 Yohan.Jabin
-** Last update Sat May  6 14:02:58 2017 Yohan.Jabin
+** Last update Mon May  8 15:27:02 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -19,7 +19,6 @@ int	test_cmd_scripting(t_my_var *data, char **imp)
 	{
 	  start_if(data);
 	  data->script.if_status = 0;
-	  data->flag_prompt = 1;
 	}
       return (0);
     }
@@ -31,12 +30,27 @@ int	test_cmd_scripting(t_my_var *data, char **imp)
   return (1);
 }
 
+void	parse_scripting_arg(t_my_var *data, int ac, char **av)
+{
+  char	tmp[100];
+  int	i;
+
+  i = 0;
+  while (++i < ac)
+    {
+      my_memset(tmp, 0, 100);
+      sprintf(tmp, "%i=%s", i - 1, av[i]);
+      setvar(data, tmp);
+    }
+}
+
 void	parse_scripting(t_my_var *data, int ac, char **av)
 {
   int	fd;
 
-  if ((fd = open(av[ac - 1], O_RDONLY)) == -1)
+  if ((fd = open(av[1], O_RDONLY)) == -1)
     exit (84);
+  parse_scripting_arg(data, ac, av);
   data->fd_to_read = fd;
   data->flag_prompt = 0;
 }

@@ -53,25 +53,47 @@ int	get_first_equal(char *str)
   return (-1);
 }
 
-void	my_setvar(t_my_var *data, char **imp)
+void	setvar(t_my_var *data, char *to_add)
 {
-  int	i;
   int	index;
   int	first_equal;
   char	*tmp;
+
+  if ((first_equal = get_first_equal(to_add)) == -1)
+    first_equal = my_strlen(to_add);
+  tmp = malloc(sizeof(char) * (first_equal + 1));
+  my_memset(tmp, 0, first_equal + 1);
+  my_strncpy(tmp, to_add, first_equal);
+  if ((index = get_index_var(data->var, tmp)) == -1)
+    add_var(data, to_add);
+  else
+    change_var(data, to_add, index);
+  free(tmp);
+}
+
+void	my_setvar(t_my_var *data, char **imp)
+{
+  int	i;
+  char	*tmp;
+  int	first_equal;
 
   i = 0;
   while (imp[++i] != NULL)
     {
       if ((first_equal = get_first_equal(imp[i])) == -1)
-	first_equal = my_strlen(imp[i]);
-      tmp = malloc(sizeof(char) * (first_equal + 1));
-      my_memset(tmp, 0, first_equal + 1);
-      my_strncpy(tmp, imp[i], first_equal);
-      if ((index = get_index_var(data->var, tmp)) == -1)
-	add_var(data, imp[i]);
+	{
+	  if (imp[i + 1] != NULL && imp[i + 1][0] == '='
+	      && imp[i + 1][1] == 0 && imp[i + 2] != NULL)
+	    {
+	      tmp = my_strcat(imp[i], imp[i + 1]);
+	      tmp = my_strcat(tmp, imp[i + 2]);
+	      setvar(data, tmp);
+	      i += 2;
+	    }
+	  else
+	    setvar(data, my_strcat(imp[i], "="));
+	}
       else
-	change_var(data, imp[i], index);
-      free(tmp);
+	setvar(data, imp[i]);
     }
 }
