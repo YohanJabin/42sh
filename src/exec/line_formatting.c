@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Mon May  8 15:03:24 2017 Yohan.Jabin
+** Last update Mon May  8 16:30:23 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -61,7 +61,12 @@ void	format_change_alias(t_my_var *data, char **imp, int i)
 int	format_imput(t_my_var *data, char **imp)
 {
   int	i;
+  char	**arr;
 
+  arr = my_str_to_wordtab(*imp);
+  if (my_strncmp(arr[0], "where", 6) == 1
+      || my_strncmp(arr[0], "which", 6) == 1)
+    return (0);
   i = -1;
   while ((*imp)[++i] != 0)
     {

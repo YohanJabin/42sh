@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 21:25:49 2017 Yohan.Jabin
-** Last update Fri May  5 13:04:09 2017 Yohan.Jabin
+** Last update Mon May  8 16:31:12 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -61,10 +61,21 @@ void	search_cmd(t_my_var *data, char *cmd, int flag)
 void	loop_which(t_my_var *data, char **imp, int flag)
 {
   int	i;
+  int	index;
+  int	first_equal;
+  char	*tmp;
 
   i = 0;
   while (imp[++i] != NULL)
-    search_cmd(data, imp[i], flag);
+    {
+      if ((index = check_alias(data, imp[i])) != -1)
+	{
+	  first_equal = get_first_equal(data->alias[index]);
+	  write(1, data->alias[index], first_equal);
+	  my_printf(" is aliased to %s\n", &data->alias[index][first_equal + 1]);
+	}
+      search_cmd(data, imp[i], flag);
+    }
 }
 
 int	test_cmd_which(t_my_var *data, char **imp)
