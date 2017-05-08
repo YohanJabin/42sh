@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 21:25:49 2017 Yohan.Jabin
-** Last update Mon May  8 16:31:12 2017 Yohan.Jabin
+** Last update Mon May  8 16:39:30 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -63,7 +63,6 @@ void	loop_which(t_my_var *data, char **imp, int flag)
   int	i;
   int	index;
   int	first_equal;
-  char	*tmp;
 
   i = 0;
   while (imp[++i] != NULL)

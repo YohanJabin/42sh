@@ -83,7 +83,8 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/to_sort/func3.c \
 	  ./src/utils/my_stradd.c \
 	  ./src/utils/my_strcut.c \
-	  ./src/exec/line_formatting.c
+	  ./src/exec/line_formatting.c \
+	  ./src/builtins/aff_var_alias.c
 
 OBJS	= $(SRCS:.c=.o)
 

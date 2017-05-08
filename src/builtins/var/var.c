@@ -61,7 +61,7 @@ int	my_error_setvar2(t_my_var *data, char **imp)
 void	my_error_setvar(t_my_var *data, char **imp)
 {
   if (imp[1] == NULL)
-    aff_double_tab(data->var);
+    aff_var_alias(data->var);
   else if (my_error_setvar2(data, imp) == 0)
     my_setvar(data, imp);
 }

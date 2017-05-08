@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Mon May  8 15:46:57 2017 Yohan.Jabin
+** Last update Mon May  8 16:38:46 2017 Yohan.Jabin
 */
 
 #ifndef MY_H_
@@ -189,6 +189,9 @@ int     get_index_var(char **, char *);
 int     check_var(t_my_var *, char **);
 char    *get_var(t_my_var *, char *);
 char    *get_var_str(char **, int);
+
+/* aff_var_alias.c */
+void	aff_var_alias(char **);
 
 /* alias.c */
 int     test_cmd_alias(t_my_var *, char **);

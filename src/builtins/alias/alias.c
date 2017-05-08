@@ -24,7 +24,7 @@ void	my_error_unsetalias(t_my_var *data, char **imp)
 void	my_error_setalias(t_my_var *data, char **imp)
 {
   if (imp[1] == NULL)
-    aff_double_tab(data->alias);
+    aff_var_alias(data->alias);
   else if (imp[2] != NULL)
     my_setalias(data, imp);
 }
