@@ -10,6 +10,20 @@
 
 #include "my.h"
 
+int	is_it_direct_path(char *path)
+{
+  int	i;
+
+  i = 0;
+  while (path[i] != 0 && path[i] != '/')
+    i++;
+  if (path[i] == 0)
+    return (1);
+  if (path[i + 1] != 0)
+    return (0);
+  return (0);
+}
+
 int     test_cmd_path(t_my_var *data, char **imp)
 {
   char	**arr_path;
@@ -21,6 +35,8 @@ int     test_cmd_path(t_my_var *data, char **imp)
       my_exec(imp[0], imp, data);
       return (0);
     }
+  if (is_it_direct_path(imp[0]) == 0)
+    return (1);
   if ((arr_path = get_arr_path(data->env)) == NULL)
     return (84);
   i = -1;
