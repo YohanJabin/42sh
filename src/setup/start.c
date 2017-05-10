@@ -5,18 +5,21 @@
 ** Login   <hugo.martin@epitech.eu>
 **
 ** Started on  Fri Apr 28 16:11:10 2017 Hugo
-** Last update	Wed May 10 11:08:12 2017 Hugo MARTIN
+** Last update	Wed May 10 11:27:52 2017 Hugo MARTIN
 */
 
 #include "my.h"
 #include "my_prompt.h"
-
+//TODO
 int	my_control(t_my_var *p, t_my_separator *s)
 {
+  //my_printf("Command: %s\nFlag: %d\nReturn Value: %d\n\n", s->command, s->flag, p->return_value);
   if (p->return_value != 0 && s->flag == 1)
     return (-1);
   else if (p->return_value != 0 && s->flag == 2)
     return (0);
+  else if (p->return_value == 0 && s->flag == 2)
+    return (-1);
   return (0);
 }
 
