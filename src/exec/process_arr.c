@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Thu Apr  6 19:50:00 2017 Yohan.Jabin
-** Last update Wed May 10 16:01:10 2017 Yohan.Jabin
+** Last update Wed May 10 16:30:29 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -79,8 +79,7 @@ int	parse_pipe(t_my_var *data, char *imp)
 {
   int	i;
 
-  if (my_full_repeat(data, imp) == -1)
-    return (1);
+  parse_pipe2(data, imp);
   i = -1;
   return (1);
 }
