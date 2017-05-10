@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 **
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update	Tue May 09 16:20:09 2017 Hugo MARTIN
+** Last update	Wed May 10 13:48:13 2017 Hugo MARTIN
 */
 
 #ifndef MY_H_
@@ -64,6 +64,12 @@ int	my_getnbr(const char *);
 void	separator(t_my_var *);
 int	my_check_char(char *, char);
 
+/*
+**  repeat
+*/
+
+void	check_repeat(t_my_var *);
+void	rm_block(t_my_list_data *);
 /* process_arr.c */
 int     parse_pipe(t_my_var *, char *);
 

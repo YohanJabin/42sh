@@ -1,9 +1,9 @@
 ##
 ## Makefile for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
-## 
+##
 ## Made by Hugo
 ## Login   <hugo.martin@epitech.eu>
-## 
+##
 ## Started on  Tue May  9 16:29:00 2017 Hugo
 ## Last update Tue May  9 16:29:05 2017 Hugo
 ##
@@ -94,13 +94,13 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/to_sort/func2.c \
 	  ./src/to_sort/func3.c \
 	  ./src/utils/my_stradd.c \
-	  ./src/utils/my_strcut.c 
+	  ./src/utils/my_strcut.c
 
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
 CFLAGS += -W -Wall -Wextra -g3
-LDLIBS = 
+LDLIBS =
 
 all: $(NAME)
 
