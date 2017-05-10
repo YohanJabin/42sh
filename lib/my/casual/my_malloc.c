@@ -1,11 +1,11 @@
 /*
-** my_malloc.c for PSU_2016_minishell2
-**
-** Made by	Adrien ZEMMA
-** Login	adrien.zemma@epitech.eu
-**
-** Started on	Mon Apr 03 17:08:23 2017 Adrien ZEMMA
-** Last update	Tue Apr 25 15:29:37 2017 Adrien ZEMMA
+** my_malloc.c for  in /home/hugo
+** 
+** Made by Hugo
+** Login   <hugo.martin@epitech.eu>
+** 
+** Started on  Tue May  9 19:02:17 2017 Hugo
+** Last update Tue May  9 19:02:20 2017 Hugo
 */
 
 #include "my.h"

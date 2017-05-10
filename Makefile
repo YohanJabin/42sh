@@ -1,3 +1,13 @@
+##
+## Makefile for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
+## 
+## Made by Hugo
+## Login   <hugo.martin@epitech.eu>
+## 
+## Started on  Tue May  9 16:29:00 2017 Hugo
+## Last update Tue May  9 16:29:05 2017 Hugo
+##
+
 NAME	= 42sh
 
 CC	= gcc
@@ -33,6 +43,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./lib/my/my_fprintf/my_putstr.c \
 	  ./lib/my/my_fprintf/my_revstr.c \
 	  ./lib/my/my_printf/my_printf.c \
+	  ./src/builtins/aff_var_alias.c \
 	  ./src/builtins/alias/alias.c \
 	  ./src/builtins/alias/arr_alias.c \
 	  ./src/builtins/alias/my_setalias.c \
@@ -55,6 +66,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/exec/arr_pipe.c \
 	  ./src/exec/check_pipe_error.c \
 	  ./src/exec/cmd.c \
+	  ./src/exec/line_formatting.c \
 	  ./src/exec/my_exec.c \
 	  ./src/exec/my_str_to_wordtab.c \
 	  ./src/exec/path.c \
@@ -82,9 +94,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/to_sort/func2.c \
 	  ./src/to_sort/func3.c \
 	  ./src/utils/my_stradd.c \
-	  ./src/utils/my_strcut.c \
-	  ./src/exec/line_formatting.c \
-	  ./src/builtins/aff_var_alias.c
+	  ./src/utils/my_strcut.c 
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -102,12 +112,12 @@ $(NAME): $(OBJS)
 
 clean:
 	@#@echo "clean OK"
-	@echo "\033[1;46m clean OK \033[0m"
+	@echo -e "\e[1;46m clean OK \e[0m"
 	@$(RM) $(OBJS)
 
 fclean:
 	@#@echo "fclean OK"
-	@echo "\033[1;46m fclean OK \033[0m"
+	@echo -e "\e[1;46m fclean OK \e[0m"
 	@$(RM) $(OBJS)
 	@$(RM) $(NAME)
 
@@ -115,6 +125,6 @@ re: fclean all
 
 %.o: %.c
 	@gcc -c -o $@ $(CFLAGS) $<
-	@echo "[\033[0;32m OK \033[0m] built '$@'"
+	@echo -e "[\e[0;32m OK \e[0m] built '$@'"
 
 .PHONY: all clean fclean re

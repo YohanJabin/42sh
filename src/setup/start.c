@@ -1,44 +1,53 @@
 /*
 ** start.c for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
-** 
+**
 ** Made by Hugo
 ** Login   <hugo.martin@epitech.eu>
-** 
+**
 ** Started on  Fri Apr 28 16:11:10 2017 Hugo
-** Last update Mon May  8 17:28:04 2017 Yohan.Jabin
+** Last update	Wed May 10 11:08:12 2017 Hugo MARTIN
 */
 
 #include "my.h"
 #include "my_prompt.h"
 
+int	my_control(t_my_var *p, t_my_separator *s)
+{
+  if (p->return_value != 0 && s->flag == 1)
+    return (-1);
+  else if (p->return_value != 0 && s->flag == 2)
+    return (0);
+  return (0);
+}
+
 int	my_start(t_my_var *p, t_my_prompt *prompt)
 {
-  t_my_list_data	*command;
+  t_my_list_data	*separator;
+  t_my_separator	*tmp;
 
   p->prompt = prompt;
   my_read_rc(prompt);
   while (42)
-  {
-    update_env(p);
-    p->exit = -1;
-    if ((my_command(p, prompt)) == -1)
+    {
+      update_env(p);
+      p->exit = -1;
+      if ((my_command(p, prompt)) == -1)
+	    {
+	      if (p->fd_to_read != 0 && close(p->fd_to_read));
+	      my_exit(p);
+	    }
+      separator = p->separator->begin;
+      p->return_value = 0;
+      while (separator && (tmp = (t_my_separator *) separator->data) &&
+              my_control(p, tmp) == 0)
       {
-	if (p->fd_to_read != 0)
-	  close(p->fd_to_read);
-	my_exit(p);
+        my_histori(tmp->command, prompt);
+        if (parse_pipe(p, tmp->command) == 84)
+          return (84);
+        separator = separator->next;
       }
-    command = p->list_command->begin;
-    p->return_value = 0;
-    while (command)
-      {
-	//my_printf("%s\n", command->data);
-	my_histori(command->data, prompt);
-	if (parse_pipe(p, command->data) == 84)
-	  return (84);
-	command = command->next;
-      }
-    if (p->exit != -1)
-      exit(p->return_value);
-  }
-  return (0);
+      if (p->exit != -1)
+	     exit(p->return_value);
+    }
+    return (0);
 }

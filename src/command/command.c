@@ -1,11 +1,11 @@
 /*
 ** command.c for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
-** 
+**
 ** Made by Hugo
 ** Login   <hugo.martin@epitech.eu>
-** 
+**
 ** Started on  Fri Apr 28 16:10:58 2017 Hugo
-** Last update Sat May  6 14:32:45 2017 Yohan.Jabin
+** Last update	Tue May 09 11:47:05 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -64,5 +64,6 @@ int	my_command(t_my_var *v, t_my_prompt *data)
     if (my_command(v, data) == -1)
       return (-1);
   my_list_command(v);
+  separator(v);
   return (0);
 }

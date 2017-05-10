@@ -1,11 +1,11 @@
 /*
 ** my.h for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
-** 
+**
 ** Made by Hugo
 ** Login   <hugo.martin@epitech.eu>
-** 
+**
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Mon May  8 16:38:46 2017 Yohan.Jabin
+** Last update	Tue May 09 16:20:09 2017 Hugo MARTIN
 */
 
 #ifndef MY_H_
@@ -61,7 +61,7 @@ int	my_getnbr(const char *);
 ** SEPARATOR
 */
 
-void	my_separator(t_my_var *);
+void	separator(t_my_var *);
 int	my_check_char(char *, char);
 
 /* process_arr.c */
