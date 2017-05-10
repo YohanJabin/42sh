@@ -10,17 +10,22 @@
 
 #include "my.h"
 
-void	my_full_repeat(t_script *s, char *c)
+int	my_full_repeat(t_my_var *data, char *c)
 {
   if (my_strcmp(c, "repeat") == 1)
   {
     if (my_check_char(c, ' ') == 2)
-    {
-      s->repeat_f = 1;
-      s->repeat_n = my_getnbr(get_arg(c, 1, " "));
-      s->repeat_n = get_arg(c, 2, " ");
-    }
+      {
+	data->script.repeat_f = 1;
+	data->script.repeat_n = my_getnbr(get_arg(c, 1, " "));
+	data->script.repeat_n = get_arg(c, 2, " ");
+      }
     else
-      my_fprintf(2, "repeat: Too few arguments.\n");
+      {
+	my_fprintf(2, "repeat: Too few arguments.\n");
+	data->return_value = 1;
+	return (-1);
+      }
   }
+  return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Thu Apr  6 19:50:00 2017 Yohan.Jabin
-** Last update Mon May  8 16:17:03 2017 Yohan.Jabin
+** Last update Wed May 10 16:01:10 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -49,7 +49,7 @@ int     create_arr_imp(t_my_var *data, char **arr_pipe)
   return (1);
 }
 
-int     parse_pipe(t_my_var *data, char *imp)
+int     parse_pipe2(t_my_var *data, char *imp)
 {
   char  **arr_pipe;
   int   return_value;
@@ -72,5 +72,15 @@ int     parse_pipe(t_my_var *data, char *imp)
 	}
       free_double_tab(arr_pipe);
     }
+  return (1);
+}
+
+int	parse_pipe(t_my_var *data, char *imp)
+{
+  int	i;
+
+  if (my_full_repeat(data, imp) == -1)
+    return (1);
+  i = -1;
   return (1);
 }

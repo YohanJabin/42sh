@@ -35,22 +35,23 @@ int	my_start(t_my_var *p, t_my_prompt *prompt)
       update_env(p);
       p->exit = -1;
       if ((my_command(p, prompt)) == -1)
-	    {
-	      if (p->fd_to_read != 0 && close(p->fd_to_read));
-	      my_exit(p);
-	    }
+	{
+	  if (p->fd_to_read != 0 && close(p->fd_to_read));
+	  my_exit(p);
+	}
       separator = p->separator->begin;
       p->return_value = 0;
+      p->script.repeat_f = 0;
       while (separator && (tmp = (t_my_separator *) separator->data) &&
-              my_control(p, tmp) == 0)
-      {
-        my_histori(tmp->command, prompt);
-        if (parse_pipe(p, tmp->command) == 84)
+	     my_control(p, tmp) == 0)
+	{
+	  my_histori(tmp->command, prompt);
+	  if (parse_pipe(p, tmp->command) == 84)
           return (84);
-        separator = separator->next;
-      }
+	  separator = separator->next;
+	}
       if (p->exit != -1)
-	     exit(p->return_value);
+	exit(p->return_value);
     }
-    return (0);
+  return (0);
 }

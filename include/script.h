@@ -20,7 +20,6 @@ typedef struct	s_script
   int		foreach_hm_words;
   int		repeat_f;
   int		repeat_n;
-  char	*repeat_c;
 }		t_script;
 
 #endif /* !SCRIPT_H_ */
