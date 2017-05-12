@@ -86,7 +86,7 @@ void    swap_cmd(char **, int);
 
 /* process_imp.c */
 int     process_imput(t_my_var *, char ***);
-void    process_imput_loop(t_my_var *, char **);
+int    process_imput_loop(t_my_var *, char **);
 
 /* redirections_right.c */
 int     open_redirections_right(t_my_var *, char *);
