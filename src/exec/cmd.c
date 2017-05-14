@@ -24,6 +24,22 @@ int	is_it_direct_path(char *path)
   return (0);
 }
 
+char	**get_hard_path(t_my_var *data)
+{
+  char	**arr_path;
+  char	*var;
+  int	index;
+
+  if ((index = get_index_var(data->var, "path")) == -1)
+    return (NULL);
+  if ((var = get_var_str(data->var, index)) == NULL)
+    return (NULL);
+  if ((arr_path = my_str_to_wordtab(var)) == NULL)
+    return (NULL);
+  free(var);
+  return (arr_path);
+}
+
 int     test_cmd_path(t_my_var *data, char **imp)
 {
   char	**arr_path;
@@ -37,7 +53,8 @@ int     test_cmd_path(t_my_var *data, char **imp)
     }
   if (is_it_direct_path(imp[0]) == 0)
     return (1);
-  if ((arr_path = get_arr_path(data->env)) == NULL)
+  if ((arr_path = get_arr_path(data->env)) == NULL
+      && (arr_path = get_hard_path(data)) == NULL)
     return (1);
   i = -1;
   while (arr_path[++i] != NULL)
