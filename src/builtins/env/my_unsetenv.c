@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Sun Mar 26 11:23:31 2017 Yohan.Jabin
-** Last update Thu Apr 27 23:39:37 2017 Yohan.Jabin
+** Last update Thu May  4 11:32:40 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -52,7 +52,7 @@ void	my_unsetenv(t_my_var *data, char **imp)
 {
   int	i;
 
-  i = -1;
+  i = 0;
   while (imp[++i] != NULL)
     delete_env(data, imp[i]);
 }

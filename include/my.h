@@ -1,11 +1,11 @@
 /*
 ** my.h for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
-** 
+**
 ** Made by Hugo
 ** Login   <hugo.martin@epitech.eu>
-** 
+**
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update Sat Apr 29 18:00:46 2017 Yohan.Jabin
+** Last update	Wed May 10 13:48:13 2017 Hugo MARTIN
 */
 
 #ifndef MY_H_
@@ -17,26 +17,38 @@
 #include "my_fprintf.h"
 #include "get_next_line.h"
 #include "list.h"
+#include "script.h"
 
 typedef	struct		s_my_var
 {
+  int			flag_prompt;
+  int			fd_to_read;
   char			**env;
+  char			**var;
+  char			**alias;
   char			*full_command;
   char			*command;
   int			return_value;
   int			exit;
   t_redir		redir;
+  t_script		script;
+  t_my_prompt		*prompt;
   t_my_list_cont	*list_command;
   t_my_list_cont	*separator;
 }			t_my_var;
 
 int	my_start(t_my_var *, t_my_prompt *);
-void	my_command(t_my_var *, t_my_prompt *);
+int	my_command(t_my_var *, t_my_prompt *);
+void    check_comment(char *);
+char	*my_strcut(char *, int, int);
+char	*my_stradd(char *, char *, int);
+char	*my_strdup(char *);
 
 /*
 ** LIB
 */
 
+char	*my_strcat(char *, char *);
 int	my_malloc(char	**, char, int);
 int	my_strncmp(char *, char *, int);
 int	my_strcmp(char *, char *);
@@ -50,9 +62,15 @@ int	my_getnbr(const char *);
 ** SEPARATOR
 */
 
-void	my_separator(t_my_var *);
+void	separator(t_my_var *);
 int	my_check_char(char *, char);
 
+/*
+**  repeat
+*/
+
+void	check_repeat(t_my_var *);
+void	rm_block(t_my_list_data *);
 /* process_arr.c */
 int     parse_pipe(t_my_var *, char *);
 
@@ -69,7 +87,7 @@ void    swap_cmd(char **, int);
 
 /* process_imp.c */
 int     process_imput(t_my_var *, char ***);
-void    process_imput_loop(t_my_var *, char **);
+int    process_imput_loop(t_my_var *, char **);
 
 /* redirections_right.c */
 int     open_redirections_right(t_my_var *, char *);
@@ -121,7 +139,7 @@ void    parse_delete_env(t_my_var *, char **, int);
 
 /* cd.c */
 int     my_cd(t_my_var *, char **);
-int     test_cd(t_my_var *, char **);
+int     test_cmd_cd(t_my_var *, char **);
 int     test_cd_old(t_my_var *, char **);
 int     test_cd_home(t_my_var *, char **);
 void    change_pwd(t_my_var *);
@@ -145,6 +163,64 @@ void    my_error_setenv(t_my_var *, char **);
 void    my_error_unsetenv(t_my_var *, char **);
 void    update_env(t_my_var *);
 int     my_error_setenv2(t_my_var *, char **);
+
+/* init_var.c */
+char	**init_var();
+char	**init_alias();
+
+/* var.c */
+int     test_cmd_var(t_my_var *, char **);
+void    my_error_setvar(t_my_var *, char **);
+int     my_error_setvar2(t_my_var *, char **);
+void    my_error_unsetvar(t_my_var *, char **);
+int	get_first_equal(char *);
+
+/* my_setvar.c */
+void	setvar(t_my_var *, char *);
+void    my_setvar(t_my_var *, char **);
+void    change_var(t_my_var *, char *, int);
+void    add_var(t_my_var *, char *);
+
+/* my_unsetvar.c */
+void    my_unsetvar(t_my_var *, char **);
+void    delete_var(t_my_var *, char *);
+void    parse_delete_var(t_my_var *, char **, int);
+
+/* arr_var.c */
+char    **cpy_arr_var(char **);
+void    parse_var(char **, char **);
+int     hm_many_var(char **);
+int     get_index_var(char **, char *);
+
+/* get_var.c */
+int     check_var(t_my_var *, char **);
+char    *get_var(t_my_var *, char *);
+char    *get_var_str(char **, int);
+
+/* aff_var_alias.c */
+void	aff_var_alias(char **);
+
+/* alias.c */
+int     test_cmd_alias(t_my_var *, char **);
+void    my_error_setalias(t_my_var *, char **);
+void    my_error_unsetalias(t_my_var *, char **);
+
+/* my_setalias.c */
+void    my_setalias(t_my_var *, char **);
+char    *get_string_to_add_alias(char **);
+void    change_alias(t_my_var *, char *, char *, int);
+void    add_alias(t_my_var *, char *, char *);
+
+/* my_unsetalias.c */
+void    my_unsetalias(t_my_var *, char **);
+void    delete_alias(t_my_var *, char *);
+void    parse_delete_alias(t_my_var *, char **, int);
+
+/* arr_alias.c */
+char    **cpy_arr_alias(char **);
+void    parse_alias(char **, char **);
+int     hm_many_alias(char **);
+int     get_index_alias(char **, char *);
 
 /* cmd.c */
 int     test_cmd_builtin(t_my_var *, char **);
@@ -181,5 +257,33 @@ void    parse_path(char **, char *);
 int     my_strlen_path(char *);
 int     hm_path(char *);
 int     get_path_index(char **);
+
+/* exit.c */
+int     test_cmd_exit(t_my_var *, char **);
+
+/* scripting.c */
+void    init_scripting(t_my_var *, int, char **);
+int     test_cmd_scripting(t_my_var *, char **);
+
+/* if.c */
+void	parse_if(t_my_var *, char **);
+void    start_if(t_my_var *);
+
+/* foreach.c */
+void    parse_foreach(t_my_var *, char **);
+
+/* process_foreach.c */
+void    start_foreach(t_my_var *);
+char	**get_foreach_cmd(t_my_var *);
+
+/* which.c */
+int     test_cmd_which(t_my_var *, char **);
+
+/* line_formatting.c */
+int     format_imput(t_my_var *, char **);
+int	check_alias(t_my_var *, char *);
+
+/* tab_formating.c */
+int     tab_formating(t_my_var *, char **);
 
 #endif /* !MY_H_ */

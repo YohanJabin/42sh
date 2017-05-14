@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.net>
 **
 ** Started on  Tue Oct 18 09:05:12 2016 Hugo MARTIN
-** Last update	Fri Apr 21 11:23:04 2017 Hugo MARTIN
+** Last update	Tue May 09 11:51:13 2017 Hugo MARTIN
 */
 
 #ifndef LIST_H_
@@ -28,6 +28,12 @@ typedef struct	s_my_list_cont
   struct s_my_list_data	*begin;
   struct s_my_list_data	*end;
 } t_my_list_cont;
+
+typedef struct	s_my_separator
+{
+  char	*command;
+  int	flag;
+} t_my_separator;
 
 void	rm_end_list(t_my_list_cont **);
 void	rm_start_list(t_my_list_cont **);

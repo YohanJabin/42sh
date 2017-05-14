@@ -1,11 +1,11 @@
 /*
 ** command.c for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
-** 
+**
 ** Made by Hugo
 ** Login   <hugo.martin@epitech.eu>
-** 
+**
 ** Started on  Fri Apr 28 16:10:58 2017 Hugo
-** Last update Mon May  1 12:05:00 2017 Yohan.Jabin
+** Last update	Wed May 10 15:20:31 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -46,15 +46,24 @@ void	my_list_command(t_my_var *v)
     add_end_list(&v->list_command, my_pure(v->full_command));
 }
 
-void	my_command(t_my_var *v, t_my_prompt *data)
+int	my_command(t_my_var *v, t_my_prompt *data)
 {
-  if (isatty(0))
-    my_prompt(data);
+  if (isatty(0) && v->flag_prompt == 1)
+    {
+      if (v->script.foreach_status == 1)
+	my_printf("foreach? ");
+      else
+	my_prompt(data);
+    }
   //if (v->return_value != 0 && isatty(0) == 0)
   //my_exit(v);
-  if ((v->full_command = get_next_line(0)) == NULL)
-    my_exit(v);
-  else if (v->full_command[0] == '\0')
-      my_command(v, data);
+  if ((v->full_command = get_next_line(v->fd_to_read)) == NULL)
+    return (-1);
+  check_comment(v->full_command);
+  if (v->full_command[0] == '\0')
+    if (my_command(v, data) == -1)
+      return (-1);
   my_list_command(v);
+  separator(v);
+  return (0);
 }

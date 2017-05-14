@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Apr  4 19:49:10 2017 Yohan.Jabin
-** Last update Fri Apr 28 00:18:10 2017 Yohan.Jabin
+** Last update Fri May 12 13:30:53 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -16,13 +16,23 @@ int	open_redirections_right(t_my_var *data, char *str)
     {
       if ((data->redir.output =
 	   open(str, O_CREAT | O_WRONLY | O_TRUNC, 0664)) == -1)
-	return (84);
+	{
+	  if (errno)
+	    my_printf("%s: %s.\n", str, strerror(errno));
+	  data->return_value = 1;
+	  return (84);
+	}
     }
   else if (data->redir.flag_redir_right == 2)
     {
       if ((data->redir.output =
 	   open(str, O_CREAT | O_WRONLY | O_APPEND, 0664)) == -1)
-	return (84);
+	{
+	  if (errno)
+	    my_printf("%s: %s.\n", str, strerror(errno));
+	  data->return_value = 1;
+	  return (84);
+	}
     }
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Apr  4 19:49:10 2017 Yohan.Jabin
-** Last update Mon May  1 15:59:15 2017 Yohan.Jabin
+** Last update Fri May 12 13:31:00 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -16,7 +16,12 @@ int     open_redirections_left(t_my_var *data, char *str)
     my_fprintf(2, "%s: %s.\n", str, strerror(errno));
   if ((data->redir.input =
        open(str, O_RDWR)) == -1)
-    return (84);
+    {
+      if (errno)
+	my_printf("%s: %s.\n", str, strerror(errno));
+      data->return_value = 1;
+      return (84);
+    }
   return (0);
 }
 

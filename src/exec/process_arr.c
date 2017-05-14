@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Thu Apr  6 19:50:00 2017 Yohan.Jabin
-** Last update Mon May  1 15:29:22 2017 Yohan.Jabin
+** Last update Sun May 14 14:18:02 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -49,13 +49,18 @@ int     create_arr_imp(t_my_var *data, char **arr_pipe)
   return (1);
 }
 
-int     parse_pipe(t_my_var *data, char *imp)
+int     parse_pipe2(t_my_var *data, char *imp)
 {
   char  **arr_pipe;
   int   return_value;
 
+  if (format_imput(data, &imp) != 0)
+    return (1);
   if ((arr_pipe = create_arr_pipe(imp)) == NULL)
-    my_fprintf(2, "Invalid null command.\n");
+    {
+      my_fprintf(2, "Invalid null command.\n");
+      data->return_value = 1;
+    }
   else
     {
       data->redir.hm_pipe = hm_line_on_tab(arr_pipe);
@@ -67,5 +72,11 @@ int     parse_pipe(t_my_var *data, char *imp)
 	}
       free_double_tab(arr_pipe);
     }
+  return (1);
+}
+
+int	parse_pipe(t_my_var *data, char *imp)
+{
+  parse_pipe2(data, imp);
   return (1);
 }

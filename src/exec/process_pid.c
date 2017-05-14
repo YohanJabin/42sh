@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Apr 21 12:05:23 2017 Yohan.Jabin
-** Last update Mon May  1 15:46:15 2017 Yohan.Jabin
+** Last update Thu May  4 21:02:56 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -28,6 +28,7 @@ void	wait_all_pid(t_my_var *data)
   int	status;
   int	i;
 
+  status = 0;
   i = -1;
   while (++i < data->redir.hm_pid)
     {

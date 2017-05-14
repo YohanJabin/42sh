@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Thu Apr  6 19:32:07 2017 Yohan.Jabin
-** Last update Fri Apr 28 00:17:16 2017 Yohan.Jabin
+** Last update Mon May  8 16:16:03 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -24,11 +24,13 @@ int	check_redirection_error(t_my_var *data, char ***imp)
 	  if (imp[i][j][0] == '>' && i != data->redir.hm_pipe - 1)
 	    {
 	      my_fprintf(2, "Ambiguous output redirect.\n");
+	      data->return_value = 1;
 	      return (84);
 	    }
 	  if (imp[i][j][0] == '<' && i != 0)
 	    {
 	      my_fprintf(2, "Ambiguous input redirect.\n");
+	      data->return_value = 1;
 	      return (84);
 	    }
 	}

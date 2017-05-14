@@ -1,5 +1,5 @@
 /*
-1;4205;0c** my_str_to_wordtab.c for minishell in /home/yohan/repo/PSU/PSU_2016_minishell2/src
+** my_str_to_wordtab.c for minishell in /home/yohan/repo/PSU/PSU_2016_minishell2/src
 **
 ** Made by Yohan.Jabin
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
@@ -20,14 +20,17 @@ int	hm_word(char *str)
   while (str[i] != 0)
     {
       if (str[i] != 0 && (str[i] == ' ' || str[i] == '\t'))
-	{
-	  while (str[i] == ' ' || str[i] == '\t')
-	    i++;
-	}
+	while (str[++i] == ' ' || str[i] == '\t');
       else
 	{
-	  while (str[i] != 0 && (str[i] != ' ' && str[i] != '\t'))
-	    i++;
+	  if (str[i] == '"' && (i == 0 || str[i - 1] != '\\'))
+	    {
+	      while (str[++i] != 0 && (str[i] != '"' || str[i - 1] == '\\'));
+	      i++;
+	    }
+	  else
+	    while (str[i] != 0 && (str[i] != ' ' && str[i] != '\t'))
+	      i++;
 	  return_value++;
 	}
     }
@@ -38,6 +41,13 @@ int	size_word(char *str)
 {
   int	i;
 
+  i = 0;
+  if (str[i] == '"')
+    while (str[++i] != 0)
+      {
+	if (str[i] == '"' && str[i - 1] != '\\')
+	  return (i - 1);
+      }
   i = -1;
   while (str[++i] != 0)
     if (str[i] == ' ' || str[i] == '\t')
@@ -58,9 +68,13 @@ void	parse_tab(char **tab, char *str, int hm)
       while (str[j] == ' ' || str[j] == '\t')
 	j++;
       size = size_word(&str[j]);
+      if (str[j] == '"')
+	j++;
       tab[i] = malloc(sizeof(char) * (size + 1));
       my_strncpy(tab[i], &str[j], size);
       j += size;
+      if (str[j] == '"')
+	j++;
       tab[i][size] = 0;
       i++;
     }

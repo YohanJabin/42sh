@@ -5,54 +5,77 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Fri Apr 28 09:52:43 2017 Hugo MARTIN
-** Last update	Fri Apr 28 14:11:09 2017 Hugo MARTIN
+** Last update	Wed May 10 15:21:40 2017 Hugo MARTIN
 */
 
 #include "my.h"
 
-void	my_double_end(t_my_var *p, char *command)
+int	send_double(t_my_var *v, char *command, int flag)
 {
-  char	*tmp;
-  int	i;
-  int	j;
+  t_my_separator	*s;
+  static int f = 0;
 
-  i = -1;
-  j = -1;
-  my_printf("DOUBLE END\n");
-  my_malloc(&tmp, '\0', my_strlen(command));
-  while (command[++i] != '&');
-  my_printf("%d\n", i);
-  while (++j < i)
-    tmp[j] = command[j];
-  j = -1;
-  while (++j <= i)
-    command++;
-  my_printf("%s\n%s\n", command, tmp);
+  if ((s = malloc(sizeof(*s))) == NULL)
+    return (-1);
+  s->flag = f;
+  f = flag;
+  s->command = my_pure(command);
+  add_end_list(&v->separator, s);
+  return (0);
 }
 
-void	my_separator(t_my_var *p)
+int	my_check_separator(t_my_var *v, char *command)
 {
-  t_my_list_data *command;
   int	i;
   int	j;
   char	*str;
-  char	*s;
 
-  p->separator = NULL;
-  command = p->list_command->begin;
+  i = -1;
+  j = -1;
+  my_malloc(&str, '\0', my_strlen(command) + 1);
+  while (command[++i])
+  {
+    if (command[i] == '&' && command[i + 1] && command[i + 1] == '&' && (i += 2))
+    {
+      send_double(v, str, 1);
+      my_malloc(&str, '\0', my_strlen(command) + 1);
+      j = -1;
+    }
+    else if (command[i] == '|' && command[i + 1] && command[i + 1] == '|' && (i += 2))
+    {
+      send_double(v, str, 2);
+      my_malloc(&str, '\0', my_strlen(command) + 1);
+      j = -1;
+    }
+    str[++j] = command[i];
+  }
+  send_double(v, str, 0);
+  return (0);
+}
+
+void	debug_separator(t_my_list_cont *c)
+{
+  t_my_list_data	*d;
+  t_my_separator	*s;
+
+  d = c->begin;
+  while (d)
+  {
+    s = (t_my_separator *)d->data;
+    my_printf("Command: [%s]\nFlag: %d\n\n", s->command, s->flag);
+    d = d->next;
+  }
+}
+
+void	separator(t_my_var *v)
+{
+  t_my_list_data	*command;
+
+  command = v->list_command->begin;
+  v->separator = NULL;
   while (command)
   {
-    my_malloc(&str, '\0', my_strlen(command->data) + 1);
-    i = -1;
-    j = -1;
-    s = (char *)command->data;
-    while (s[++i])
-    {
-      str[++j] = s[i];
-      if (s[i] == '&' && my_check_char(command->data, '&') == 2)
-        my_double_end(p, str);
-    }
+    my_check_separator(v, (char *)command->data);
     command = command->next;
   }
-  exit (0);
 }
