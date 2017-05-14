@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Sun May 14 15:51:35 2017 Yohan.Jabin
+** Last update Sun May 14 18:32:08 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -50,8 +50,28 @@ int	format_change_var(t_my_var *data, char **imp, int i)
     return (1);
   *imp = my_strcut(*imp, i, var_len + 1 + (flag * 2));
   *imp = my_stradd(*imp, var, i);
-  free(to_search);
-  free(var);
+  return (0);
+}
+
+int	magic_quote(t_my_var *data, char **imp, int *i)
+{
+  *imp = my_strcut(*imp, *i, 1);
+  (*i)--;
+  my_printf("f_trunc:%s\n", &(*imp)[*i]);
+  while ((*imp)[++(*i)] != 0 && (*imp)[*i] != '\'')
+    my_printf("mid_trunc:%s\n", &(*imp)[*i]);
+  if ((*imp)[*i] == 0)
+    {
+      my_fprintf(2, "Unmatched '''.\n");
+      data->return_value = 1;
+      return (84);
+    }
+  if ((*imp)[*i] == '\'')
+    {
+      *imp = my_strcut(*imp, *i, 1);
+      (*i)--;
+      my_printf("l_trunc:%s\n", &(*imp)[*i]);
+    }
   return (0);
 }
 
@@ -70,6 +90,9 @@ int	format_imput(t_my_var *data, char **imp)
 	    return (1);
 	  i--;
 	}
+      if ((*imp)[i] == '\'' && (i == 0 || (*imp)[i - 1] != '\\'))
+	if (magic_quote(data, imp, &i) == 84)
+	  return (1);
     }
   return (0);
 }
