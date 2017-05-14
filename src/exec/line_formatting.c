@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Sun May 14 15:13:01 2017 Yohan.Jabin
+** Last update Sun May 14 15:51:35 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -53,20 +53,6 @@ int	format_change_var(t_my_var *data, char **imp, int i)
   free(to_search);
   free(var);
   return (0);
-}
-
-void	format_change_alias(t_my_var *data, char **imp, int i)
-{
-  int	index;
-  char	*var;
-  int	len;
-
-  if ((index = check_alias(data, &(*imp)[i])) == -1)
-    return ;
-  len = get_first_equal(data->alias[index]);
-  var = get_var_str(data->alias, index);
-  *imp = my_strcut(*imp, i, len);
-  *imp = my_stradd(*imp, var, i);
 }
 
 int	format_imput(t_my_var *data, char **imp)

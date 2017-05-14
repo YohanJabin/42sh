@@ -5,10 +5,28 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Apr  4 18:16:20 2017 Yohan.Jabin
-** Last update Fri May 12 16:47:42 2017 Yohan.Jabin
+** Last update Sun May 14 16:12:29 2017 Yohan.Jabin
 */
 
 #include "my.h"
+
+void	check_pipe_exit(t_my_var *data, char ***imp)
+{
+  int	i;
+  int	ret;
+
+  i = -1;
+  while (imp[++i] != NULL)
+    {
+      if (my_strncmp(imp[i][0], "exit", 5) == 1)
+	{
+	  ret = 0;
+	  if (imp[i][1] != NULL)
+	    ret = my_getnbr(imp[i][1]);
+	  data->return_value = ret;
+	}
+    }
+}
 
 int	init_imput_loop(t_my_var *data)
 {
@@ -88,5 +106,6 @@ int	process_imput(t_my_var *data, char ***imp)
   close(fd_save[0]);
   dup2(fd_save[1], 1);
   close(fd_save[1]);
+  //check_pipe_exit(data, imp);
   return (1);
 }
