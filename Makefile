@@ -1,13 +1,3 @@
-##
-## Makefile for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
-##
-## Made by Hugo
-## Login   <hugo.martin@epitech.eu>
-##
-## Started on  Tue May  9 16:29:00 2017 Hugo
-## Last update Tue May  9 16:29:05 2017 Hugo
-##
-
 NAME	= 42sh
 
 CC	= gcc
@@ -82,6 +72,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/redir/new_redirect_tab.c \
 	  ./src/redir/redirections_left.c \
 	  ./src/redir/redirections_right.c \
+	  ./src/repeat/repeat.c \
 	  ./src/scripting/foreach.c \
 	  ./src/scripting/if.c \
 	  ./src/scripting/process_foreach.c \
@@ -94,13 +85,13 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/to_sort/func2.c \
 	  ./src/to_sort/func3.c \
 	  ./src/utils/my_stradd.c \
-	  ./src/utils/my_strcut.c
+	  ./src/utils/my_strcut.c 
 
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
 CFLAGS += -W -Wall -Wextra -g3
-LDLIBS =
+LDLIBS = 
 
 all: $(NAME)
 
@@ -112,12 +103,12 @@ $(NAME): $(OBJS)
 
 clean:
 	@#@echo "clean OK"
-	@echo -e "\e[1;46m clean OK \e[0m"
+	@echo "\033[1;46m clean OK \033[0m"
 	@$(RM) $(OBJS)
 
 fclean:
 	@#@echo "fclean OK"
-	@echo -e "\e[1;46m fclean OK \e[0m"
+	@echo "\033[1;46m fclean OK \033[0m"
 	@$(RM) $(OBJS)
 	@$(RM) $(NAME)
 
@@ -125,6 +116,6 @@ re: fclean all
 
 %.o: %.c
 	@gcc -c -o $@ $(CFLAGS) $<
-	@echo -e "[\e[0;32m OK \e[0m] built '$@'"
+	@echo "[\033[0;32m OK \033[0m] built '$@'"
 
 .PHONY: all clean fclean re

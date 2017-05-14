@@ -38,7 +38,7 @@ int     test_cmd_path(t_my_var *data, char **imp)
   if (is_it_direct_path(imp[0]) == 0)
     return (1);
   if ((arr_path = get_arr_path(data->env)) == NULL)
-    return (84);
+    return (1);
   i = -1;
   while (arr_path[++i] != NULL)
     {
@@ -46,9 +46,12 @@ int     test_cmd_path(t_my_var *data, char **imp)
       if (imp[0][0] != '/' && access(binary, F_OK) == 0)
 	{
 	  my_exec(binary, imp, data);
+	  free_double_tab(arr_path);
 	  return (0);
 	}
+      free(binary);
     }
+  free_double_tab(arr_path);
   return (1);
 }
 
