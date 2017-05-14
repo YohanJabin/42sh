@@ -42,6 +42,7 @@ int	my_command(t_my_var *, t_my_prompt *);
 void    check_comment(char *);
 char	*my_strcut(char *, int, int);
 char	*my_stradd(char *, char *, int);
+char	*my_strdup(char *);
 
 /*
 ** LIB
@@ -281,5 +282,8 @@ int     test_cmd_which(t_my_var *, char **);
 /* line_formatting.c */
 int     format_imput(t_my_var *, char **);
 int	check_alias(t_my_var *, char *);
+
+/* tab_formating.c */
+int     tab_formating(t_my_var *, char **);
 
 #endif /* !MY_H_ */

@@ -85,7 +85,8 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/to_sort/func2.c \
 	  ./src/to_sort/func3.c \
 	  ./src/utils/my_stradd.c \
-	  ./src/utils/my_strcut.c 
+	  ./src/utils/my_strcut.c \
+	  ./src/exec/tab_formating.c
 
 OBJS	= $(SRCS:.c=.o)
 

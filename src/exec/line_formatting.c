@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Mon May  8 16:30:23 2017 Yohan.Jabin
+** Last update Sun May 14 15:13:01 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -31,16 +31,27 @@ int	format_change_var(t_my_var *data, char **imp, int i)
   int	var_len;
   char	*to_search;
   char	*var;
+  int	flag;
 
-  var_len = get_var_len(&(*imp)[i + 1]);
+  flag = 0;
+  if ((*imp)[i + 1] == '{')
+    flag = 1;
+  var_len = get_var_len(&(*imp)[i + 1 + flag]);
+  if (flag == 1 && (*imp)[i + 1 + flag + var_len] != '}')
+    {
+      my_fprintf(2, "Missing '}'.\n");
+      return (1);
+    }
   if ((to_search = malloc(sizeof(char) * (var_len + 1))) == NULL)
     return (1);
   my_memset(to_search, 0, var_len + 1);
-  my_strncpy(to_search, &(*imp)[i + 1], var_len);
+  my_strncpy(to_search, &(*imp)[i + 1 + flag], var_len);
   if ((var = get_var(data, to_search)) == NULL)
     return (1);
-  *imp = my_strcut(*imp, i, var_len + 1);
+  *imp = my_strcut(*imp, i, var_len + 1 + (flag * 2));
   *imp = my_stradd(*imp, var, i);
+  free(to_search);
+  free(var);
   return (0);
 }
 
@@ -61,16 +72,10 @@ void	format_change_alias(t_my_var *data, char **imp, int i)
 int	format_imput(t_my_var *data, char **imp)
 {
   int	i;
-  char	**arr;
 
-  arr = my_str_to_wordtab(*imp);
-  if (my_strncmp(arr[0], "where", 6) == 1
-      || my_strncmp(arr[0], "which", 6) == 1)
-    return (0);
   i = -1;
   while ((*imp)[++i] != 0)
     {
-      format_change_alias(data, imp, i);
       if ((*imp)[i] == '(' || (*imp)[i] == ')')
 	*imp = my_strcut(*imp, i--, 1);
       if ((*imp)[i] == '$')

@@ -1,0 +1,12 @@
+/*
+** tab_formating.c for 42sh in /home/yohan/repo/PSU/PSU_2016_42sh/src/exec
+** 
+** Made by Yohan.Jabin
+** Login   <yohan.jabin@epitech.eu>
+** 
+** Started on  Sun May 14 15:16:08 2017 Yohan.Jabin
+** Last update Sun May 14 15:16:16 2017 Yohan.Jabin
+*/
+
+#include "my.h"
+
