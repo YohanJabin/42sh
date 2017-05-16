@@ -56,13 +56,18 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/exec/arr_pipe.c \
 	  ./src/exec/check_pipe_error.c \
 	  ./src/exec/cmd.c \
-	  ./src/exec/line_formatting.c \
 	  ./src/exec/my_exec.c \
 	  ./src/exec/my_str_to_wordtab.c \
 	  ./src/exec/path.c \
 	  ./src/exec/process_arr.c \
 	  ./src/exec/process_imp.c \
 	  ./src/exec/process_pid.c \
+	  ./src/formatting/globbing/arr_star.c \
+	  ./src/formatting/globbing/globbing.c \
+	  ./src/formatting/globbing/globbing_error.c \
+	  ./src/formatting/globbing/globbing_manip.c \
+	  ./src/formatting/line_formatting.c \
+	  ./src/formatting/tab_formatting.c \
 	  ./src/main.c \
 	  ./src/prompt/histori.c \
 	  ./src/prompt/my_prompt.c \
@@ -85,8 +90,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/to_sort/func2.c \
 	  ./src/to_sort/func3.c \
 	  ./src/utils/my_stradd.c \
-	  ./src/utils/my_strcut.c \
-	  ./src/exec/tab_formating.c
+	  ./src/utils/my_strcut.c 
 
 OBJS	= $(SRCS:.c=.o)
 

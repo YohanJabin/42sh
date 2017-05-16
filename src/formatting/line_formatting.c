@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Sun May 14 18:32:08 2017 Yohan.Jabin
+** Last update Tue May 16 21:05:50 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -92,6 +92,9 @@ int	format_imput(t_my_var *data, char **imp)
 	}
       if ((*imp)[i] == '\'' && (i == 0 || (*imp)[i - 1] != '\\'))
 	if (magic_quote(data, imp, &i) == 84)
+	  return (1);
+      if ((*imp)[i] == '*')
+	if (format_globbing(data, imp, i) == -1)
 	  return (1);
     }
   return (0);
