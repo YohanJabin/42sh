@@ -10,6 +10,8 @@
 
 #include "my.h"
 
+
+
 int	main(int ac, char **av, char **env)
 {
   t_my_var	*p;
@@ -18,9 +20,11 @@ int	main(int ac, char **av, char **env)
   p = malloc(sizeof(*p));
   prompt = malloc(sizeof(t_my_prompt));
   p->return_value = 0;
-  p->env = cpy_arr_env(env);
   p->var = init_var();
+  if (env[0] == NULL)
+    setvar(p, "path=/usr/bin /bin");
   p->alias = init_alias();
+  p->env = cpy_arr_env(env);
   change_pwd(p);
   init_scripting(p, ac, av);
   my_start(p, prompt);

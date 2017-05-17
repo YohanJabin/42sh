@@ -1,14 +1,32 @@
 /*
-** process_imp.c for minishell in /home/yohan/repo/PSU/PSU_2016_minishell2/src
-**
-** Made by Yohan.Jabin
-** Login   <yohan.jabin@epitech.eu@epitech.net>
-**
-** Started on  Tue Apr  4 18:16:20 2017 Yohan.Jabin
-** Last update	Wed May 17 09:27:59 2017 Hugo MARTIN
+** process_imp.c for  in /home/hugo/Epitech/B2/PSU/PSU_2016_42sh
+** 
+** Made by Hugo
+** Login   <hugo.martin@epitech.eu>
+** 
+** Started on  Wed May 17 15:11:35 2017 Hugo
+** Last update Wed May 17 15:11:36 2017 Hugo
 */
 
 #include "my.h"
+
+void	check_pipe_exit(t_my_var *data, char ***imp)
+{
+  int	i;
+  int	ret;
+
+  i = -1;
+  while (imp[++i] != NULL)
+    {
+      if (my_strncmp(imp[i][0], "exit", 5) == 1)
+	{
+	  ret = 0;
+	  if (imp[i][1] != NULL)
+	    ret = my_getnbr(imp[i][1]);
+	  data->return_value = ret;
+	}
+    }
+}
 
 int	init_imput_loop(t_my_var *data)
 {
@@ -88,5 +106,6 @@ int	process_imput(t_my_var *data, char ***imp)
   close(fd_save[0]);
   dup2(fd_save[1], 1);
   close(fd_save[1]);
+  //check_pipe_exit(data, imp);
   return (1);
 }
