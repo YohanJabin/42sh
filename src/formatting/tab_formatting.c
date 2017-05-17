@@ -5,12 +5,12 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Sun May 14 15:16:08 2017 Yohan.Jabin
-** Last update Sun May 14 15:28:41 2017 Yohan.Jabin
+** Last update Mon May 15 11:04:33 2017 Yohan.Jabin
 */
 
 #include "my.h"
 
-int	tab_formating(t_my_var *data, char **imp)
+int	tab_formatting(t_my_var *data, char **imp)
 {
   int	index;
   char	*var;

@@ -11,6 +11,7 @@
 #ifndef MY_H_
 # define MY_H_
 
+#include <dirent.h>
 #include "redir.h"
 #include "my_prompt.h"
 #include "my_printf.h"
@@ -284,6 +285,19 @@ int     format_imput(t_my_var *, char **);
 int	check_alias(t_my_var *, char *);
 
 /* tab_formating.c */
-int     tab_formating(t_my_var *, char **);
+int     tab_formatting(t_my_var *, char **);
+
+/* globbing.c */
+int     format_globbing(t_my_var *, char **, int);
+
+/* globbing_manip.c */
+char    **get_file_arr(char *);
+char    *get_globbing_filename(char *);
+
+/* arr_star.c */
+char    **create_arr_star(char *);
+
+/* globbing_error.c */
+int     globbing_no_match(t_my_var *, char **, char *);
 
 #endif /* !MY_H_ */
