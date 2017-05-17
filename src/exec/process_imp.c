@@ -1,11 +1,11 @@
 /*
 ** process_imp.c for minishell in /home/yohan/repo/PSU/PSU_2016_minishell2/src
-** 
+**
 ** Made by Yohan.Jabin
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
-** 
+**
 ** Started on  Tue Apr  4 18:16:20 2017 Yohan.Jabin
-** Last update Fri May 12 13:27:11 2017 Yohan.Jabin
+** Last update	Wed May 17 09:27:59 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -46,7 +46,7 @@ int	reset_imput_loop(t_my_var *data, char **imp)
 int	process_imput_loop(t_my_var *data, char **imp)
 {
   if (pipe(data->redir.fd_pipe) == -1)
-    my_fprintf(2, "erorr:%s\n", strerror(errno));
+    my_fprintf(2, "error:%s\n", strerror(errno));
   data->redir.output = data->redir.fd_pipe[1];
   if (data->redir.input != 0)
     {

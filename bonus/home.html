@@ -1,0 +1,24 @@
+<html>
+<head>
+<script>
+  function attribuerFocus()
+  {
+    document.getElementById(command).focus();
+  }
+</script>
+
+
+<center><h1 style="color: red;">Command Control</h1></center>
+% for line in arr:
+{{line}}<br>
+%end
+<body style="background-color: black; color: #17A10B;">
+  <form action="/command" method="post">
+      Command to send: <input name="command" type="text" autofocus/>
+      <input value="Send" type="submit" />
+  </form>
+
+</body>
+
+</head>
+</html>
