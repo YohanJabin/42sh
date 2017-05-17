@@ -5,10 +5,24 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May 15 11:07:46 2017 Yohan.Jabin
-** Last update Tue May 16 21:08:11 2017 Yohan.Jabin
+** Last update Wed May 17 11:21:56 2017 Yohan.Jabin
 */
 
 #include "my.h"
+
+int	my_strncmp_globbing(char *str1, char *str2, int n)
+{
+  int	i;
+
+  i = -1;
+  while (++i < n)
+    {
+      if (str1[i] != '?' && str2[i] != '?')
+	if (str1[i] != str2[i])
+	  return (0);
+    }
+  return (1);
+}
 
 int	cmp_globbing(char *file, char **arr_star)
 {
@@ -24,22 +38,26 @@ int	cmp_globbing(char *file, char **arr_star)
     {
       len = my_strlen(arr_star[j]);
       while (i < my_strlen(file)
-	     && my_strncmp(&file[i], arr_star[j], len) == 0)
+	     && my_strncmp_globbing(&file[i], arr_star[j], len) == 0)
 	i++;
-      if (my_strncmp(&file[i], arr_star[j], len) == 0)
+      if (my_strncmp_globbing(&file[i], arr_star[j], len) == 0)
 	return (0);
       i += len;
     }
   return (1);
 }
 
-int	tranform_globbing(char **imp, char **arr_file, char *to_process, int j)
+int	tranform_globbing(char **imp,
+			  char **arr_file,
+			  char *to_process,
+			  int j,
+			  char *filename)
 {
   char	**arr_star;
   int	i;
 
   if ((arr_star = create_arr_star(to_process)) == NULL)
-    return (84);
+    return (-1);
   i = -1;
   while (arr_file[++i] != NULL)
     {
@@ -51,9 +69,11 @@ int	tranform_globbing(char **imp, char **arr_file, char *to_process, int j)
     {
       if (arr_file[i][0] != 0)
 	{
+	  *imp = my_stradd(*imp, filename, j);
+	  j += my_strlen(filename);
 	  *imp = my_stradd(*imp, arr_file[i], j);
-	  *imp = my_stradd(*imp, " ", j);
-	  j += my_strlen(arr_file[i]) + 1;
+	  j += my_strlen(arr_file[i]);
+	  *imp = my_stradd(*imp, " ", j++);
 	}
     }
   return (0);
@@ -81,7 +101,7 @@ int	format_globbing(t_my_var *data, char **imp, int i)
   if ((j = my_strlen(filename)) <= 1 && filename[0] == '.')
     j = 0;
   *imp = my_strcut(*imp, i, my_strlen(to_process));
-  if (tranform_globbing(imp, arr_file, &to_process[j], i) == 84)
+  if (tranform_globbing(imp, arr_file, &to_process[j], i, filename) == 84)
     return (-1);
   if (globbing_no_match(data, arr_file, *imp) == 84)
     return (-1);

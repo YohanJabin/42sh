@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Tue May 16 21:05:50 2017 Yohan.Jabin
+** Last update Wed May 17 10:47:36 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -57,9 +57,7 @@ int	magic_quote(t_my_var *data, char **imp, int *i)
 {
   *imp = my_strcut(*imp, *i, 1);
   (*i)--;
-  my_printf("f_trunc:%s\n", &(*imp)[*i]);
-  while ((*imp)[++(*i)] != 0 && (*imp)[*i] != '\'')
-    my_printf("mid_trunc:%s\n", &(*imp)[*i]);
+  while ((*imp)[++(*i)] != 0 && (*imp)[*i] != '\'');
   if ((*imp)[*i] == 0)
     {
       my_fprintf(2, "Unmatched '''.\n");
@@ -70,7 +68,6 @@ int	magic_quote(t_my_var *data, char **imp, int *i)
     {
       *imp = my_strcut(*imp, *i, 1);
       (*i)--;
-      my_printf("l_trunc:%s\n", &(*imp)[*i]);
     }
   return (0);
 }
@@ -94,7 +91,7 @@ int	format_imput(t_my_var *data, char **imp)
 	if (magic_quote(data, imp, &i) == 84)
 	  return (1);
       if ((*imp)[i] == '*')
-	if (format_globbing(data, imp, i) == -1)
+	if ((i = format_globbing(data, imp, i)) == -1)
 	  return (1);
     }
   return (0);
