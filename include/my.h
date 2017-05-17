@@ -300,4 +300,7 @@ char    **create_arr_star(char *);
 /* globbing_error.c */
 int     globbing_no_match(t_my_var *, char **, char *);
 
+/* echo.c */
+int     test_cmd_echo(t_my_var *, char **);
+
 #endif /* !MY_H_ */

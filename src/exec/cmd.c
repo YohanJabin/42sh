@@ -81,6 +81,8 @@ int	test_cmd_builtin(t_my_var *data, char **imp)
     return (1);
   if (test_cmd_scripting(data, imp) == 0)
     return (1);
+  if (test_cmd_echo(data, imp) == 0)
+    return (1);
   if (test_cmd_cd(data, imp) == 0)
     return (1);
   if (test_cmd_exit(data, imp) == 0)
