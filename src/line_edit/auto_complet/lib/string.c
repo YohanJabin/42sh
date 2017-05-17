@@ -5,7 +5,7 @@
 ** Login   <camille.gouneau@epitech.eu>
 **
 ** Started on  Tue May  2 13:37:09 2017 Camille Gouneau
-** Last update Wed May  3 17:38:11 2017 Camille Gouneau
+** Last update Thu May  4 12:00:37 2017 Camille Gouneau
 */
 
 #include  <string.h>
@@ -56,13 +56,20 @@ char  **my_realloc_star(char **tab)
   char **str_real;
 
   i = 0;
-  str_real = my_malloc(sizeof(char *) * (vs(tab) + 1));
+  str_real = my_malloc(sizeof(char *) * (vs(tab) + 2));
+  str_real[vs(tab) + 1] = NULL;
   str_real[vs(tab)] = NULL;
   while (tab[i])
     {
       str_real[i] = my_malloc(sizeof(char) * (my_strlen(tab[i]) + 1));
       str_real[i][my_strlen(tab[i])] = '\0';
-      str_real[i] = tab[i];
+      str_real[i] = my_put_in_char(str_real[i], tab[i]);
+      i++;
+    }
+  i = 0;
+  while (tab[i])
+    {
+      free (tab[i]);
       i++;
     }
   free (tab);

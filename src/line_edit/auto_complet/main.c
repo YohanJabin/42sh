@@ -5,7 +5,7 @@
 ** Login   <camille.gouneau@epitech.eu>
 **
 ** Started on  Tue May  2 10:57:05 2017 Camille Gouneau
-** Last update Wed May  3 11:55:08 2017 Camille Gouneau
+** Last update Thu May 11 19:08:03 2017 Camille Gouneau
 */
 
 #include  <stdio.h>
@@ -23,7 +23,7 @@ int main(void)
   while (1)
   {
     if (isatty(0) == 1)
-      my_fput("auto_completion_v0.1> ", 1);
+      my_fput("auto_completion_v0.2> ", 1);
     gnl_return = get_next_line(0);
     if (gnl_return == NULL)
       return (to_return);

@@ -5,7 +5,7 @@
 ** Login   <camille.gouneau@epitech.eu>
 **
 ** Started on  Mon Mar 20 19:52:26 2017 Camille Gouneau
-** Last update Wed May  3 11:08:39 2017 Camille Gouneau
+** Last update Thu May  4 12:02:00 2017 Camille Gouneau
 */
 
 #include  <stdlib.h>
@@ -47,5 +47,6 @@ char    **create_path()
       return (NULL);
   path_str = remove_path(environ[i], "PATH=");
   path_list = str_to_word_tab(path_str, ':');
+  free (path_str);
   return (path_list);
 }

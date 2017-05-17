@@ -5,14 +5,19 @@
 ## Login   <camille.gouneau@epitech.eu>
 ##
 ## Started on  Tue May  2 11:00:13 2017 Camille Gouneau
-## Last update Wed May  3 16:58:20 2017 Camille Gouneau
+## Last update Thu May 11 19:59:23 2017 Camille Gouneau
 ##
 
-SRCLIB 		=	main.c								\
-						lib/gnl.c							\
-						lib/auto_complet.c		\
-						lib/string.c					\
-						lib/str_to_word_tab.c	\
+SRCLIB 		=	main.c											\
+						lib/gnl.c										\
+						lib/auto_complet.c					\
+						lib/auto_complet_command.c 	\
+						lib/auto_complet_param.c 		\
+						lib/base_command.c					\
+						lib/string.c								\
+						lib/string2.c								\
+						lib/string3.c								\
+						lib/str_to_word_tab.c				\
 						lib/path_handle.c
 
 OBJLIB 		=	$(SRCLIB:.c=.o);
