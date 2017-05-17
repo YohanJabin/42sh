@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Wed May 17 10:47:36 2017 Yohan.Jabin
+** Last update Wed May 17 12:42:05 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -79,9 +79,7 @@ int	format_imput(t_my_var *data, char **imp)
   i = -1;
   while ((*imp)[++i] != 0)
     {
-      if ((*imp)[i] == '(' || (*imp)[i] == ')')
-	*imp = my_strcut(*imp, i--, 1);
-      if ((*imp)[i] == '$')
+      if ((*imp)[i] == '$' && (i == 0 || (*imp)[i - 1] != '\\'))
 	{
 	  if (format_change_var(data, imp, i) == 1)
 	    return (1);
@@ -90,9 +88,13 @@ int	format_imput(t_my_var *data, char **imp)
       if ((*imp)[i] == '\'' && (i == 0 || (*imp)[i - 1] != '\\'))
 	if (magic_quote(data, imp, &i) == 84)
 	  return (1);
+      if ((*imp)[i] == '(' || (*imp)[i] == ')' || (*imp)[i] == '{' || (*imp)[i] == '}')
+	*imp = my_strcut(*imp, i--, 1); 
       if ((*imp)[i] == '*')
 	if ((i = format_globbing(data, imp, i)) == -1)
 	  return (1);
+      if (i > 0 && (*imp)[i - 1] == '\\')
+	*imp = my_strcut(*imp, --i, 1);
     }
   return (0);
 }
