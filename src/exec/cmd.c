@@ -27,16 +27,25 @@ int	is_it_direct_path(char *path)
 char	**get_hard_path(t_my_var *data)
 {
   char	**arr_path;
-  char	*var;
-  int	index;
+  char	*path;
+  int	len;
+  //char	*var;
+  //int	index;
 
-  if ((index = get_index_var(data->var, "path")) == -1)
+  /*if ((index = get_index_var(data->var, "path")) == -1)
     return (NULL);
   if ((var = get_var_str(data->var, index)) == NULL)
     return (NULL);
   if ((arr_path = my_str_to_wordtab(var)) == NULL)
     return (NULL);
-  free(var);
+  free(var);*/
+  len = confstr(_CS_PATH, NULL, 0);
+  if ((path = malloc(sizeof(char) * (len + 1))) == NULL)
+    return (NULL);
+  my_memset(path, 0, len + 1);
+  confstr(_CS_PATH, path, len);
+  if ((arr_path = str_to_tab(path, ':')) == NULL)
+    return (NULL);
   return (arr_path);
 }
 
