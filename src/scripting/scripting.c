@@ -5,24 +5,47 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 10:45:30 2017 Yohan.Jabin
-** Last update Mon May  8 17:06:41 2017 Yohan.Jabin
+** Last update Thu May 18 21:42:38 2017 Yohan.Jabin
 */
 
 #include "my.h"
 
-int	test_cmd_scripting(t_my_var *data, char **imp)
+int	test_cmd_scripting_if(t_my_var *data, char **imp)
 {
   if (my_strncmp(imp[0], "if", 3) == 1)
     {
-      parse_if(data, imp);
+      parse_if(data, imp, 1);
       if (data->script.if_status == -1)
 	{
-	  start_if(data);
+	  start_if(data, "if");
 	  data->script.if_status = 0;
 	}
       return (0);
     }
-  else if (my_strncmp(imp[0], "foreach", 8) == 1)
+  else if (my_strncmp(imp[0], "else", 5) == 1)
+    {
+      if (imp[1] != NULL && my_strncmp(imp[1], "if", 3) == 1)
+	{
+	  parse_if(data, &imp[1], 2);
+	  if (data->script.if_status == -1)
+	    {
+	      start_if(data, "else");
+	      data->script.if_status = 0;
+	    }
+	  return (0);
+	}
+      else
+	start_if(data, "else");
+      return (0);
+    }
+  return (1);
+}
+
+int	test_cmd_scripting(t_my_var *data, char **imp)
+{
+  if (test_cmd_scripting_if(data, imp) == 0)
+    return (0);
+  if (my_strncmp(imp[0], "foreach", 8) == 1)
     {
       parse_foreach(data, imp);
       return (0);

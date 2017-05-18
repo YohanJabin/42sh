@@ -267,8 +267,8 @@ void    init_scripting(t_my_var *, int, char **);
 int     test_cmd_scripting(t_my_var *, char **);
 
 /* if.c */
-void	parse_if(t_my_var *, char **);
-void    start_if(t_my_var *);
+int	parse_if(t_my_var *, char **, int);
+void    start_if(t_my_var *, char *);
 
 /* foreach.c */
 void    parse_foreach(t_my_var *, char **);
@@ -301,6 +301,6 @@ char    **create_arr_star(char *);
 int     globbing_no_match(t_my_var *, char **, char *);
 
 /* echo.c */
-int     test_cmd_echo(t_my_var *, char **);
+int     test_cmd_echo(char **);
 
 #endif /* !MY_H_ */

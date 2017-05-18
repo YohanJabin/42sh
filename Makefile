@@ -91,7 +91,8 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/to_sort/func3.c \
 	  ./src/utils/my_stradd.c \
 	  ./src/utils/my_strcut.c \
-	  ./src/builtins/echo.c
+	  ./src/builtins/echo.c \
+	  ./src/scripting/process_if.c
 
 OBJS	= $(SRCS:.c=.o)
 
