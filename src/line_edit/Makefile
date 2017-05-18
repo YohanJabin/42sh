@@ -9,7 +9,7 @@ SRCS	= ./key.c
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./
-CFLAGS += -W -Wall -Wextra
+CFLAGS += -W -Wall -Wextra -g3
 
 all: $(NAME)
 

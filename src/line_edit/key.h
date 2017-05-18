@@ -5,7 +5,7 @@
 ** Login   <trolol>
 ** 
 ** Started on  Tue Apr 25 14:59:38 2017 Léron
-** Last update Wed May 17 09:50:15 2017 Léron
+** Last update Wed May 17 11:15:24 2017 Léron
 */
 
 #ifndef KEY_H_
@@ -17,6 +17,8 @@ typedef	struct	s_conf_key
   char		*keyright;
   char		*keytop;
   char		*keybot;
+  char		*keyenter;
+  char		*keytab;
 }		t_conf_key;
 
 #include <string.h>
