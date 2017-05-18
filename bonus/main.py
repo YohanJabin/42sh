@@ -22,11 +22,12 @@ def send_command():
         command = ""
         subprocess.call('rm -f aff.log', shell=True)
     else:
-        arr.append("$>" + command)
+        arr.append("$> " + command)
         full = 'echo "'+command+'" | ../42sh > aff.log'
-        print("COMMAND")
-        print(full)
         subprocess.call(full, shell=True)
+        if os.path.getsize("aff.log") == 0:
+            full = 'echo "'+command+'" | ../42sh &> aff.log'
+            subprocess.call(full, shell=True)
     redirect('/command')
 
 @error(404)
@@ -36,7 +37,7 @@ def error404(error):
 @route('/')
 def main():
     if (os.path.isfile("aff.log") != True):
-        subprocess.call('rm -f aff.log', shell=True)
+        subprocess.call(' aff.log', shell=True)
     redirect('/command')
 
-run(host='localhost', port=8080, debug=True, reloader=True)
+run(host='0.0.0.0', port=8080, debug=True, reloader=True)
