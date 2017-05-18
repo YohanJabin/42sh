@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 ** 
 ** Started on  Wed May 17 15:11:35 2017 Hugo
-** Last update Wed May 17 15:11:36 2017 Hugo
+** Last update Thu May 18 10:32:34 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -64,7 +64,7 @@ int	reset_imput_loop(t_my_var *data, char **imp)
 int	process_imput_loop(t_my_var *data, char **imp)
 {
   if (pipe(data->redir.fd_pipe) == -1)
-    my_fprintf(2, "error:%s\n", strerror(errno));
+    return (84);
   data->redir.output = data->redir.fd_pipe[1];
   if (data->redir.input != 0)
     {
@@ -102,9 +102,11 @@ int	process_imput(t_my_var *data, char ***imp)
   data->redir.output = fd_save[1];
   if (reset_imput_loop(data, imp[i]) == 84)
     return (1);
-  dup2(fd_save[0], 0);
+  if (dup2(fd_save[0], 0) == -1)
+    return (1);
   close(fd_save[0]);
-  dup2(fd_save[1], 1);
+  if (dup2(fd_save[1], 1) == -1)
+    return (1);
   close(fd_save[1]);
   //check_pipe_exit(data, imp);
   return (1);

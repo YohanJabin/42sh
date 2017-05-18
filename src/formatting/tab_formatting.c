@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Sun May 14 15:16:08 2017 Yohan.Jabin
-** Last update Mon May 15 11:04:33 2017 Yohan.Jabin
+** Last update Thu May 18 10:48:16 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -18,7 +18,7 @@ int	tab_formatting(t_my_var *data, char **imp)
   char	*backup;
 
   backup = my_strdup(imp[0]);
-  while ((index = check_alias(data, imp[0])) != -1)
+  while ((index = get_index_alias(data->alias, imp[0])) != -1)
     {
       len = get_first_equal(data->alias[index]);
       var = get_var_str(data->alias, index);

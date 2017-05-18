@@ -5,15 +5,20 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Apr  4 19:49:10 2017 Yohan.Jabin
-** Last update Fri May 12 13:31:00 2017 Yohan.Jabin
+** Last update Thu May 18 10:37:56 2017 Yohan.Jabin
 */
 
 #include "my.h"
 
 int     open_redirections_left(t_my_var *data, char *str)
 {
-  if (access(str, F_OK) == -1 && errno)
-    my_fprintf(2, "%s: %s.\n", str, strerror(errno));
+  if (access(str, F_OK) == -1)
+    {
+      if (errno)
+	my_fprintf(2, "%s: %s.\n", str, strerror(errno));
+      data->return_value = 1;
+      return (84);
+    }
   if ((data->redir.input =
        open(str, O_RDWR)) == -1)
     {
