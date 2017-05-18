@@ -6,7 +6,7 @@
 ** Login   <trolol>
 ** 
 ** Started on  Tue Apr 25 12:52:22 2017 Léron
-** Last update Wed May 17 10:36:42 2017 Léron
+** Last update Thu May 18 18:12:54 2017 Léron
 */
 #include <stdlib.h>
 #include <sys/types.h>
@@ -21,15 +21,6 @@
 #include <time.h>
 #include <sys/ioctl.h>
 #include "key.h"
-
-int	my_strlen(char *str)
-{
-  int	i;
-
-  i = -1;
-  while (str[++i] != '\0');
-  return (i);
-}
 
 int	strncomp(char *str, char *str2, int n)
 {
@@ -49,21 +40,28 @@ int	test_fleche(char *str, t_conf_key *p)
 {
   int	size;
 
-  size = my_strlen(str);
-  if (strncomp(str, p->keyleft, (size)) == 1)
-    printf("cmp->gauche\n");
-  if (strncomp(str, p->keyright, (size)) == 1)
-    printf("cmp->droite\n");
-  if (strncomp(str, p->keybot, (size)) == 1)
-    printf("cmp->bas\n");
-  if (strncomp(str, p->keytop, (size)) == 1)
-    printf("cmp->haut\n");
+  size = 3;
+  if (strncomp(p->keyleft, str, (size)) == 1)
+    {
+      printf("\033[1D");
+      fflush(stdout);
+    }
+  if (strncomp(p->keyright,  str, (size)) == 1)
+    {
+      printf("\033[1C");
+      fflush(stdout);
+    }
+  if (strncomp(p->keytop, str, (size)) == 1)
+    {
+      printf("\033[1A");
+      fflush(stdout);
+    }
+  if (strncomp(p->keybot, str, (size)) == 1)
+    {
+      printf("\033[1B");
+      fflush(stdout);
+    }
   return (0);
-}
-
-void	my_putchar(char c)
-{
-  write(1, &c, 1);
 }
 
 char	*my_read(t_conf_key *p)
@@ -82,8 +80,7 @@ char	*my_read(t_conf_key *p)
   new.c_lflag &= ~ECHO;
   new.c_lflag &= ~ICANON;
   ioctl(0, TCSETS, &new);
-  size = read(0, buff, 10);
-  buff[size] = '\0';
+  size = read(0, buff, 3);
   test_fleche(buff, p);
   ioctl(0, TCSETS, &old);
   return (buff);

@@ -1,24 +1,21 @@
 <html>
 <head>
-<script>
-  function attribuerFocus()
-  {
-    document.getElementById(command).focus();
-  }
-</script>
-
-
+<title>Command Center</title>
+</head>
 <center><h1 style="color: red;">Command Control</h1></center>
 % for line in arr:
-{{line}}<br>
-%end
+  % if "$>" in line:
+    <span style="color:#17A10B;"> $></span>
+    {{line.split("$> ")[1]}}<br>
+  % elif "$>" not in line:
+    <div style="color:white;">{{line}}<br></div>
+  % end
+% end
 <body style="background-color: black; color: #17A10B;">
   <form action="/command" method="post">
-      Command to send: <input name="command" type="text" autofocus/>
-      <input value="Send" type="submit" />
+      $> <input style="background-color:black; color:white; border: none;width:97%" name="command" type="text" autofocus/>
+      <input value="" type="submit" style="border: none; background-color:black;"/>
   </form>
 
 </body>
-
-</head>
 </html>
