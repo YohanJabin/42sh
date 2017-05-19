@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 **
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update	Wed May 10 13:48:13 2017 Hugo MARTIN
+** Last update	Fri May 19 13:03:47 2017 Hugo MARTIN
 */
 
 #ifndef MY_H_
@@ -70,8 +70,9 @@ int	my_check_char(char *, char);
 **  repeat
 */
 
-void	check_repeat(t_my_var *);
-void	rm_block(t_my_list_data *);
+void	my_full_repeat(t_my_var *, t_my_separator	*, t_my_repeat);
+int	my_repeat(t_my_var *, t_my_separator	*, char *);
+
 /* process_arr.c */
 int     parse_pipe(t_my_var *, char *);
 

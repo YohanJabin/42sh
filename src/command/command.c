@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 **
 ** Started on  Fri Apr 28 16:10:58 2017 Hugo
-** Last update	Wed May 10 15:20:31 2017 Hugo MARTIN
+** Last update	Fri May 19 12:40:15 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -51,9 +51,9 @@ int	my_command(t_my_var *v, t_my_prompt *data)
   if (isatty(0) && v->flag_prompt == 1)
     {
       if (v->script.foreach_status == 1)
-	my_printf("foreach? ");
+	     my_printf("foreach? ");
       else
-	my_prompt(data);
+	     my_prompt(data);
     }
   //if (v->return_value != 0 && isatty(0) == 0)
   //my_exit(v);

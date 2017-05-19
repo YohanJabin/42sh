@@ -39,6 +39,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/builtins/alias/my_setalias.c \
 	  ./src/builtins/alias/my_unsetalias.c \
 	  ./src/builtins/cd.c \
+	  ./src/builtins/echo.c \
 	  ./src/builtins/env/arr_env.c \
 	  ./src/builtins/env/env.c \
 	  ./src/builtins/env/my_setenv.c \
@@ -81,6 +82,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/scripting/foreach.c \
 	  ./src/scripting/if.c \
 	  ./src/scripting/process_foreach.c \
+	  ./src/scripting/process_if.c \
 	  ./src/scripting/scripting.c \
 	  ./src/separator/separator.c \
 	  ./src/setup/exit.c \
@@ -90,9 +92,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/to_sort/func2.c \
 	  ./src/to_sort/func3.c \
 	  ./src/utils/my_stradd.c \
-	  ./src/utils/my_strcut.c \
-	  ./src/builtins/echo.c \
-	  ./src/scripting/process_if.c
+	  ./src/utils/my_strcut.c 
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -110,12 +110,12 @@ $(NAME): $(OBJS)
 
 clean:
 	@#@echo "clean OK"
-	@echo "\033[1;46m clean OK \033[0m"
+	@echo -e "\e[1;46m clean OK \e[0m"
 	@$(RM) $(OBJS)
 
 fclean:
 	@#@echo "fclean OK"
-	@echo "\033[1;46m fclean OK \033[0m"
+	@echo -e "\e[1;46m fclean OK \e[0m"
 	@$(RM) $(OBJS)
 	@$(RM) $(NAME)
 
@@ -123,6 +123,6 @@ re: fclean all
 
 %.o: %.c
 	@gcc -c -o $@ $(CFLAGS) $<
-	@echo "[\033[0;32m OK \033[0m] built '$@'"
+	@echo -e "[\e[0;32m OK \e[0m] built '$@'"
 
 .PHONY: all clean fclean re

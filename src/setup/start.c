@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 **
 ** Started on  Fri Apr 28 16:11:10 2017 Hugo
-** Last update	Wed May 10 15:20:12 2017 Hugo MARTIN
+** Last update	Fri May 19 13:21:41 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -32,25 +32,27 @@ int	my_start(t_my_var *p, t_my_prompt *prompt)
   my_read_rc(prompt);
   while (42)
     {
-      update_env(p);
       p->exit = -1;
       if ((my_command(p, prompt)) == -1)
-	{
-	  if (p->fd_to_read != 0 && close(p->fd_to_read));
-	  my_exit(p);
-	}
-      separator = p->separator->begin;
-      p->script.repeat_f = 0;
-      while (separator && (tmp = (t_my_separator *) separator->data) &&
-	     my_control(p, tmp) == 0 && (p->return_value = 0) == 0)
-	{
-	  my_histori(tmp->command, prompt);
-	  if (parse_pipe(p, tmp->command) == 84)
-          return (84);
-	  separator = separator->next;
-	}
-      if (p->exit != -1)
-	exit(p->return_value);
+	     {
+	        if (p->fd_to_read != 0 && close(p->fd_to_read));
+	        my_exit(p);
+	     }
+       if (p->separator != NULL)
+       {
+        separator = p->separator->begin;
+        while (separator && (tmp = (t_my_separator *) separator->data) &&
+        my_control(p, tmp) == 0 && (p->return_value = 0) == 0)
+        {
+          update_env(p);
+          my_histori(tmp->command, prompt);
+          if (parse_pipe(p, tmp->command) == 84)
+            return (84);
+          separator = separator->next;
+        }
+        if (p->exit != -1)
+        	exit(p->return_value);
+       }
     }
   return (0);
 }
