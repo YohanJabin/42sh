@@ -24,7 +24,7 @@ typedef struct	s_script
 typedef struct s_my_repeat
 {
   int 		hm;
-  char	*command;
+  char		*command;
 }		t_my_repeat;
 
 #endif /* !SCRIPT_H_ */
