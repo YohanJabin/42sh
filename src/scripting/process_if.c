@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May 18 21:11:46 2017 Yohan.Jabin
-** Last update Thu May 18 21:55:26 2017 Yohan.Jabin
+** Last update Fri May 19 12:42:18 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -17,7 +17,7 @@ int	check_if_status(t_my_var *data, char **arr)
       if (arr[1] != NULL && my_strncmp(arr[1], "if", 3) == 1)
 	{
 	  parse_if(data, &arr[1], 2);
-	  if (data->script.if_status == -1)
+	  if (data->script.if_status != -1)
 	    return (1);
 	}
       return (0);
