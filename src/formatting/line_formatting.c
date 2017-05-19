@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Wed May 17 12:42:05 2017 Yohan.Jabin
+** Last update Fri May 19 13:50:39 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -76,6 +76,8 @@ int	format_imput(t_my_var *data, char **imp)
 {
   int	i;
 
+  if (tab_formatting(data, imp) == 0)
+    return (1);
   i = -1;
   while ((*imp)[++i] != 0)
     {
@@ -88,7 +90,8 @@ int	format_imput(t_my_var *data, char **imp)
       if ((*imp)[i] == '\'' && (i == 0 || (*imp)[i - 1] != '\\'))
 	if (magic_quote(data, imp, &i) == 84)
 	  return (1);
-      if ((*imp)[i] == '(' || (*imp)[i] == ')' || (*imp)[i] == '{' || (*imp)[i] == '}')
+      if ((*imp)[i] == '(' || (*imp)[i] == ')'
+	  || (*imp)[i] == '{' || (*imp)[i] == '}')
 	*imp = my_strcut(*imp, i--, 1); 
       if ((*imp)[i] == '*')
 	if ((i = format_globbing(data, imp, i)) == -1)

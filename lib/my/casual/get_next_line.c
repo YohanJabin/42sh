@@ -1,120 +1,67 @@
 /*
-** get_next_line.c for PSU_2016_minishell2
-**
-** Made by	Hugo MARTIN
-** Login	hugo.martin@epitech.eu
-**
-** Started on	Sun Apr 09 23:23:08 2017 Hugo MARTIN
-** Last update	Mon Apr 24 17:22:19 2017 Hugo MARTIN
+** get_next_line.c for gol in /home/yohan/repo/Colles/CPE_2016_stumper4/src
+** 
+** Made by Yohan.Jabin
+** Login   <yohan.jabin@epitech.eu>
+** 
+** Started on  Tue May  9 18:21:26 2017 Yohan.Jabin
+** Last update Fri May 19 13:53:02 2017 Yohan.Jabin
 */
 
 #include "my.h"
 
-char	*new_stock(char *tmp, int o, int u, int a)
+char	*gnl_realloc(char *str, int size)
 {
-  char	*st;
-
-  if (my_malloc(&st, '\0', (my_len(tmp, 1) + 1)) == 84)
-    return (NULL);
-  if (my_len(tmp, 2) == 0)
-    return (tmp);
-  u -= 1;
-  a -= 1;
-  while (tmp[++u] != '\n')
-      st[++a] = tmp[u];
-  if (o == 2)
-    return (st);
-  a = -1;
-  while (tmp[u] != '\0')
-    {
-      st[++a] = tmp[u + 1];
-      u = u + 1;
-    }
-  return (st);
-}
-
-char	*my_realloc(char *d, char *s, int o, int a)
-{
-  char	*st;
+  char	*ret;
   int	i;
 
-  if (my_malloc(&st, '\0', (my_len(d, 1) + my_len(s, 1) + 1)) == 84)
+  size += my_strlen(str);
+  if ((ret = malloc(sizeof(char) * (size + 1))) == NULL)
     return (NULL);
-  i = -1;
-  while (d[++i] != '\0')
+  my_memset(ret, 0, size + 1);
+  i = 0;
+  while (str[i] != 0)
     {
-      st[a] = d[i];
-      a = a + 1;
+      ret[i] = str[i];
+      i++;
     }
-  if (o == 2)
-    return (st);
-  i = -1;
-  while (s[++i] != '\0')
-    {
-      st[a] = s[i];
-      a = a + 1;
-    }
-  free(d);
-  free(s);
-  return (st);
+  free(str);
+  return (ret);
 }
 
-int	my_len(char *str, int o)
+char	*gnl_ret(char *ret)
 {
-  int	i;
+  int	len;
 
-  i = -1;
-  if (o == 1)
+  if ((len = my_strlen(ret)) == 0)
     {
-      while (str[++i] != '\0');
-      return (i);
+      free(ret);
+      return (NULL);
     }
-  else
-    {
-      while (str[++i] != '\0')
-	if (str[i] == '\n')
-	  return (1);
-    }
-  return (0);
-}
-
-char	*my_process(char *str)
-{
-  static int	process = 0;
-
-  if (process == 0)
-    {
-      if (my_malloc(&str, '\0', (READ_SIZE + 1)) == 84)
-	return (NULL);
-      process = 1;
-    }
-  return (str);
+  if (ret[len - 1] == '\n')
+    ret[len - 1] = 0;
+  return (ret);
 }
 
 char	*get_next_line(int fd)
 {
-  t_gnl	a;
-  static	char	*tmp;
+  char	*ret;
+  char	c;
+  int	i;
 
-  my_malloc(&a.buffer, '\0', (READ_SIZE + 1));
-  if (fd == -1 || a.buffer == NULL || (tmp = my_process(tmp)) == NULL)
+  if ((ret = malloc(sizeof(char) * 2)) == NULL)
     return (NULL);
-  while (my_len(tmp, 2) == 0)
+  my_memset(ret, 0, 2);
+  i = 0;
+  c = 1;
+  while (c != 0 && c != '\n')
     {
-      a.s = read(fd, a.buffer, READ_SIZE);
-      if (a.s == -1)
-	     return (NULL);
-      tmp = my_realloc(tmp, a.buffer, 0, 0);
-      if (a.s == 0 && my_len(tmp, 1) == 0)
-	     return (NULL);
-      else if (a.s == 0 && my_len(tmp, 2) == 0)
-	     {
-	        a.st = my_realloc(tmp, tmp, 2, 0);
-	        tmp[0] = '\0';
-	        return (a.st);
-	     }
+      if (read(fd, &c, 1) < 1)
+	return (gnl_ret(ret));
+      ret[i] = c;
+      if ((ret = gnl_realloc(ret, i + 1)) == NULL)
+	return (NULL);
+      i++;
     }
-  a.src = new_stock(tmp, 2, 0, 0);
-  tmp = new_stock(tmp, 0, 0, 0);
-  return (a.src);
+  return (gnl_ret(ret));
 }
