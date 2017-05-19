@@ -1,5 +1,0 @@
-pipe:	SIGPIPE
-redir:	left imput
-var:	bon${a}jour
-
-&&||:	err_display5
