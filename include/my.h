@@ -267,11 +267,10 @@ int     test_cmd_exit(t_my_var *, char **);
 /* scripting.c */
 void    init_scripting(t_my_var *, int, char **);
 int     test_cmd_scripting(t_my_var *, char **);
-int	test_cmd_scripting_if(t_my_var *, char **, char **);
 
 /* if.c */
 int	parse_if(t_my_var *, char **, int);
-void    start_if(t_my_var *, char *, char **);
+void    start_if(t_my_var *, char *);
 
 /* foreach.c */
 void    parse_foreach(t_my_var *, char **);

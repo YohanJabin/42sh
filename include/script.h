@@ -14,7 +14,6 @@
 typedef struct	s_script
 {
   int		if_status;
-  int		foreach_if_status;
   int		foreach_status;
   char		*foreach_var;
   char		**foreach_words;
