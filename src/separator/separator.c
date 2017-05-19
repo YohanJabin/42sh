@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Fri Apr 28 09:52:43 2017 Hugo MARTIN
-** Last update	Fri May 19 13:24:36 2017 Hugo MARTIN
+** Last update	Fri May 19 13:42:21 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -22,7 +22,7 @@ int	send_double(t_my_var *v, char *command, int flag)
   s->command = my_pure(command);
   if (my_strncmp(my_pure(s->command), "repeat", 6) == 1)
   {
-    my_repeat(v, s, command);
+    my_repeat(v, s, my_pure(command));
     return (0);
   }
   add_end_list(&v->separator, s);
