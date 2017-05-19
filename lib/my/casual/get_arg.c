@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Fri Apr 28 10:05:14 2017 Hugo MARTIN
-** Last update	Fri May 19 15:16:50 2017 Hugo MARTIN
+** Last update	Fri May 19 15:17:29 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -25,7 +25,6 @@ char	*get_full(char *str, int n, char *c)
   }
   return (tmp);
 }
-
 
 char	*get_arg(char *str, int n, char *c)
 {
