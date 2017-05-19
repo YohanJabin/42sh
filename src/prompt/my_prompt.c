@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Thu Apr 13 20:59:22 2017 Adrien ZEMMA
-** Last update	Fri Apr 28 15:32:16 2017 Adrien ZEMMA
+** Last update	Fri May 19 16:39:21 2017 Adrien ZEMMA
 */
 
 #include "my.h"
@@ -18,16 +18,13 @@ void	my_prompt(t_my_prompt *prompt)
   nb = -1;
   if ((int)prompt->prompt_compteur != -1)
     my_printf("[%d] ", ++prompt->prompt_compteur);
+  if (prompt->prompt_prompt[0] == NULL)
+    my_default_prompt();
   while (prompt->prompt_prompt[++nb] != NULL)
   {
-    if (prompt->prompt_prompt[nb] == NULL)
-      break;
     if (my_strncmp(my_clean(prompt->prompt_prompt[nb]),
       "name", my_strlen("name")) == 1)
       my_printf(ANSI_COLOR_RED"%s "ANSI_COLOR_RESET, getenv("USER"));
-    else if (my_strncmp(my_clean(prompt->prompt_prompt[nb]),
-    "date", my_strlen("date")) == 1)
-      my_printf("%s ", "date");
     else if (my_strncmp(my_clean(prompt->prompt_prompt[nb]),
       "folder", my_strlen("folder")) == 1)
     {
@@ -37,4 +34,9 @@ void	my_prompt(t_my_prompt *prompt)
   }
   if (access(".git", F_OK) == 0 && prompt->prompt_git == 1)
     my_printf(ANSI_COLOR_YELLOW"[git]" ANSI_COLOR_RESET);
+}
+
+void	my_default_prompt()
+{
+  my_printf("$> ");
 }

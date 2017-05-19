@@ -92,13 +92,13 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/to_sort/func2.c \
 	  ./src/to_sort/func3.c \
 	  ./src/utils/my_stradd.c \
-	  ./src/utils/my_strcut.c 
+	  ./src/utils/my_strcut.c
 
 OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I./include/
-CFLAGS += -W -Wall -Wextra -g3
-LDLIBS = 
+CFLAGS += -W -Wall -Wextra -g3 -g
+LDLIBS =
 
 all: $(NAME)
 
