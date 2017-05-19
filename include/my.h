@@ -172,7 +172,7 @@ char	**init_alias();
 /* var.c */
 int     test_cmd_var(t_my_var *, char **);
 void    my_error_setvar(t_my_var *, char **);
-int     my_error_setvar2(t_my_var *, char **);
+int     my_error_setvar2(t_my_var *, char *);
 void    my_error_unsetvar(t_my_var *, char **);
 int	get_first_equal(char *);
 

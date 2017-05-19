@@ -37,18 +37,18 @@ int	is_it_valid_var(char *str)
   return (1);
 }
 
-int	my_error_setvar2(t_my_var *data, char **imp)
+int	my_error_setvar2(t_my_var *data, char *imp)
 {
-  if (imp[1][0] < 'A'
-      || (imp[1][0] > 'Z' && imp[1][0] < 'a')
-      || imp[1][0] > 'z')
+  if (imp[0] < 'A'
+      || (imp[0] > 'Z' && imp[0] < 'a')
+      || imp[0] > 'z')
     {
       my_fprintf(2, "set: Variable name must ");
       my_fprintf(2, "begin with a letter.\n");
       data->return_value = 1;
       return (84);
     }
-  if (is_it_valid_var(imp[1]) == 0)
+  if (is_it_valid_var(imp) == 0)
     {
       my_fprintf(2, "set: Variable name must ");
       my_fprintf(2, "contain alphanumeric characters.\n");
@@ -60,9 +60,20 @@ int	my_error_setvar2(t_my_var *data, char **imp)
 
 void	my_error_setvar(t_my_var *data, char **imp)
 {
+  char  *tmp;
+  int   fe;
+
+  if (imp[1] != NULL)
+    {
+      if ((fe = get_first_equal(imp[1])) == -1)
+	fe = my_strlen(imp[1]);
+      tmp = malloc(sizeof(char) * (fe + 1));
+      my_memset(tmp, 0, fe + 1);
+      my_strncpy(tmp, imp[1], fe);
+    }
   if (imp[1] == NULL)
     aff_var_alias(data->var);
-  else if (my_error_setvar2(data, imp) == 0)
+  else if (my_error_setvar2(data, tmp) == 0)
     my_setvar(data, imp);
 }
 
