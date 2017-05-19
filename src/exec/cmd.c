@@ -24,21 +24,12 @@ int	is_it_direct_path(char *path)
   return (0);
 }
 
-char	**get_hard_path(t_my_var *data)
+char	**get_hard_path()
 {
   char	**arr_path;
   char	*path;
   int	len;
-  //char	*var;
-  //int	index;
 
-  /*if ((index = get_index_var(data->var, "path")) == -1)
-    return (NULL);
-  if ((var = get_var_str(data->var, index)) == NULL)
-    return (NULL);
-  if ((arr_path = my_str_to_wordtab(var)) == NULL)
-    return (NULL);
-  free(var);*/
   len = confstr(_CS_PATH, NULL, 0);
   if ((path = malloc(sizeof(char) * (len + 1))) == NULL)
     return (NULL);
@@ -63,7 +54,7 @@ int     test_cmd_path(t_my_var *data, char **imp)
   if (is_it_direct_path(imp[0]) == 0)
     return (1);
   if ((arr_path = get_arr_path(data->env)) == NULL
-      && (arr_path = get_hard_path(data)) == NULL)
+      && (arr_path = get_hard_path()) == NULL)
     return (1);
   i = -1;
   while (arr_path[++i] != NULL)
@@ -86,8 +77,6 @@ int	test_cmd_builtin(t_my_var *data, char **imp)
   if (my_strncmp(imp[0], "endif", 6) == 1 ||
       my_strncmp(imp[0], "end", 4) == 1)
     return (1);
-  //if (tab_formatting(data, imp) == 0)
-  //return (1);
   if (test_cmd_scripting(data, imp) == 0)
     return (1);
   if (test_cmd_echo(imp) == 0)
