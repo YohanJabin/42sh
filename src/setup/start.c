@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 **
 ** Started on  Fri Apr 28 16:11:10 2017 Hugo
-** Last update	Fri May 19 17:05:09 2017 Hugo MARTIN
+** Last update	Fri May 19 17:22:13 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -18,9 +18,8 @@ int	my_control(t_my_var *p, t_my_separator *s, t_my_list_data	*separator)
   {
     if (p->return_value != 0)
     {
-      p->return_value = 1;
-      if (separator->next == NULL)
-        p->return_value = 0;
+      if (separator->next != NULL)
+        p->return_value = 1;
       return (-1);
     }
   }
@@ -28,9 +27,8 @@ int	my_control(t_my_var *p, t_my_separator *s, t_my_list_data	*separator)
   {
     if (p->return_value == 0)
     {
-      p->return_value = 1;
-      if (separator->next == NULL)
-        p->return_value = 0;
+      if (separator->next != NULL)
+        p->return_value = 1;
       return (-1);
     }
   }
