@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 **
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update	Fri May 19 17:55:07 2017 Hugo MARTIN
+** Last update	Fri May 19 15:16:33 2017 Hugo MARTIN
 */
 
 #ifndef MY_H_
@@ -55,7 +55,7 @@ int	my_strncmp(char *, char *, int);
 int	my_strcmp(char *, char *);
 char	*my_pure(char *);
 char	**str_to_tab(char *, char);
-int	my_exit(t_my_var *);
+void	my_exit(t_my_var *);
 char	*get_arg(char *, int, char *);
 char	*get_full(char *, int, char *);
 int	my_getnbr(const char *);
@@ -267,10 +267,11 @@ int     test_cmd_exit(t_my_var *, char **);
 /* scripting.c */
 void    init_scripting(t_my_var *, int, char **);
 int     test_cmd_scripting(t_my_var *, char **);
+int	test_cmd_scripting_if(t_my_var *, char **, char **);
 
 /* if.c */
 int	parse_if(t_my_var *, char **, int);
-void    start_if(t_my_var *, char *);
+void    start_if(t_my_var *, char *, char **);
 
 /* foreach.c */
 void    parse_foreach(t_my_var *, char **);

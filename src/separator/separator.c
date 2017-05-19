@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Fri Apr 28 09:52:43 2017 Hugo MARTIN
-** Last update	Fri May 19 17:43:34 2017 Hugo MARTIN
+** Last update	Fri May 19 13:42:21 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -40,15 +40,15 @@ int	my_check_separator(t_my_var *v, char *command)
   my_malloc(&str, '\0', my_strlen(command) + 1);
   while (command[++i])
   {
-    if (command[i] == '&' && command[i + 1] &&
-        command[i + 1] == '&' && (i += 2) && send_double(v, str, 1))
+    if (command[i] == '&' && command[i + 1] && command[i + 1] == '&' && (i += 2))
     {
+      send_double(v, str, 1);
       my_malloc(&str, '\0', my_strlen(command) + 1);
       j = -1;
     }
-    else if (command[i] == '|' && command[i + 1] &&
-            command[i + 1] == '|' && (i += 2) && send_double(v, str, 2))
+    else if (command[i] == '|' && command[i + 1] && command[i + 1] == '|' && (i += 2))
     {
+      send_double(v, str, 2);
       my_malloc(&str, '\0', my_strlen(command) + 1);
       j = -1;
     }

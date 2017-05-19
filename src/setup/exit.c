@@ -5,12 +5,12 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Wed Apr 12 19:47:06 2017 Hugo MARTIN
-** Last update	Fri May 19 17:54:15 2017 Hugo MARTIN
+** Last update	Fri May 19 17:37:18 2017 Hugo MARTIN
 */
 
 #include "my.h"
 
-int	my_exit(t_my_var *data)
+void	my_exit(t_my_var *data)
 {
   int	tmp;
 
@@ -22,5 +22,4 @@ int	my_exit(t_my_var *data)
   free_double_tab(data->alias);
   free(data);
   exit (tmp);
-  return (0);
 }

@@ -14,6 +14,7 @@
 typedef struct	s_script
 {
   int		if_status;
+  int		foreach_if_status;
   int		foreach_status;
   char		*foreach_var;
   char		**foreach_words;
@@ -23,7 +24,7 @@ typedef struct	s_script
 typedef struct s_my_repeat
 {
   int 		hm;
-  char		*command;
+  char	*command;
 }		t_my_repeat;
 
 #endif /* !SCRIPT_H_ */
