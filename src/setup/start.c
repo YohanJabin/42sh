@@ -40,10 +40,9 @@ int	my_start(t_my_var *p, t_my_prompt *prompt)
 	  my_exit(p);
 	}
       separator = p->separator->begin;
-      p->return_value = 0;
       p->script.repeat_f = 0;
       while (separator && (tmp = (t_my_separator *) separator->data) &&
-	     my_control(p, tmp) == 0)
+	     my_control(p, tmp) == 0 && (p->return_value = 0) == 0)
 	{
 	  my_histori(tmp->command, prompt);
 	  if (parse_pipe(p, tmp->command) == 84)
