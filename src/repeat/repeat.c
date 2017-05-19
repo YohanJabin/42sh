@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Wed May 10 15:35:26 2017 Hugo MARTIN
-** Last update	Fri May 19 13:42:13 2017 Hugo MARTIN
+** Last update	Fri May 19 15:15:29 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -26,11 +26,11 @@ int	my_repeat(t_my_var *v, t_my_separator	*s, char *c)
 {
   t_my_repeat	data;
 
-  if (my_check_char(c, ' ') == 2 &&
+  if (my_check_char(c, ' ') >= 2 &&
       my_strncmp(my_pure(s->command), "repeat", 6) == 1)
     {
 	    data.hm = my_getnbr(get_arg(c, 1, " "));
-	    data.command = get_arg(c, 2, " ");
+	    data.command = get_full(c, 2, " ");
       my_full_repeat(v, s, data);
     }
   else

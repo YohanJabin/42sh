@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 **
 ** Started on  Fri Apr 28 16:10:30 2017 Hugo
-** Last update	Fri May 19 13:03:47 2017 Hugo MARTIN
+** Last update	Fri May 19 15:16:33 2017 Hugo MARTIN
 */
 
 #ifndef MY_H_
@@ -57,6 +57,7 @@ char	*my_pure(char *);
 char	**str_to_tab(char *, char);
 void	my_exit(t_my_var *);
 char	*get_arg(char *, int, char *);
+char	*get_full(char *, int, char *);
 int	my_getnbr(const char *);
 
 /*
