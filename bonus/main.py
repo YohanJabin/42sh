@@ -7,6 +7,8 @@ arr = []
 def home():
     if (os.path.isfile("aff.log") != True):
         subprocess.call('touch aff.log', shell=True)
+    if (os.path.isfile("../42sh") != True):
+        subprocess.call('make -C ../', shell=True)
     with open("aff.log", "r") as file:
         for line in file:
             arr.append(line)
