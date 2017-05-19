@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 ** 
 ** Started on  Thu Apr  6 15:03:31 2017 Yohan.Jabin
-** Last update Fri Apr 28 00:18:44 2017 Yohan.Jabin
+** Last update Fri May 19 09:54:02 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -15,7 +15,8 @@ void	double_redir_left(t_my_var *data, char *word)
   char	*str;
   int	fd[2];
 
-  pipe(fd);
+  if (pipe(fd) == -1)
+    return ;
   my_printf("? ");
   while ((str = get_next_line(0)) != NULL)
     {
@@ -23,7 +24,7 @@ void	double_redir_left(t_my_var *data, char *word)
 	{
 	  close(fd[1]);
 	  data->redir.input = fd[0];
-	  return;
+	  return ;
 	}
       my_fprintf(fd[1], "%s\n", str);
       my_printf("? ");
