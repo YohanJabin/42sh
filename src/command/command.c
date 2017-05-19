@@ -41,9 +41,9 @@ void	my_list_command(t_my_var *v)
   i = -1;
   v->list_command = NULL;
   while ((str = get_arg(v->full_command, ++i, ";"))[0] != '\0')
-    add_end_list(&v->list_command, my_pure(str));
+    add_end_list(&v->list_command, str);
   if (v->list_command == NULL)
-    add_end_list(&v->list_command, my_pure(v->full_command));
+    add_end_list(&v->list_command, v->full_command);
 }
 
 int	my_command(t_my_var *v, t_my_prompt *data)
