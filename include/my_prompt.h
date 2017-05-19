@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Fri Apr 21 13:41:05 2017 Adrien ZEMMA
-** Last update	Fri Apr 28 16:05:40 2017 Adrien ZEMMA
+** Last update	Fri May 19 16:39:35 2017 Adrien ZEMMA
 */
 
 #ifndef MY_PROMPT_H
@@ -45,5 +45,6 @@ char	*retir_char(char *, int);
 int	my_read_rc(t_my_prompt *);
 void	my_setprompt(t_my_prompt *);
 void	my_prompt(t_my_prompt *);
+void	my_default_prompt();
 
 #endif /* !MY_PROMPT_H_ */

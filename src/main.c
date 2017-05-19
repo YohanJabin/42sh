@@ -5,12 +5,10 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Wed Apr 12 12:54:03 2017 Adrien ZEMMA
-** Last update	Fri Apr 28 15:27:47 2017 Adrien ZEMMA
+** Last update	Fri May 19 16:43:44 2017 Adrien ZEMMA
 */
 
 #include "my.h"
-
-
 
 int	main(int ac, char **av, char **env)
 {
@@ -19,6 +17,11 @@ int	main(int ac, char **av, char **env)
 
   p = malloc(sizeof(*p));
   prompt = malloc(sizeof(t_my_prompt));
+  prompt->prompt_compteur = -1;
+  prompt->prompt_prompt = malloc(sizeof(char *) * 1);
+  prompt->histori_tab = malloc(sizeof(char *) * 1);
+  prompt->prompt_prompt[0] = NULL;
+  prompt->histori_nb = 2;
   p->return_value = 0;
   p->var = init_var();
   if (env[0] == NULL)
