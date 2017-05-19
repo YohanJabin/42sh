@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Wed Apr 12 12:54:03 2017 Adrien ZEMMA
-** Last update	Fri May 19 17:33:13 2017 Hugo MARTIN
+** Last update	Fri May 19 17:45:47 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -33,6 +33,5 @@ int	main(int ac, char **av, char **env)
   change_pwd(p);
   init_scripting(p, ac, av);
   my_start(p, prompt);
-  //my_echo("echo $PATH", env);
   return (p->return_value);
 }
