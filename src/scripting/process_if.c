@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May 18 21:11:46 2017 Yohan.Jabin
-** Last update Fri May 19 14:35:29 2017 Yohan.Jabin
+** Last update Fri May 19 15:48:42 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -34,12 +34,15 @@ void    start_if(t_my_var *data, char *flag)
     my_printf("%s? ", flag);
   while ((str = get_next_line(0)) != NULL)
     {
-      arr = my_str_to_wordtab(str);
-      if (my_strncmp(arr[0], "endif", 6) == 1)
-	return ;
-      if (my_strncmp(flag, "else", 5) == 0
-	  && check_if_status(data, arr) == 0)
-	return ;
+      if (str[0] != 0)
+	{
+	  arr = my_str_to_wordtab(str);
+	  if (my_strncmp(arr[0], "endif", 6) == 1)
+	    return ;
+	  if (my_strncmp(flag, "else", 5) == 0
+	      && check_if_status(data, arr) == 0)
+	    return ;
+	}
       if (isatty(0) && data->flag_prompt == 1)
 	my_printf("%s? ", flag);
     }

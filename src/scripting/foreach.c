@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 16:51:26 2017 Yohan.Jabin
-** Last update Mon May  8 13:43:58 2017 Yohan.Jabin
+** Last update Fri May 19 15:16:11 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -30,7 +30,7 @@ int	test_foreach(t_my_var *data, char **imp)
 {
   int	len;
 
-  if ((len = hm_many_env(imp)) >= 5)
+  if ((len = hm_many_env(imp)) >= 3)
     {
       data->script.foreach_status = 1;
       data->script.foreach_var = my_strdup(imp[1]);
