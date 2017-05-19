@@ -1,7 +1,5 @@
 pipe:	SIGPIPE
 redir:	left imput
-alias:	alias loop
-var:	bon{a}jour
-if:	else / else if
+var:	bon${a}jour
 
 &&||:	err_display5

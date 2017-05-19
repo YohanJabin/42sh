@@ -5,12 +5,12 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 21:25:49 2017 Yohan.Jabin
-** Last update Mon May  8 16:39:30 2017 Yohan.Jabin
+** Last update Fri May 19 11:24:07 2017 Yohan.Jabin
 */
 
 #include "my.h"
 
-void	search_cmd_path(t_my_var *data, char *cmd, int flag)
+void	search_cmd_path(t_my_var *data, char *cmd, int flag, int *hm)
 {
   char	**arr_path;
   char	*path;
@@ -26,6 +26,7 @@ void	search_cmd_path(t_my_var *data, char *cmd, int flag)
 	  my_printf("%s\n", path);
 	  if (flag == 1)
 	    return ;
+	  (*hm)++;
 	}
     }
   if (flag == 1)
@@ -35,7 +36,7 @@ void	search_cmd_path(t_my_var *data, char *cmd, int flag)
     }
 }
 
-void	search_cmd(t_my_var *data, char *cmd, int flag)
+void	search_cmd(t_my_var *data, char *cmd, int flag, int *hm)
 {
   if (my_strncmp(cmd, "set", my_strlen(cmd)) == 1
       || my_strncmp(cmd, "unset", my_strlen(cmd)) == 1
@@ -54,11 +55,12 @@ void	search_cmd(t_my_var *data, char *cmd, int flag)
 	  return ;
 	}
       my_printf("%s is a shell built-in\n", cmd);
+      (*hm)++;
     }
-  search_cmd_path(data, cmd, flag);
+  search_cmd_path(data, cmd, flag, hm);
 }
 
-void	loop_which(t_my_var *data, char **imp, int flag)
+void	loop_which(t_my_var *data, char **imp, int flag, int *hm)
 {
   int	i;
   int	index;
@@ -73,12 +75,15 @@ void	loop_which(t_my_var *data, char **imp, int flag)
 	  write(1, data->alias[index], first_equal);
 	  my_printf(" is aliased to %s\n", &data->alias[index][first_equal + 1]);
 	}
-      search_cmd(data, imp[i], flag);
+      search_cmd(data, imp[i], flag, hm);
     }
 }
 
 int	test_cmd_which(t_my_var *data, char **imp)
 {
+  int	hm;
+
+  hm = 0;
   if (my_strncmp(imp[0], "which", 6) == 1)
     {
       if (imp[1] == NULL)
@@ -87,12 +92,14 @@ int	test_cmd_which(t_my_var *data, char **imp)
 	  data->return_value = 1;
 	}
       else
-	loop_which(data, imp, 1);
+	loop_which(data, imp, 1, &hm);
       return (0);
     }
   else if (my_strncmp(imp[0], "where", 6) == 1)
     {
-      loop_which(data, imp, 2);
+      loop_which(data, imp, 2, &hm);
+      if (hm == 0)
+	data->return_value = 1;
       return (0);
     }
   return (1);
