@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Wed Apr 12 12:54:03 2017 Adrien ZEMMA
-** Last update	Fri May 19 16:43:44 2017 Adrien ZEMMA
+** Last update	Fri May 19 17:33:13 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -22,6 +22,8 @@ int	main(int ac, char **av, char **env)
   prompt->histori_tab = malloc(sizeof(char *) * 1);
   prompt->prompt_prompt[0] = NULL;
   prompt->histori_nb = 2;
+  p->separator = NULL;
+  p->list_command = NULL;
   p->return_value = 0;
   p->var = init_var();
   if (env[0] == NULL)

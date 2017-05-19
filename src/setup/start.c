@@ -5,15 +5,13 @@
 ** Login   <hugo.martin@epitech.eu>
 **
 ** Started on  Fri Apr 28 16:11:10 2017 Hugo
-** Last update	Fri May 19 17:22:13 2017 Hugo MARTIN
+** Last update	Fri May 19 17:28:07 2017 Hugo MARTIN
 */
 
 #include "my.h"
 
-//TODO
 int	my_control(t_my_var *p, t_my_separator *s, t_my_list_data	*separator)
 {
-  //my_printf("Command: %s\nFlag: %d\nReturn Value: %d\n\n", s->command, s->flag, p->return_value);
   if (s->flag == 1)
   {
     if (p->return_value != 0)
@@ -66,7 +64,7 @@ int	my_start(t_my_var *p, t_my_prompt *prompt)
         separator = separator->next;
         }
         if (p->exit != -1)
-        	exit(p->return_value);
+        	my_exit(p);
        }
     }
   return (0);

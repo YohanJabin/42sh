@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Mon Mar 13 21:30:40 2017 Hugo MARTIN
-** Last update	Wed Apr 12 20:02:39 2017 Hugo MARTIN
+** Last update	Fri May 19 17:32:09 2017 Hugo MARTIN
 */
 
 #include "list.h"
@@ -31,9 +31,9 @@ void	free_list(t_my_list_cont *list)
   t_my_list_data	*tmp;
   t_my_list_data	*del;
 
-  tmp = list->begin;
   if (list == NULL)
     return ;
+  tmp = list->begin;
   if (list->length == 1 && list->begin == list->end)
     free(list);
   else
