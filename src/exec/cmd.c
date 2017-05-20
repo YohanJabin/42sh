@@ -40,12 +40,8 @@ char	**get_hard_path()
   return (arr_path);
 }
 
-int     test_cmd_path(t_my_var *data, char **imp)
+int	try_exec(t_my_var *data, char **imp)
 {
-  char	**arr_path;
-  char	*binary;
-  int	i;
-
   if (is_there_a_slash(imp[0]) == 1 && access(imp[0], F_OK) == 0)
     {
       my_exec(imp[0], imp, data);
@@ -53,22 +49,34 @@ int     test_cmd_path(t_my_var *data, char **imp)
     }
   if (is_it_direct_path(imp[0]) == 0)
     return (1);
-  if ((arr_path = get_arr_path(data->env)) == NULL
-      && (arr_path = get_hard_path()) == NULL)
-    return (1);
-  i = -1;
-  while (arr_path[++i] != NULL)
+  return (-1);
+}
+
+int     test_cmd_path(t_my_var *data, char **imp)
+{
+  char	**arr_path;
+  char	*binary;
+  int	i;
+
+  if (try_exec(data, imp) == -1)
     {
-      binary = my_pathadd(arr_path[i], imp[0]);
-      if (imp[0][0] != '/' && access(binary, F_OK) == 0)
+      if ((arr_path = get_arr_path(data->env)) == NULL
+	  && (arr_path = get_hard_path()) == NULL)
+	return (1);
+      i = -1;
+      while (arr_path[++i] != NULL)
 	{
-	  my_exec(binary, imp, data);
-	  free_double_tab(arr_path);
-	  return (0);
+	  binary = my_pathadd(arr_path[i], imp[0]);
+	  if (imp[0][0] != '/' && access(binary, F_OK) == 0)
+	    {
+	      my_exec(binary, imp, data);
+	      free_double_tab(arr_path);
+	      return (0);
+	    }
+	  free(binary);
 	}
-      free(binary);
+      free_double_tab(arr_path);
     }
-  free_double_tab(arr_path);
   return (1);
 }
 
