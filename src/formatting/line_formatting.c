@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Fri May 19 23:56:33 2017 Yohan.Jabin
+** Last update Sat May 20 13:52:50 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -72,6 +72,29 @@ int	magic_quote(t_my_var *data, char **imp, int *i)
   return (0);
 }
 
+int	format_imput_loop(t_my_var *data, char **imp, int *i)
+{
+  if ((*imp)[*i] == '`')
+    if (parse_magic_quote(data, imp, *i) == -1)
+      return (1);
+  if ((*imp)[*i] == '$')
+    {
+      if (format_change_var(data, imp, *i) == 1)
+	return (1);
+      (*i)--;
+    }
+  if ((*imp)[*i] == '\'')
+    if (magic_quote(data, imp, i) == 84)
+      return (1);
+  if ((*imp)[*i] == '(' || (*imp)[*i] == ')'
+      || (*imp)[*i] == '{' || (*imp)[*i] == '}')
+    *imp = my_strcut(*imp, (*i)--, 1);
+  if ((*imp)[*i] == '*')
+    if ((*i = format_globbing(data, imp, *i)) == -1)
+      return (1);
+  return (0);
+}
+
 int	format_imput(t_my_var *data, char **imp)
 {
   int	i;
@@ -81,26 +104,17 @@ int	format_imput(t_my_var *data, char **imp)
   i = -1;
   while ((*imp)[++i] != 0)
     {
-      if ((*imp)[i] == '`' && (i == 0 || (*imp)[i - 1] != '\\'))
-	if (parse_magic_quote(data, imp, i) == -1)
-	  return (1);
-      if ((*imp)[i] == '$' && (i == 0 || (*imp)[i - 1] != '\\'))
+      if ((*imp)[i] == '\\' && (*imp)[i + 1] != 0)
 	{
-	  if (format_change_var(data, imp, i) == 1)
-	    return (1);
-	  i--;
+	  my_printf("precut:%s\n", &(*imp)[i]);
+	  *imp = my_strcut(*imp, i, 1);
+	  my_printf("cut:%s\n", &(*imp)[i + 1]);
 	}
-      if ((*imp)[i] == '\'' && (i == 0 || (*imp)[i - 1] != '\\'))
-	if (magic_quote(data, imp, &i) == 84)
-	  return (1);
-      if ((*imp)[i] == '(' || (*imp)[i] == ')'
-	  || (*imp)[i] == '{' || (*imp)[i] == '}')
-	*imp = my_strcut(*imp, i--, 1); 
-      if ((*imp)[i] == '*')
-	if ((i = format_globbing(data, imp, i)) == -1)
-	  return (1);
-      if (i > 0 && (*imp)[i - 1] == '\\')
-	*imp = my_strcut(*imp, i++ - 2, 1);
+      else
+	{
+	  if (format_imput_loop(data, imp, &i) == 1)
+	    return (1);
+	}
     }
   return (0);
 }

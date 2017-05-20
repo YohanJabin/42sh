@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May 15 11:44:52 2017 Yohan.Jabin
-** Last update Mon May 15 18:28:41 2017 Yohan.Jabin
+** Last update Sat May 20 13:38:18 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -90,4 +90,4 @@ char    *get_globbing_filename(char *to_process)
       my_strncpy(filename, to_process, j);
     }
   return (filename);
-} 
+}

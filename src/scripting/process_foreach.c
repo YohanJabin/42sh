@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 20:24:27 2017 Yohan.Jabin
-** Last update Fri May 19 18:06:37 2017 Yohan.Jabin
+** Last update Sat May 20 13:30:39 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -98,8 +98,7 @@ char                    **get_foreach_cmd(t_my_var *data)
 	  if ((ret = realloc(ret, sizeof(char *) * (i + 1))) == NULL)
 	    return (NULL);
 	  ret[i - 1] = my_strdup(command->data);
-	  ret[i] = NULL;
-	  i++;
+	  ret[i++] = NULL;
 	  command = command->next;
 	}
     }

@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May 15 11:07:46 2017 Yohan.Jabin
-** Last update Wed May 17 11:21:56 2017 Yohan.Jabin
+** Last update Sat May 20 13:37:50 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -89,7 +89,8 @@ int	format_globbing(t_my_var *data, char **imp, int i)
   while (--i >= 0 && ((*imp)[i] != ' ' && (*imp)[i] != '\t'));
   i++;
   j = -1;
-  while ((*imp)[i + ++j] != 0 && (*imp)[i + j] != ' ' && (*imp)[i + j] != '\t');
+  while ((*imp)[i + ++j] != 0
+	 && (*imp)[i + j] != ' ' && (*imp)[i + j] != '\t');
   if ((to_process = malloc(sizeof(char) * (j + 1))) == NULL)
     return (-1);
   my_memset(to_process, 0, j + 1);
