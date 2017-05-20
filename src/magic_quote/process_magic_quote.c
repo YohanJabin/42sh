@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Fri May 19 22:35:00 2017 Yohan.Jabin
-** Last update Sat May 20 02:05:52 2017 Yohan.Jabin
+** Last update Sat May 20 23:19:52 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -13,21 +13,24 @@
 char	*get_output_magic_quote(int fd)
 {
   char	*ret;
-  char	*str;
+  char	buff[1024];
   int	len;
+  int	i;
 
   if ((ret = malloc(sizeof(char))) == NULL)
     return (NULL);
   ret[0] = 0;
-  len = 0;
-  while ((str = get_next_line(fd)) != NULL)
+  my_memset(buff, 0, 1024);
+  i = 0;
+  while ((len = read(fd, buff, 1023)) > 0)
     {
-      ret = my_stradd(ret, str, len);
-      len += my_strlen(str);
-      ret = my_stradd(ret, "\n", len);
-      len++;
+      ret = my_stradd(ret, buff, i);
+      i += len;
+      ret = my_stradd(ret, "\n", i);
+      my_memset(buff, 0, 1024);
+      i++;
     }
-  ret = my_strcut(ret, --len, 1);
+  ret = my_strcut(ret, --i, 1);
   return (ret);
 }
 
