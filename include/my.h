@@ -306,4 +306,10 @@ int     globbing_no_match(t_my_var *, char **, char *);
 /* echo.c */
 int     test_cmd_echo(char **);
 
+/* init_magic_quote.c */
+int     parse_magic_quote(t_my_var *, char **, int);
+
+/* process_magic_quote.c */
+char    *process_magic_quote(t_my_var *, char *);
+
 #endif /* !MY_H_ */
