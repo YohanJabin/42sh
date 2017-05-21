@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Thu May  4 15:13:36 2017 Yohan.Jabin
-** Last update Sat May 20 13:29:55 2017 Yohan.Jabin
+** Last update Sun May 21 15:04:17 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -48,7 +48,7 @@ int     test_cmd_scripting_if(t_my_var *data, char **imp, char **arr)
       return (0);
     }
   return (1);
-} 
+}
 
 int	check_if_parenthesis(char **imp, int len)
 {

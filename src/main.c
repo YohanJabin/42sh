@@ -10,29 +10,45 @@
 
 #include "my.h"
 
-int	main(int ac, char **av, char **env)
+char	**init_var()
 {
-  t_my_var	*p;
-  t_my_prompt	*prompt;
+  char  **var;
 
-  p = malloc(sizeof(*p));
-  prompt = malloc(sizeof(t_my_prompt));
+  if ((var = malloc(sizeof(char *))) == NULL)
+    return (NULL);
+  var[0] = NULL;
+  return (var);
+}
+
+int	init_shell(t_my_var *data, t_my_prompt *prompt, char **env)
+{
   prompt->prompt_compteur = -1;
   prompt->prompt_prompt = malloc(sizeof(char *) * 1);
   prompt->histori_tab = malloc(sizeof(char *) * 1);
   prompt->prompt_prompt[0] = NULL;
   prompt->histori_nb = 2;
-  p->separator = NULL;
-  p->list_command = NULL;
-  p->return_value = 0;
-  p->var = init_var();
-  if (env[0] == NULL)
-    setvar(p, "path=/usr/bin /bin");
-  p->alias = init_alias();
-  p->env = cpy_arr_env(env);
-  change_pwd(p);
-  init_scripting(p, ac, av);
-  my_start(p, prompt);
-  //my_echo("echo $PATH", env);
-  return (p->return_value);
+  data->separator = NULL;
+  data->list_command = NULL;
+  data->return_value = 0;
+  data->var = init_var();
+  data->alias = init_var();
+  data->env = cpy_arr_env(env);
+  data->return_value = 0;
+  change_pwd(data);
+  return (0);
+}
+
+int		main(int ac, char **av, char **env)
+{
+  t_my_var	*data;
+  t_my_prompt	*prompt;
+
+  if ((data = malloc(sizeof(t_my_var))) == NULL)
+    return (84);
+  if ((prompt = malloc(sizeof(t_my_prompt))) == NULL)
+    return (84);
+  init_shell(data, prompt, env);
+  init_scripting(data, ac, av);
+  my_start(data, prompt);
+  return (data->return_value);
 }

@@ -5,7 +5,7 @@
 ## Login   <yohan.jabin@epitech.eu>
 ## 
 ## Started on  Sun May 21 13:00:20 2017 Yohan.Jabin
-## Last update Sun May 21 13:02:19 2017 Yohan.Jabin
+## Last update Sun May 21 15:00:01 2017 Yohan.Jabin
 ##
 
 NAME	= 42sh
@@ -97,7 +97,6 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/scripting/scripting.c \
 	  ./src/separator/separator.c \
 	  ./src/setup/exit.c \
-	  ./src/setup/init_var.c \
 	  ./src/setup/start.c \
 	  ./src/utils/double_arr_manip.c \
 	  ./src/utils/my_str_is_alpha.c \

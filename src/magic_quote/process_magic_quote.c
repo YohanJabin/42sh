@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Fri May 19 22:35:00 2017 Yohan.Jabin
-** Last update Sun May 21 11:55:45 2017 Yohan.Jabin
+** Last update Sun May 21 15:03:00 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -39,8 +39,6 @@ char	*get_output_magic_quote(int fd)
       my_memset(buff, 0, 1024);
     }
   replace_return_magic_quote(ret);
-  //if (ret[--i] == '\n')
-  //ret = my_strcut(ret, i, 1);
   return (ret);
 }
 
