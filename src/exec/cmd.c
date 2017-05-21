@@ -58,25 +58,24 @@ int     test_cmd_path(t_my_var *data, char **imp)
   char	*binary;
   int	i;
 
-  if (try_exec(data, imp) == -1)
+  if ((i = try_exec(data, imp)) != -1)
+    return (i);
+  if ((arr_path = get_arr_path(data->env)) == NULL
+      && (arr_path = get_hard_path()) == NULL)
+    return (1);
+  i = -1;
+  while (arr_path[++i] != NULL)
     {
-      if ((arr_path = get_arr_path(data->env)) == NULL
-	  && (arr_path = get_hard_path()) == NULL)
-	return (1);
-      i = -1;
-      while (arr_path[++i] != NULL)
+      binary = my_pathadd(arr_path[i], imp[0]);
+      if (imp[0][0] != '/' && access(binary, F_OK) == 0)
 	{
-	  binary = my_pathadd(arr_path[i], imp[0]);
-	  if (imp[0][0] != '/' && access(binary, F_OK) == 0)
-	    {
-	      my_exec(binary, imp, data);
-	      free_double_tab(arr_path);
-	      return (0);
-	    }
-	  free(binary);
+	  my_exec(binary, imp, data);
+	  free_double_tab(arr_path);
+	  return (0);
 	}
-      free_double_tab(arr_path);
+      free(binary);
     }
+  free_double_tab(arr_path);
   return (1);
 }
 
