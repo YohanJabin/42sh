@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Sun May 21 17:58:28 2017 Yohan.Jabin
+** Last update Sun May 21 18:59:24 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -101,7 +101,7 @@ int	format_imput(t_my_var *data, char **imp)
 
   if (tab_formatting(data, imp) == 0)
     return (1);
-  my_printf("IMP:%s\n", *imp);
+  //my_printf("IMP:%s\n", *imp);
   i = -1;
   while ((*imp)[++i] != 0)
     {
