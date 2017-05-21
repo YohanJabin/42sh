@@ -313,4 +313,7 @@ int			parse_magic_quote(t_my_var *, char **, int);
 /* process_magic_quote.c */
 char			*process_magic_quote(t_my_var *, char *);
 
+/* arr_cmd.c */
+char	**create_arr_cmd(char *);
+
 #endif /* !MY_H_ */

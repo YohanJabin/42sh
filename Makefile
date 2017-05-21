@@ -5,7 +5,7 @@
 ## Login   <yohan.jabin@epitech.eu>
 ## 
 ## Started on  Sun May 21 13:00:20 2017 Yohan.Jabin
-## Last update Sun May 21 15:00:01 2017 Yohan.Jabin
+## Last update Sun May 21 17:47:28 2017 Yohan.Jabin
 ##
 
 NAME	= 42sh
@@ -80,6 +80,7 @@ SRCS	= ./lib/my/casual/count_char.c \
 	  ./src/formatting/tab_formatting.c \
 	  ./src/magic_quote/init_magic_quote.c \
 	  ./src/magic_quote/process_magic_quote.c \
+	  ./src/magic_quote/arr_cmd.c \
 	  ./src/main.c \
 	  ./src/prompt/histori.c \
 	  ./src/prompt/my_prompt.c \

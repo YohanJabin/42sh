@@ -51,9 +51,9 @@ int	my_command(t_my_var *v, t_my_prompt *data)
   if (isatty(0) && v->flag_prompt == 1)
     {
       if (v->script.foreach_status == 1)
-	     my_printf("foreach? ");
+	my_printf("foreach? ");
       else
-	     my_prompt(data);
+	my_prompt(data);
     }
   if ((v->full_command = get_next_line(v->fd_to_read)) == NULL)
     return (-1);

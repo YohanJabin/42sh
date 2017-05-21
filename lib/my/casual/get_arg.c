@@ -38,17 +38,26 @@ char	*get_arg(char *str, int n, char *c)
   j = -1;
   i = 0;
   while (i != n && *tmp)
-  {
-    if (my_strncmp(tmp, c, my_strlen(c)) == 1)
-      i++;
-    tmp++;
-  }
+    {
+      if (*tmp == '`')
+	while (*(++tmp) && *tmp != '`');
+      if (my_strncmp(tmp, c, my_strlen(c)) == 1)
+	i++;
+      tmp++;
+    }
   if (my_strncmp(tmp, c, my_strlen(c)) == 1)
     tmp++;
   while ((*tmp) && (my_strncmp(tmp, c, my_strlen(c)) == 0))
-  {
-    a[++j] = *tmp;
-    tmp++;
-  }
+    {
+      if (*tmp == '`')
+	{
+	  a[++j] = *tmp;
+	  while (*(++tmp) && *tmp != '`')
+	    a[++j] = *tmp;
+	}
+      if (*tmp)
+	a[++j] = *tmp;
+      tmp++;
+    }
   return (a);
 }
