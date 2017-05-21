@@ -5,7 +5,7 @@
 ** Login	adrien.zemma@epitech.eu
 **
 ** Started on	Fri Apr 21 13:41:05 2017 Adrien ZEMMA
-** Last update	Fri May 19 16:39:35 2017 Adrien ZEMMA
+** Last update	Sun May 21 16:03:42 2017 Hugo MARTIN
 */
 
 #ifndef MY_PROMPT_H
@@ -19,9 +19,6 @@
 #define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
-#include <sys/stat.h>
-#include <fcntl.h>
-
 typedef struct	s_my_prompt
 {
   int fd_rc;
@@ -31,7 +28,6 @@ typedef struct	s_my_prompt
   char **prompt_ignore;
   char **histori_tab;
   int histori_nb;
-
   int		ret;
   int		exit;
   char		**env;
