@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Fri Apr 28 09:52:43 2017 Hugo MARTIN
-** Last update	Fri May 19 13:42:21 2017 Hugo MARTIN
+** Last update	Sun May 21 17:15:35 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -38,30 +38,30 @@ void	init_separator(int *i, int *j, char **str, char *command)
 
 int	my_check_separator(t_my_var *v, char *command)
 {
-  int	i;
-  int	j;
-  char	*str;
+  t_my_data	d;
 
-  init_separator(&i, &j, &str, command);
-  while (command[++i])
+  init_separator(&d.i, &d.j, &d.str, command);
+  while (command[++d.i])
     {
-      if (command[i] == '&' && command[i + 1] &&
-	  command[i + 1] == '&' && (i += 2))
+      if (command[d.i] == '`')
+	while (command[++d.i] && command[d.i] != '`');
+      if (command[d.i] == '&' && command[d.i + 1] &&
+	  command[d.i + 1] == '&' && (d.i += 2))
 	{
-	  send_double(v, str, 1);
-	  my_malloc(&str, '\0', my_strlen(command) + 1);
-	  j = -1;
+	  send_double(v, d.str, 1);
+	  my_malloc(&d.str, '\0', my_strlen(command) + 1);
+	  d.j = -1;
 	}
-      else if (command[i] == '|' && command[i + 1] &&
-	       command[i + 1] == '|' && (i += 2))
+      else if (command[d.i] == '|' && command[d.i + 1] &&
+	       command[d.i + 1] == '|' && (d.i += 2))
 	{
-	  send_double(v, str, 2);
-	  my_malloc(&str, '\0', my_strlen(command) + 1);
-	  j = -1;
+	  send_double(v, d.str, 2);
+	  my_malloc(&d.str, '\0', my_strlen(command) + 1);
+	  d.j = -1;
 	}
-      str[++j] = command[i];
+      d.str[++d.j] = command[d.i];
     }
-  send_double(v, str, 0);
+  send_double(v, d.str, 0);
   return (0);
 }
 
