@@ -21,10 +21,17 @@ typedef struct	s_script
   int		foreach_hm_words;
 }		t_script;
 
-typedef struct s_my_repeat
+typedef struct	s_my_repeat
 {
   int 		hm;
-  char	*command;
+  char		*command;
 }		t_my_repeat;
+
+typedef struct s_my_data
+{
+  int 		i;
+  int	       	j;
+  char		*str;
+}		t_my_data;
 
 #endif /* !SCRIPT_H_ */

@@ -5,19 +5,19 @@
 ** Login   <yohan.jabin@epitech.eu@epitech.net>
 **
 ** Started on  Thu Apr 27 18:36:54 2017 Yohan.Jabin
-** Last update	Fri Apr 28 11:10:38 2017 Hugo MARTIN
+** Last update	Sun May 21 18:31:57 2017 Adrien ZEMMA
 */
 
 #ifndef REDIR_H_
 # define REDIR_H_
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <signal.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <errno.h>
+# include <string.h>
+# include <sys/wait.h>
+# include <signal.h>
 
 typedef struct  s_redir
 {
