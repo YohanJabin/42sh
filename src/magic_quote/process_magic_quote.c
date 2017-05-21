@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Fri May 19 22:35:00 2017 Yohan.Jabin
-** Last update Sun May 21 17:50:36 2017 Yohan.Jabin
+** Last update Sun May 21 19:15:48 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -52,7 +52,7 @@ void	launch_cmd_magic_quote(t_my_var *data, char *cmd)
   i = -1;
   while (arr_cmd[++i] != NULL)
     {
-      my_fprintf(2, "cmd[%d]:%s\n", i, arr_cmd[i]);
+      data->return_value = 0;
       parse_pipe(data, arr_cmd[i]);
     }
 }
@@ -62,6 +62,7 @@ char	*process_magic_quote(t_my_var *data, char *cmd)
   int	pipe_fd[2];
   int	pid;
   char	*ret;
+  int	status;
 
   if (pipe(pipe_fd) == -1)
     return (NULL);
@@ -81,6 +82,8 @@ char	*process_magic_quote(t_my_var *data, char *cmd)
       close(pipe_fd[1]);
       if ((ret = get_output_magic_quote(pipe_fd[0])) == NULL)
 	return (NULL);
+      wait(&status);
+      data->return_value = WEXITSTATUS(status);
     }
   return (ret);
 }

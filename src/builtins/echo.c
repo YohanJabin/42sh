@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Wed May 17 12:45:22 2017 Yohan.Jabin
-** Last update Thu May 18 21:13:21 2017 Yohan.Jabin
+** Last update Sun May 21 19:15:30 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -29,7 +29,10 @@ int	test_cmd_echo(char **imp)
   if (my_strncmp(imp[0], "echo", 5))
     {
       if (imp[1] == NULL)
-	return (0);
+	{
+	  my_printf("\n");
+	  return (0);
+	}
       if (my_strncmp(imp[1], "-n", 3))
 	process_echo(&imp[2], 1);
       else
