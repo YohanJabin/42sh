@@ -81,27 +81,18 @@ int     test_cmd_path(t_my_var *data, char **imp)
 
 int	test_cmd_builtin(t_my_var *data, char **imp)
 {
+  int	i;
+
   if (my_strncmp(imp[0], "endif", 6) == 1 ||
       my_strncmp(imp[0], "end", 4) == 1)
     return (1);
-  if (test_cmd_scripting(data, imp) == 0)
-    return (1);
-  if (test_cmd_echo(imp) == 0)
-    return (1);
-  if (test_cmd_cd(data, imp) == 0)
-    return (1);
-  if (test_cmd_exit(data, imp) == 0)
-    return (1);
-  if (test_cmd_env(data, imp) == 0)
-    return (1);
-  if (test_cmd_var(data, imp) == 0)
-    return (1);
-  if (test_cmd_alias(data, imp) == 0)
-    return (1);
-  if (test_cmd_which(data, imp) == 0)
-    return (1);
-  if (test_cmd_path(data, imp) == 0)
-    return (1);
+  i = 0;
+  while (i < data->hm_builtins)
+    {
+      if (data->f_builtins[i](data, imp) == 0)
+	return (1);
+      i++;
+    }
   my_fprintf(2, "%s: Command not found.\n", &imp[0][0]);
   data->return_value = 1;
   return (1);

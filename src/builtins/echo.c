@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Wed May 17 12:45:22 2017 Yohan.Jabin
-** Last update Sun May 21 19:15:30 2017 Yohan.Jabin
+** Last update Sun May 21 19:58:36 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -24,8 +24,9 @@ void	process_echo(char **imp, int flag_return)
     my_printf("\n");
 }
 
-int	test_cmd_echo(char **imp)
+int	test_cmd_echo(t_my_var *data, char **imp)
 {
+  data = data;
   if (my_strncmp(imp[0], "echo", 5))
     {
       if (imp[1] == NULL)

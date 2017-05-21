@@ -31,6 +31,8 @@ typedef	struct		s_my_var
   char			*command;
   int			return_value;
   int			exit;
+  int			hm_builtins;
+  int			(*f_builtins[9])(struct s_my_var *, char **);
   t_redir		redir;
   t_script		script;
   t_my_prompt		*prompt;
@@ -305,7 +307,7 @@ char			**create_arr_star(char *);
 int			globbing_no_match(t_my_var *, char **, char *);
 
 /* echo.c */
-int			test_cmd_echo(char **);
+int			test_cmd_echo(t_my_var *, char **);
 
 /* init_magic_quote.c */
 int			parse_magic_quote(t_my_var *, char **, int);

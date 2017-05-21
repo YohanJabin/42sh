@@ -20,6 +20,20 @@ char	**init_var()
   return (var);
 }
 
+void	init_builtins(t_my_var *data)
+{
+  data->hm_builtins = 9;
+  data->f_builtins[0] = &test_cmd_scripting;
+  data->f_builtins[1] = &test_cmd_echo;
+  data->f_builtins[2] = &test_cmd_cd;
+  data->f_builtins[3] = &test_cmd_exit;
+  data->f_builtins[4] = &test_cmd_env;
+  data->f_builtins[5] = &test_cmd_var;
+  data->f_builtins[6] = &test_cmd_alias;
+  data->f_builtins[7] = &test_cmd_which;
+  data->f_builtins[8] = &test_cmd_path;
+}
+
 int	init_shell(t_my_var *data, t_my_prompt *prompt, char **env)
 {
   prompt->prompt_compteur = -1;
@@ -35,6 +49,7 @@ int	init_shell(t_my_var *data, t_my_prompt *prompt, char **env)
   data->env = cpy_arr_env(env);
   data->return_value = 0;
   change_pwd(data);
+  init_builtins(data);
   return (0);
 }
 
