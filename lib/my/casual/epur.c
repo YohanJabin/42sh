@@ -5,7 +5,7 @@
 ** Login	hugo.martin@epitech.eu
 **
 ** Started on	Mon Mar 27 17:05:49 2017 Hugo MARTIN
-** Last update	Mon Mar 27 18:12:56 2017 Hugo MARTIN
+** Last update	Sun May 21 11:40:10 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -31,7 +31,8 @@ char	*my_pure(char *command)
   while (command[i])
     {
       if (i != my_first_space(command))
-        if (command[i] > ' ' && (command[i - 1] == ' ' || command[i - 1] == '\t'))
+        if (command[i] > ' ' && (command[i - 1] == ' ' ||
+            command[i - 1] == '\t'))
 	  {
 	    pure[j] = ' ';
 	    j++;
