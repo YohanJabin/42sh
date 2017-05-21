@@ -5,7 +5,7 @@
 ** Login   <hugo.martin@epitech.eu>
 **
 ** Started on  Fri Apr 28 16:10:58 2017 Hugo
-** Last update	Fri May 19 12:40:15 2017 Hugo MARTIN
+** Last update	Sun May 21 15:10:26 2017 Hugo MARTIN
 */
 
 #include "my.h"
@@ -55,8 +55,6 @@ int	my_command(t_my_var *v, t_my_prompt *data)
       else
 	     my_prompt(data);
     }
-  //if (v->return_value != 0 && isatty(0) == 0)
-  //my_exit(v);
   if ((v->full_command = get_next_line(v->fd_to_read)) == NULL)
     return (-1);
   check_comment(v->full_command);

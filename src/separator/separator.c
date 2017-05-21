@@ -29,31 +29,38 @@ int	send_double(t_my_var *v, char *command, int flag)
   return (0);
 }
 
+void	init_separator(int *i, int *j, char **str, char *command)
+{
+  *i = -1;
+  *j = -1;
+  my_malloc(str, '\0', my_strlen(command) + 1);
+}
+
 int	my_check_separator(t_my_var *v, char *command)
 {
   int	i;
   int	j;
   char	*str;
 
-  i = -1;
-  j = -1;
-  my_malloc(&str, '\0', my_strlen(command) + 1);
+  init_separator(&i, &j, &str, command);
   while (command[++i])
-  {
-    if (command[i] == '&' && command[i + 1] && command[i + 1] == '&' && (i += 2))
     {
-      send_double(v, str, 1);
-      my_malloc(&str, '\0', my_strlen(command) + 1);
-      j = -1;
+      if (command[i] == '&' && command[i + 1] &&
+	  command[i + 1] == '&' && (i += 2))
+	{
+	  send_double(v, str, 1);
+	  my_malloc(&str, '\0', my_strlen(command) + 1);
+	  j = -1;
+	}
+      else if (command[i] == '|' && command[i + 1] &&
+	       command[i + 1] == '|' && (i += 2))
+	{
+	  send_double(v, str, 2);
+	  my_malloc(&str, '\0', my_strlen(command) + 1);
+	  j = -1;
+	}
+      str[++j] = command[i];
     }
-    else if (command[i] == '|' && command[i + 1] && command[i + 1] == '|' && (i += 2))
-    {
-      send_double(v, str, 2);
-      my_malloc(&str, '\0', my_strlen(command) + 1);
-      j = -1;
-    }
-    str[++j] = command[i];
-  }
   send_double(v, str, 0);
   return (0);
 }
