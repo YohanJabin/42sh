@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Sat May 20 13:52:50 2017 Yohan.Jabin
+** Last update Sun May 21 17:58:28 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -101,15 +101,12 @@ int	format_imput(t_my_var *data, char **imp)
 
   if (tab_formatting(data, imp) == 0)
     return (1);
+  my_printf("IMP:%s\n", *imp);
   i = -1;
   while ((*imp)[++i] != 0)
     {
       if ((*imp)[i] == '\\' && (*imp)[i + 1] != 0)
-	{
-	  my_printf("precut:%s\n", &(*imp)[i]);
-	  *imp = my_strcut(*imp, i, 1);
-	  my_printf("cut:%s\n", &(*imp)[i + 1]);
-	}
+	*imp = my_strcut(*imp, i, 1);
       else
 	{
 	  if (format_imput_loop(data, imp, &i) == 1)
