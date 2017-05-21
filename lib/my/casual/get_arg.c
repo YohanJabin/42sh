@@ -18,35 +18,19 @@ char	*get_full(char *str, int n, char *c)
   tmp = str;
   i = 0;
   while (i != n && *tmp)
-  {
-    if (my_strncmp(tmp, c, my_strlen(c)) == 1)
-      i++;
-    tmp++;
-  }
-  return (tmp);
-}
-
-char	*get_arg(char *str, int n, char *c)
-{
-  char	*tmp;
-  char	*a;
-  int	i;
-  int	j;
-
-  my_malloc(&a, '\0', my_strlen(str) + 1);
-  tmp = str;
-  j = -1;
-  i = 0;
-  while (i != n && *tmp)
     {
-      if (*tmp == '`')
-	while (*(++tmp) && *tmp != '`');
       if (my_strncmp(tmp, c, my_strlen(c)) == 1)
 	i++;
       tmp++;
     }
-  if (my_strncmp(tmp, c, my_strlen(c)) == 1)
-    tmp++;
+  return (tmp);
+}
+
+void	get_arg_cpy(char *tmp, char *a, char *c)
+{
+  int	j;
+
+  j = -1;
   while ((*tmp) && (my_strncmp(tmp, c, my_strlen(c)) == 0))
     {
       if (*tmp == '`')
@@ -59,5 +43,27 @@ char	*get_arg(char *str, int n, char *c)
 	a[++j] = *tmp;
       tmp++;
     }
+}
+
+char	*get_arg(char *str, int n, char *c)
+{
+  char	*tmp;
+  char	*a;
+  int	i;
+
+  my_malloc(&a, '\0', my_strlen(str) + 1);
+  tmp = str;
+  i = 0;
+  while (i != n && *tmp)
+    {
+      if (*tmp == '`')
+	while (*(++tmp) && *tmp != '`');
+      if (my_strncmp(tmp, c, my_strlen(c)) == 1)
+	i++;
+      tmp++;
+    }
+  if (my_strncmp(tmp, c, my_strlen(c)) == 1)
+    tmp++;
+  get_arg_cpy(tmp, a, c);
   return (a);
 }
