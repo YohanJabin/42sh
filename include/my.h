@@ -309,6 +309,7 @@ int			test_cmd_echo(char **);
 
 /* init_magic_quote.c */
 int			parse_magic_quote(t_my_var *, char **, int);
+int			check_magic_quote(t_my_var *, char *);
 
 /* process_magic_quote.c */
 char			*process_magic_quote(t_my_var *, char *);

@@ -5,10 +5,39 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Fri May 19 22:02:43 2017 Yohan.Jabin
-** Last update Sun May 21 18:15:12 2017 Yohan.Jabin
+** Last update Sun May 21 19:26:04 2017 Yohan.Jabin
 */
 
 #include "my.h"
+
+int	how_many_magic_quotes(char *str)
+{
+  int	hm;
+  int	i;
+
+  hm = 0;
+  i = -1;
+  while (str[++i] != 0)
+    {
+      if (str[i] == '`')
+	hm++;
+    }
+  return (hm);
+}
+
+int	check_magic_quote(t_my_var *data, char *str)
+{
+  int	hm;
+
+  hm = how_many_magic_quotes(str);
+  if (hm % 2 != 0)
+    {
+      my_fprintf(2, "Unmatched '`'.\n");
+      data->return_value = 1;
+      return (84);
+    }
+  return (0);
+}
 
 char	*get_magic_cmd(char *imp, int j)
 {

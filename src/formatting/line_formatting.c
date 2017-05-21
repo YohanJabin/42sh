@@ -5,7 +5,7 @@
 ** Login   <yohan.jabin@epitech.eu>
 ** 
 ** Started on  Mon May  8 13:51:36 2017 Yohan.Jabin
-** Last update Sun May 21 19:03:48 2017 Yohan.Jabin
+** Last update Sun May 21 19:25:25 2017 Yohan.Jabin
 */
 
 #include "my.h"
@@ -100,6 +100,8 @@ int	format_imput(t_my_var *data, char **imp)
   int	i;
 
   if (tab_formatting(data, imp) == 0)
+    return (1);
+  if (check_magic_quote(data, *imp) == 84)
     return (1);
   i = -1;
   while ((*imp)[++i] != 0)
